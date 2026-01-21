@@ -15,15 +15,15 @@ export default function Footer() {
 
   useFooterBounce({ footerRef, down, up, center });
   return (
-    <footer ref={footerRef} className="relative w-full bg-relink-purple-base md:pb-0 pb-6 ">
-      <div
+    <footer ref={footerRef} className="relative w-full bg-[#0B0D13] text-white md:pb-0 pb-6 ">
+      {/* <div
         className="pointer-events-none absolute inset-0 z-10 opacity-50"
         style={{
           backgroundImage: "url('https://assets.codepen.io/16327/noise.png')",
           backgroundRepeat: "repeat",
           backgroundSize: "200px 200px",
         }}
-      />
+      /> */}
 
       <svg
         viewBox="0 0 2278 683"
@@ -32,7 +32,7 @@ export default function Footer() {
       >
         <path
           id="bouncy-path"
-          fill="#b8b0ff"
+          fill="#0B0D13"
           d="M0-0.3C0-0.3,464,156,1139,156S2278-0.3,2278-0.3V683H0V-0.3z"
         />
       </svg>
@@ -48,11 +48,11 @@ export default function Footer() {
             </h4>
             <a
               href="mailto:info@relinkagency.com"
-              className="text-sm font-light text-gray-600 hover:text-gray-900"
+              className="text-sm font-light text-gray-500 hover:text-gray-400"
             >
               info@relinkagency.com
             </a>
-            <div className="flex gap-4 text-xl text-gray-700 mt-4">
+            <div className="flex gap-3.5 text-xl text-gray-700 mt-4">
               <a
                 href="#"
                 className="hover:text-black w-7 h-7 flex items-center bg-white justify-center rounded-full border border-gray-300"
@@ -88,24 +88,24 @@ export default function Footer() {
             <h4 className="font-relink-neue font-light text-2xl mb-4 tracking-tight">
               Product
             </h4>
-            <ul className="space-y-6 text-sm text-gray-600 text-[15px]">
+            <ul className="space-y-7 text-sm text-gray-500 text-[15px]">
               <li>
-                <a href="#" className="hover:text-gray-800">
+                <a href="#" className="hover:text-gray-400">
                   Branding
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-800">
+                <a href="#" className="hover:text-gray-400">
                   Digital Marketing
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-800">
+                <a href="#" className="hover:text-gray-400">
                   Web Design & Development
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-800">
+                <a href="#" className="hover:text-gray-400">
                   SEO
                 </a>
               </li>
@@ -116,24 +116,24 @@ export default function Footer() {
             <h4 className="font-relink-neue font-light text-2xl mb-4 tracking-tight">
               Creativity
             </h4>
-            <ul className="space-y-6 text-sm text-gray-600 text-[15px]">
+            <ul className="space-y-7 text-sm text-gray-500 text-[15px]">
               <li>
-                <a href="#" className="hover:text-gray-800">
+                <a href="#" className="hover:text-gray-400">
                   Video Production
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-800">
+                <a href="#" className="hover:text-gray-400">
                   Photogragpy
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-800">
+                <a href="#" className="hover:text-gray-400">
                   Application Design and Development
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-800">
+                <a href="#" className="hover:text-gray-400">
                   Packaging Design
                 </a>
               </li>
@@ -144,19 +144,19 @@ export default function Footer() {
             <h4 className="font-relink-neue mb-4 font-light text-2xl tracking-tight">
               Legal
             </h4>
-            <ul className="space-y-6 text-sm text-gray-600 text-[15px]">
+            <ul className="space-y-7 text-sm text-gray-500 text-[15px]">
               <li>
-                <a href="#" className="hover:text-gray-800 ">
+                <a href="#" className="hover:text-gray-400 ">
                   Privacy
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-800">
+                <a href="#" className="hover:text-gray-400">
                   Terms
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-800">
+                <a href="#" className="hover:text-gray-400">
                   Contact
                 </a>
               </li>
@@ -164,11 +164,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t my-6 md:my-8 border-gray-400"></div>
-        <div className="flex justify-start gap-2 text-center items-center text-sm text-gray-600 font-relink-neue font-light">
+        <div className="border-t my-6 md:my-8 border-gray-500"></div>
+        <div className="flex justify-start gap-2 text-center items-center text-sm text-gray-500 font-relink-neue font-light">
           <p>&copy; 2026 Relink. All rights reserved</p>
-          <div className="h-4 border border-gray-400"></div>
-          <a href="#" className="hover:text-gray-700">
+          <div className="h-3 border border-gray-500"></div>
+          <a href="#" className="hover:text-gray-400">
             Privacy Policy
           </a>
         </div>

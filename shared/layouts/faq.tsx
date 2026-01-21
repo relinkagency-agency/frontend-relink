@@ -75,7 +75,7 @@ export default function Faq() {
                     open === i ? "translate-y-0" : "-translate-y-2"
                   }`}
                 >
-                  <p className="max-w-xl text-lg leading-7 text-black/80 ">
+                  <p className="max-w-xl text-md leading-7 text-white/80 ">
                     {item.body}
                   </p>
                 </div>

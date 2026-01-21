@@ -140,8 +140,8 @@ useEffect(() => {
   return (
     <>
       <main>
-        <section className="flex flex-col px-8 justify-center items-center py-24 gap-12 bg-amber-50">
-          <div className="flex flex-col md:items-start  gap-4">
+        <section id="form" className="flex flex-col px-8 justify-center items-center py-24 gap-12 bg-amber-50">
+          <div  className="flex flex-col md:items-start  gap-4">
             <h1 ref={headlineRef} className="font-relink-headline lg:text-7xl text-5xl md:text-6xl">
              Happy to have you here 😀
             </h1>

@@ -16,7 +16,7 @@ export default function Hero() {
           <div className="flex gap-2 font-relink-neue group">
             
             <a
-              href="#"
+              href="#form"
               className="text-sm flex gap-1 items-center cursor-pointer ransition-transform duration-300 group-hover:translate-y-2"
             >
               <span className="tracking-wide leading-4 font-medium">

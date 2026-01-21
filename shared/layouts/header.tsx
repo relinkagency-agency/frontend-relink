@@ -77,7 +77,7 @@ export default function Header() {
               <Link href="news-insight">NEWS+INSIGHT</Link>
             </div>
 
-            <button className="bg-white px-4 py-2 text-black cursor-pointer font-medium tracking-widest">
+            <button className="bg-amber-50 px-4 py-2 text-gray-900 cursor-pointer font-medium tracking-widest">
               <Link href="/contact-us">ENQUIRE</Link>
             </button>
           </nav>

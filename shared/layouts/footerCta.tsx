@@ -3,6 +3,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -42,11 +43,11 @@ export default function FooterCta() {
 
         <div className="overflow-hidden mt-2 md:mt-6">
           <h2 className="cta-line font-relink-headline font-semibold text-white/95 text-[28px] leading-[1.05] md:text-[76px]">
-            <a
-              href="#"
+            <Link
+              href="/contact-us"
               className="group relative inline-flex items-center gap-4 pb-2 md:pb-3"
             >
-              <span className="hover:underline hover:text-gray-800 transition-all duration-300">Talk to our experts</span>
+              <span className="hover:underline hover:text-white transition-all duration-300">Talk to our experts</span>
               <span
                 aria-hidden="true"
                 className="inline-block translate-x-[-8px] opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 hover:text-gray-600"
@@ -66,7 +67,7 @@ export default function FooterCta() {
                   />
                 </svg>
               </span>
-            </a>
+            </Link>
           </h2>
         </div>
       </div>

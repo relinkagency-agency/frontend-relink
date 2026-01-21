@@ -36,8 +36,22 @@ export function ProjectCard({ project }: { project: Project }) {
           {project.title}
         </span>
 
-        <span className="whitespace-nowrap opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-          View Project --&gt;
+        <span className="flex gap-2 items-center whitespace-nowrap opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+          View Project
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="size-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
+            />
+          </svg>
         </span>
       </div>
     </a>
