@@ -23,14 +23,14 @@ const getStrapiMediaUrl = (url: string | undefined | null): string => {
 };
 
 const fetchStrapi = async (endpoint: string, options?: RequestInit) => {
-  const headers: HeadersInit = {
-    "Content-Type": "application/json",
-    ...options?.headers,
-  };
+const headers = new Headers({
+  "Content-Type": "application/json",
+});
 
-  if (STRAPI_API_TOKEN) {
-    headers["Authorization"] = `Bearer ${STRAPI_API_TOKEN}`;
-  }
+if (STRAPI_API_TOKEN) {
+  headers.set("Authorization", `Bearer ${STRAPI_API_TOKEN}`);
+}
+
 
   return fetch(`${STRAPI_URL}${endpoint}`, {
     ...options,
