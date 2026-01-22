@@ -7,12 +7,12 @@ import { ProjectList } from "@/features/home/ui/project/projectlist";
 import FeaturedProject from "@/features/home/ui/project/featuredprojetc";
 import { Project } from "@/features/home/types.home";
 import featured from "../public/featured.png";
-
 import web02 from "../public/web02.jpg";
 import web03 from "../public/web03.jpg";
 import web04 from "../public/web04.jpg";
 import web05 from "../public/web08.jpg";
 import web06 from "../public/web07.jpg";
+import { getServices } from "@/lib/strapi";
 
 export const mockFeatured: Project = {
   id: "featured-1",
@@ -72,17 +72,20 @@ export const mockProjects: Project[] = [
   },
 ];
 
-export default function page() {
+export default async function Page() {
+  const servicesRes = await getServices();
+
+  if (!servicesRes.success) {
+    console.error("Failed to fetch services:", servicesRes.error);
+  }
+
   return (
     <>
       <Hero />
-
       <Overview />
-      <Services />
-
+      <Services services={servicesRes.data} />
       <FeaturedProject project={mockFeatured} />
       <ProjectList projects={mockProjects} />
     </>
   );
 }
- 
