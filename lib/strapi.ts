@@ -199,7 +199,27 @@ const mapArticle = (a: StrapiArticle): Article => ({
   title: a.title,
   slug: a.slug,
   excerpt: a.excerpt ?? null,
-  blocks: a.blocks,
+  blocks: a.blocks?.map((block: any) => {
+    if (block.__component === "shared.media" && block.file) {
+      return {
+        ...block,
+        file: {
+          ...block.file,
+          url: getStrapiMediaUrl(block.file.url),
+        },
+      };
+    }
+    if (block.__component === "shared.slider" && block.files) {
+      return {
+        ...block,
+        files: block.files.map((f: any) => ({
+          ...f,
+          url: getStrapiMediaUrl(f.url),
+        })),
+      };
+    }
+    return block;
+  }),
   coverImage: a.cover
     ? { url: getStrapiMediaUrl(a.cover.url), alt: a.cover.alternativeText }
     : null,
@@ -290,7 +310,7 @@ export async function getPostBySlug(slug: string): Promise<{
     const res = await fetchStrapi(
       `/api/articles?filters[slug][$eq]=${encodeURIComponent(
         slug
-      )}&populate[0]=cover&populate[1]=author&populate[2]=category&populate[3]=blocks`,
+      )}&populate[0]=cover&populate[1]=author&populate[2]=category&populate[3]=blocks&populate[4]=blocks.file&populate[5]=blocks.files`,
       { next: { revalidate: 60, tags: ["articles", `article-${slug}`] } }
     );
 

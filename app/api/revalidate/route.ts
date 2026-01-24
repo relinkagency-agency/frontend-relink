@@ -22,17 +22,17 @@ export async function POST(request: Request) {
     const revalidate = revalidateTag as any;
 
     if (model === "project") {
-      revalidate("projects");
+      revalidate("projects", "max");
       if (entry?.slug) {
-        revalidate(`project-${entry.slug}`);
+        revalidate(`project-${entry.slug}`, "max");
       }
     } else if (model === "article") {
-      revalidate("articles");
+      revalidate("articles", "max");
       if (entry?.slug) {
-        revalidate(`article-${entry.slug}`);
+        revalidate(`article-${entry.slug}`, "max");
       }
     } else if (model === "service") {
-      revalidate("services");
+      revalidate("services", "max");
     }
 
     return NextResponse.json({

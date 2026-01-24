@@ -6,7 +6,7 @@ import bg from "../../../public/hero-bg-4.jpg";
 export default function Hero() {
   return (
     <>
-      <div className="relative h-[520px] md:h-[650px] lg:h-[750px] w-full overflow-hidden">
+      <section className="relative h-[520px] md:h-[650px] lg:h-[750px] w-full overflow-hidden bg-[#0B0D13]">
         <Image
           src={bg}
           alt="Relink Agency Hero"
@@ -50,7 +50,7 @@ export default function Hero() {
             </a>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 }
