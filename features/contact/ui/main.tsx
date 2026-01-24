@@ -59,8 +59,12 @@ export default function Main() {
     return newErrors;
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSubmitStatus("idle");
 
     const fd = new FormData(e.currentTarget);
 
@@ -76,7 +80,6 @@ export default function Main() {
     const newErrors = validateForm(formData);
     setErrors(newErrors);
 
-    // if there ARE errors, mark all touched and stop
     if (Object.keys(newErrors).length > 0) {
       setTouched({
         services: true,
@@ -89,61 +92,86 @@ export default function Main() {
       return;
     }
 
-    
-    console.log("Form submitted!", formData);
+    setIsSubmitting(true);
+
+    try {
+      const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
+      const response = await fetch(`${strapiUrl}/api/contacts`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ data: formData }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        const errData = await response.json();
+        console.error("Strapi error:", errData);
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-    
-    // gsap
-    const headlines = [
-  "Well, where do we start?",
-  "Tell us about your idea.",
-  "Let’s build greatness.",
-  "What are you planning?",
-];
 
-const headlineRef = useRef<HTMLHeadingElement>(null);
-const indexRef = useRef(0);
 
-useEffect(() => {
-  const el = headlineRef.current;
-  if (!el) return;
+  // gsap
+  const headlines = [
+    "Well, where do we start?",
+    "Tell us about your idea.",
+    "Let’s build greatness.",
+    "What are you planning?",
+  ];
 
-  const changeText = () => {
-    // animate out
-    gsap.to(el, {
-      opacity: 0,
-      x: -20,
-      duration: 0.5,
-      ease: "power2.out",
-      onComplete: () => {
-        indexRef.current =
-          (indexRef.current + 1) % headlines.length;
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const indexRef = useRef(0);
 
-        el.textContent = headlines[indexRef.current];
+  useEffect(() => {
+    const el = headlineRef.current;
+    if (!el) return;
 
-        // animate in
-        gsap.fromTo(
-          el,
-          { opacity: 0, x: 20 },
-          { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }
-        );
-      },
-    });
-  };
+    const changeText = () => {
+      // animate out
+      gsap.to(el, {
+        opacity: 0,
+        x: -20,
+        duration: 0.5,
+        ease: "power2.out",
+        onComplete: () => {
+          indexRef.current =
+            (indexRef.current + 1) % headlines.length;
 
-  const interval = setInterval(changeText, 4000);
+          el.textContent = headlines[indexRef.current];
 
-  return () => clearInterval(interval);
-}, []);
+          // animate in
+          gsap.fromTo(
+            el,
+            { opacity: 0, x: 20 },
+            { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }
+          );
+        },
+      });
+    };
+
+    const interval = setInterval(changeText, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
       <main>
         <section id="form" className="flex flex-col px-8 justify-center items-center py-24 gap-12 bg-amber-50">
-          <div  className="flex flex-col md:items-start  gap-4">
+          <div className="flex flex-col md:items-start  gap-4">
             <h1 ref={headlineRef} className="font-relink-headline lg:text-7xl text-5xl md:text-6xl">
-             Happy to have you here 😀
+              Happy to have you here 😀
             </h1>
             <p className="font-relink-neue uppercase font-bold text-sm tracking-wider">
               I'm looking for
@@ -278,12 +306,27 @@ useEffect(() => {
                 </label>
               </div>
             </div>
-            <button
-              type="submit"
-              className="mt-6 md:w-60 py-2 w-full  tracking-wider text-md bg-relink-purple-base uppercase font-relink-neue font-bold text-white"
-            >
-              Submit Enquiry
-            </button>
+            <div className="flex flex-col gap-4 w-full">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="mt-6 md:w-60 py-3 w-full tracking-wider text-md bg-relink-purple-base uppercase font-relink-neue font-bold text-white disabled:opacity-50 transition-all hover:bg-relink-purple-base/90"
+              >
+                {isSubmitting ? "Sending..." : "Submit Enquiry"}
+              </button>
+
+              {submitStatus === "success" && (
+                <p className="text-green-600 font-relink-neue font-bold">
+                  Thank you! Your message has been sent successfully.
+                </p>
+              )}
+              {submitStatus === "error" && (
+                <p className="text-red-500 font-relink-neue font-bold">
+                  Something went wrong. Please try again or email us directly.
+                </p>
+              )}
+            </div>
+
           </form>
         </section>
       </main>

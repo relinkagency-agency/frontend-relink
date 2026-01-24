@@ -41,7 +41,7 @@ if (STRAPI_API_TOKEN) {
 export async function getServices(): Promise<ServicesResponse> {
   try {
     const res = await fetchStrapi("/api/services?populate=*&sort=order:asc", {
-      next: { revalidate: 60 },
+      next: { revalidate: 60, tags: ["services"] },
     });
 
     if (!res.ok) {
@@ -90,7 +90,6 @@ const mapProject = (p: StrapiProject): Project => ({
   clientName: p.clientName ?? null,
   liveUrl: p.liveUrl ?? null,
   isFeatured: Boolean(p.isFeatured),
-  featuredOrder: p.featuredOrder ?? 0,
   thumbnail: p.thumbnail
     ? {
         url: getStrapiMediaUrl(p.thumbnail.url),
@@ -106,14 +105,11 @@ const mapProject = (p: StrapiProject): Project => ({
   services: p.services?.length
     ? p.services.map((s) => ({ id: s.id, title: s.title, slug: s.slug }))
     : [],
-  deliverables: p.deliverables?.length
-    ? p.deliverables.map((d) => ({
+  deliverables: p.deliverable?.length
+    ? p.deliverable.map((d) => ({
         label: d.label,
         details: d.details ?? null,
       }))
-    : [],
-  results: p.results?.length
-    ? p.results.map((r) => ({ metric: r.metric, description: r.description }))
     : [],
 });
 
@@ -131,15 +127,16 @@ export async function getProjects(params?: {
         : "";
 
     const res = await fetchStrapi(
-      `/api/projects?populate=thumbnail,gallery,services,deliverables,results&sort=featuredOrder:asc,year:desc${featuredFilter}${limitParam}`,
-      { next: { revalidate: 60 } }
+      `/api/projects?populate[0]=thumbnail&populate[1]=gallery&populate[2]=services&populate[3]=deliverable&sort=year:desc${featuredFilter}${limitParam}`,
+      { next: { revalidate: 60, tags: ["projects"] } }
     );
 
     if (!res.ok) {
+      const errorData = await res.json().catch(() => ({}));
       return {
         success: false,
         data: [],
-        error: `Failed to fetch projects: ${res.status} ${res.statusText}`,
+        error: `Failed to fetch projects: ${res.status} ${res.statusText}. ${JSON.stringify(errorData)}`,
       };
     }
 
@@ -168,8 +165,8 @@ export async function getProjectBySlug(slug: string): Promise<{
     const res = await fetchStrapi(
       `/api/projects?filters[slug][$eq]=${encodeURIComponent(
         slug
-      )}&populate=thumbnail,gallery,services,deliverables,results`,
-      { next: { revalidate: 60 } }
+      )}&populate[0]=thumbnail&populate[1]=gallery&populate[2]=services&populate[3]=deliverable`,
+      { next: { revalidate: 60, tags: ["projects", `project-${slug}`] } }
     );
 
     if (!res.ok) {
@@ -238,15 +235,16 @@ export async function getUpdates(params?: {
       : "";
 
     const res = await fetchStrapi(
-      `/api/articles?populate=cover,author,category&sort=publishedAt:desc${limitParam}${publishedFilter}`,
-      { next: { revalidate: 60 } }
+      `/api/articles?populate[0]=cover&populate[1]=author&populate[2]=category&sort=publishedAt:desc${limitParam}${publishedFilter}`,
+      { next: { revalidate: 60, tags: ["articles"] } }
     );
 
     if (!res.ok) {
+      const errorData = await res.json().catch(() => ({}));
       return {
         success: false,
         data: [],
-        error: `Failed to fetch articles: ${res.status} ${res.statusText}`,
+        error: `Failed to fetch articles: ${res.status} ${res.statusText}. ${JSON.stringify(errorData)}`,
       };
     }
 
@@ -269,8 +267,8 @@ export async function getUpdates(params?: {
 export async function getPublishedPosts(limit = 50): Promise<Article[]> {
   try {
     const res = await fetchStrapi(
-      `/api/articles?populate=cover,author,category&sort=publishedAt:desc&pagination[limit]=${limit}&filters[postStatus][$eq]=published`,
-      { next: { revalidate: 60 } }
+      `/api/articles?populate[0]=cover&populate[1]=author&populate[2]=category&sort=publishedAt:desc&pagination[limit]=${limit}&filters[postStatus][$eq]=published`,
+      { next: { revalidate: 60, tags: ["articles"] } }
     );
 
     if (!res.ok) return [];
@@ -292,8 +290,8 @@ export async function getPostBySlug(slug: string): Promise<{
     const res = await fetchStrapi(
       `/api/articles?filters[slug][$eq]=${encodeURIComponent(
         slug
-      )}&populate=cover,author,category,blocks`,
-      { next: { revalidate: 60 } }
+      )}&populate[0]=cover&populate[1]=author&populate[2]=category&populate[3]=blocks`,
+      { next: { revalidate: 60, tags: ["articles", `article-${slug}`] } }
     );
 
     if (!res.ok) {

@@ -4,88 +4,40 @@ import Hero from "@/features/home/ui/hero";
 import Overview from "@/features/home/ui/brandoverview";
 import Services from "@/features/home/ui/services";
 import { ProjectList } from "@/features/home/ui/project/projectlist";
-import FeaturedProject from "@/features/home/ui/project/featuredprojetc";
-import { Project } from "@/features/home/types.home";
-import featured from "../public/featured.png";
-import web02 from "../public/web02.jpg";
-import web03 from "../public/web03.jpg";
-import web04 from "../public/web04.jpg";
-import web05 from "../public/web08.jpg";
-import web06 from "../public/web07.jpg";
-import { getServices } from "@/lib/strapi";
-
-export const mockFeatured: Project = {
-  id: "featured-1",
-  category: "BRAND",
-  client: "SKYNE",
-  slug: "skyline",
-  title:
-    "An FMCG brand identity forged in the discipline and style of the ride",
-  cover: {
-    src: featured,
-    alt: "Skyline featured project",
-  },
-};
-
-export const mockProjects: Project[] = [
-  {
-    id: "p1",
-    category: "BRAND",
-    client: "Amazon Music",
-    slug: "amazon-music-brand",
-    title: "Amazon Music",
-    cover: { src: web02, alt: "Amazon Music" },
-    badge: { label: "Webby Awards Nominee", count: 1 },
-  },
-  {
-    id: "p2",
-    category: "BRAND, GRAPHIC DESIGN",
-    client: "ByAsia Food",
-    slug: "byasia-food",
-    title: "ByAsia Food",
-    cover: { src: web03, alt: "ByAsia Food" },
-    badge: { label: "Pentawards 2023 Shortlist", count: 1 },
-  },
-  {
-    id: "p3",
-    category: "VIDEO, PHOTOGRAPHY",
-    client: "Amazon Music",
-    slug: "amazon-music-video",
-    title: "Amazon Music",
-    cover: { src: web04, alt: "Amazon Music video" },
-  },
-  {
-    id: "p4",
-    category: "WEBSITE",
-    client: "Australian Strategic Policy Institute",
-    slug: "aspi-website",
-    title: "Australian Strategic Policy Institute",
-    cover: { src: web05, alt: "ASPI website" },
-  },
-  {
-    id: "p5",
-    category: "BRAND",
-    client: "Mavin Records",
-    slug: "mavin-records",
-    title: "Mavin Records",
-    cover: { src: web06, alt: "Mavin Records" },
-  },
-];
+import FeaturedProject from "@/features/home/ui/project/featured-project";
+import BlogList from "@/features/home/ui/blog-list";
+import { getServices, getProjects, getUpdates } from "@/lib/strapi";
 
 export default async function Page() {
-  const servicesRes = await getServices();
+  const [servicesRes, projectsRes, updatesRes] = await Promise.all([
+    getServices(),
+    getProjects({ featuredOnly: true, limit: 6 }),
+    getUpdates({ limit: 3, onlyPublished: true }),
+  ]);
+
+  console.log("Services Data:", JSON.stringify(servicesRes, null, 2));
+  console.log("Projects Data:", JSON.stringify(projectsRes, null, 2));
+  console.log("Articles Data:", JSON.stringify(updatesRes, null, 2));
+
 
   if (!servicesRes.success) {
     console.error("Failed to fetch services:", servicesRes.error);
   }
+
+  const featuredProject = projectsRes.data?.[0];
+  const listProjects = projectsRes.data?.slice(1) || [];
 
   return (
     <>
       <Hero />
       <Overview />
       <Services services={servicesRes.data} />
-      <FeaturedProject project={mockFeatured} />
-      <ProjectList projects={mockProjects} />
+
+      {featuredProject && <FeaturedProject project={featuredProject} />}
+
+      {listProjects.length > 0 && <ProjectList projects={listProjects} />}
+
+      <BlogList articles={updatesRes.data} />
     </>
   );
 }

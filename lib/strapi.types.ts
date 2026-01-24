@@ -70,8 +70,7 @@ export type StrapiProject = {
   thumbnail?: StrapiMedia | null;
   gallery?: StrapiMedia[] | null;
   services?: Array<Pick<StrapiService, "id" | "title" | "slug">> | null;
-  deliverables?: StrapiDeliverable[] | null;
-  results?: Array<{ id?: number; metric: string; description: string }> | null;
+  deliverable?: StrapiDeliverable[] | null;
 };
 
 export type Project = {
@@ -84,12 +83,10 @@ export type Project = {
   clientName?: string | null;
   liveUrl?: string | null;
   isFeatured: boolean;
-  featuredOrder: number;
   thumbnail?: { url: string; alt?: string | null } | null;
   gallery?: Array<{ url: string; alt?: string | null }> | null;
   services: Array<{ id: number; title: string; slug: string }>;
   deliverables: Array<{ label: string; details?: string | null }>;
-  results: Array<{ metric: string; description: string }>;
 };
 
 export type ProjectsResponse = {

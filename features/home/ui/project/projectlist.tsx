@@ -2,9 +2,8 @@
 "use client";
 
 import React from "react";
-import Image, { StaticImageData } from "next/image";
 import { ProjectCard } from "./card";
-import { Project } from "../../types.home";
+import { Project } from "@/lib/strapi.types";
 
 
 export function ProjectList({ projects }: { projects: Project[] }) {
@@ -22,7 +21,7 @@ export function ProjectList({ projects }: { projects: Project[] }) {
 
           <div className="mt-10 flex justify-end">
             <a
-              href="/work"
+              href="/work-services"
               className="inline-flex items-center gap-3 border-b border-white/60 pb-1 text-[16px] font-semibold text-white/90 hover:text-white"
             >
               View all work <span className="text-[18px] leading-none">↗</span>
