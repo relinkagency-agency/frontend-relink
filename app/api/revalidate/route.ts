@@ -19,18 +19,20 @@ export async function POST(request: Request) {
 
     console.log("Revalidating:", model);
 
+    const revalidate = revalidateTag as any;
+
     if (model === "project") {
-      revalidateTag("projects", "page");
+      revalidate("projects");
       if (entry?.slug) {
-        revalidateTag(`project-${entry.slug}`, "page");
+        revalidate(`project-${entry.slug}`);
       }
     } else if (model === "article") {
-      revalidateTag("articles", "page");
+      revalidate("articles");
       if (entry?.slug) {
-        revalidateTag(`article-${entry.slug}`, "page");
+        revalidate(`article-${entry.slug}`);
       }
     } else if (model === "service") {
-      revalidateTag("services", "page");
+      revalidate("services");
     }
 
     return NextResponse.json({
