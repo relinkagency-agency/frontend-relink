@@ -1,14 +1,19 @@
 /** @format */
 
+import Image from "next/image";
 import bg from "../../../public/hero-bg-4.jpg";
+
 export default function Hero() {
   return (
     <>
       <div className="relative h-[520px] md:h-[650px] lg:h-[750px] w-full overflow-hidden">
-        <img
-          src={bg.src}
-          alt="background"
-          className="absolute inset-0 w-full md:h-full h-[520px] object-cover"
+        <Image
+          src={bg}
+          alt="Relink Agency Hero"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
         />
 
         <div className="absolute text-white lg:top-98 lg:bottom-60 md:bottom-40 bottom-10 top-50 md:top-0 md:left-20 left-5  md:max-w-4xl max-w-2xl">
