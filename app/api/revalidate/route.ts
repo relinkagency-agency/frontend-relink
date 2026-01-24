@@ -4,15 +4,14 @@ import { NextResponse } from "next/server";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    // console.log("Full Webhook Body:", JSON.stringify(body, null, 2));
+    // console.log(" body:", JSON.stringify(body, null, 2));
     
     const model = body.model || body.uid?.split('.').pop();
     const entry = body.entry;
 
     const authHeader = request.headers.get('authorization');
     
-    // console.log("Received Auth Header:", authHeader);
-    // console.log("Expected Header:", `Bearer ${process.env.REVALIDATE_TOKEN}`);
+    // console.log("eeceived auth header:", authHeader);
 
     if (authHeader !== `Bearer ${process.env.REVALIDATE_TOKEN}`) {
       return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });

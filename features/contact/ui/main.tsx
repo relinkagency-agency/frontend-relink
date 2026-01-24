@@ -316,13 +316,13 @@ export default function Main() {
               </button>
 
               {submitStatus === "success" && (
-                <p className="text-green-600 font-relink-neue font-bold">
-                  Thank you! Your message has been sent successfully.
+                <p className="text-green-600 font-relink-neue font-noraml">
+                  Thank you! Your message has been sent.
                 </p>
               )}
               {submitStatus === "error" && (
                 <p className="text-red-500 font-relink-neue font-bold">
-                  Something went wrong. Please try again or email us directly.
+                  Something went wrong. Please try again or email us .
                 </p>
               )}
             </div>
