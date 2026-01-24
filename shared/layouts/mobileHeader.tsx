@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { FaS, FaXTwitter } from "react-icons/fa6";
-import Link from "next/link";
+import TransitionLink from "./transitionLink";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -92,9 +92,9 @@ export default function MobileHeader() {
           isBgBlack ? "bg-[#0B0D13]" : "bg-transparent"
         }`}
       >
-        <Link onClick={() => setMenuOpen(false)} href="/" className="font-relink-headline text-[28px] lowercase">
+        <TransitionLink onClick={() => setMenuOpen(false)} href="/" className="font-relink-headline text-[28px] lowercase">
           Relink
-        </Link>
+        </TransitionLink>
         <button
           onClick={() => {
             if (!menuOpen) {
@@ -131,31 +131,31 @@ export default function MobileHeader() {
           >
             <div className="text-white flex flex-col gap-32  px-4 pt-28 justify-between overflow-hidden">
               <nav className="flex flex-col gap-6 text-[31px] font-light">
-                <Link
+                <TransitionLink
                   href="/work-services"
                   className="leading-tight text-relink-purple-base"
                   onClick={() => setMenuOpen(false)}
                 >
                   Work+Services
-                </Link>
-                <Link
+                </TransitionLink>
+                <TransitionLink
                   href="/about-culture"
                   className="text-white leading-tight"
                   onClick={() => setMenuOpen(false)}
                 >
                   About+Culture
-                </Link>
-                <Link
+                </TransitionLink>
+                <TransitionLink
                   href="/news-insight"
                   className="text-white leading-tight"
                   onClick={() => setMenuOpen(false)}
                 >
                   News+Insights
-                </Link>
+                </TransitionLink>
               </nav>
               <div className="flex flex-col gap-4">
-                <button className="flex flex-col justify-center items-center bg-relink-purple-base w-39 mx-auto py-2.5 text-white cursor-pointer font-medium tracking-widest">
-                  <Link onClick={()=>(setMenuOpen(false))} href="/contact-us">ENQUIRE</Link>
+                <button onClick={() => setMenuOpen(false)} className="flex flex-col justify-center items-center bg-relink-purple-base w-39 mx-auto py-2.5 text-white cursor-pointer font-medium tracking-widest">
+                  <TransitionLink href="/contact-us">ENQUIRE</TransitionLink>
                   <div className="w-19.5 h-1 bg-white "></div>
                 </button>
                 <div className="flex justify-center gap-4 text-gray-700 mt-4">

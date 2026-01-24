@@ -5,6 +5,7 @@ import localFont from "next/font/local";
 import Footer from "../shared/layouts/footer";
 import "./globals.css";
 import Header from "@/shared/layouts/header";
+import PageTransition from "@/shared/layouts/pageTransitiion";
 
 const tiemposText = localFont({
   src: [
@@ -71,7 +72,9 @@ export default function RootLayout({
       <SpeedInsights/>
       <body>
         <Header />
-        <main className="min-h-[70vh] ">{children}</main>
+        <PageTransition>
+          <main className="min-h-[70vh]">{children}</main>
+        </PageTransition>
         <Footer />
       </body>
     </html>
