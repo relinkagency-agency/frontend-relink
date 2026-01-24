@@ -2,6 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import MobileHeader from "./mobileHeader";
 import Link from "next/link";
+import TransitionLink from "./transitionLink";
 
 export default function Header() {
   const lastY = useRef(0);
@@ -60,7 +61,7 @@ export default function Header() {
             }`}
           >
             <h4 className="font-relink-headline text-[38px] select-none uppercase">
-              <Link href="/">Relink</Link>
+              <TransitionLink href="/">Relink</TransitionLink>
             </h4>
           </div>
 
@@ -72,13 +73,13 @@ export default function Header() {
                   : "opacity-100 translate-y-0"
               }`}
             >
-              <Link href="/work-services">WORK+SERVICES</Link>
-              <Link href="/about-culture">ABOUT+CULTURE</Link>
-              <Link href="news-insight">NEWS+INSIGHT</Link>
+              <TransitionLink href="/work-services">WORK+SERVICES</TransitionLink>
+              <TransitionLink href="/about-culture">ABOUT+CULTURE</TransitionLink>
+              <TransitionLink href="/news-insight">NEWS+INSIGHT</TransitionLink>
             </div>
 
             <button className="bg-amber-50 px-4 py-2 text-gray-900 cursor-pointer font-medium tracking-widest">
-              <Link href="/contact-us">ENQUIRE</Link>
+              <TransitionLink href="/contact-us">ENQUIRE</TransitionLink>
             </button>
           </nav>
         </div>

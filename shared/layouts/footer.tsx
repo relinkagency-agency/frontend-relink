@@ -5,6 +5,7 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import FooterCta from "./footerCta";
 import Faq from "./faq";
+import TransitionLink from "./transitionLink";
 
 export default function Footer() {
   const footerRef = useRef<HTMLElement | null>(null);
@@ -15,16 +16,10 @@ export default function Footer() {
 
   useFooterBounce({ footerRef, down, up, center });
   return (
-    <footer ref={footerRef} className="relative w-full bg-[#0B0D13] text-white md:pb-0 pb-6 ">
-      {/* <div
-        className="pointer-events-none absolute inset-0 z-10 opacity-50"
-        style={{
-          backgroundImage: "url('https://assets.codepen.io/16327/noise.png')",
-          backgroundRepeat: "repeat",
-          backgroundSize: "200px 200px",
-        }}
-      /> */}
-
+    <footer
+      ref={footerRef}
+      className="relative w-full bg-[#0B0D13] text-white md:pb-0 pb-6 "
+    >
       <svg
         viewBox="0 0 2278 683"
         preserveAspectRatio="none"
@@ -37,7 +32,7 @@ export default function Footer() {
         />
       </svg>
 
-      <Faq/>
+      <Faq />
       <FooterCta />
 
       <div className="container mx-auto md:px-0 px-4 md:py-12 py-2 font-relink-neue font-light -mt-30 relative z-20">
@@ -46,41 +41,41 @@ export default function Footer() {
             <h4 className="font-relink-headline font-light text-[50px] tracking-[-0.04em] select-none">
               Relink
             </h4>
-            <a
+            <TransitionLink
               href="mailto:info@relinkagency.com"
               className="text-sm font-light text-gray-500 hover:text-gray-400"
             >
               info@relinkagency.com
-            </a>
+            </TransitionLink>
             <div className="flex gap-3.5 text-xl text-gray-700 mt-4">
-              <a
+              <TransitionLink
                 href="#"
                 className="hover:text-black w-7 h-7 flex items-center bg-white justify-center rounded-full border border-gray-300"
               >
                 {" "}
                 <FaFacebookF size={18} />
-              </a>
-              <a
+              </TransitionLink>
+              <TransitionLink
                 href="#"
                 className="hover:text-black w-7 h-7 flex items-center bg-white justify-center rounded-full border border-gray-300"
               >
                 {" "}
                 <FaInstagram size={18} />
-              </a>
-              <a
+              </TransitionLink>
+              <TransitionLink
                 href="#"
                 className="hover:text-black w-7 h-7 flex items-center bg-white justify-center rounded-full border border-gray-300"
               >
                 {" "}
                 <FaLinkedinIn size={18} />
-              </a>
-              <a
+              </TransitionLink>
+              <TransitionLink
                 href="#"
                 className="hover:text-black w-7 h-7 flex items-center bg-white justify-center rounded-full border border-gray-300"
               >
                 {" "}
                 <FaXTwitter size={18} />
-              </a>
+              </TransitionLink>
             </div>
           </div>
 
@@ -90,24 +85,24 @@ export default function Footer() {
             </h4>
             <ul className="space-y-7 text-sm text-gray-500 text-[15px]">
               <li>
-                <a href="#" className="hover:text-gray-400">
+                <TransitionLink href="#" className="hover:text-gray-400">
                   Branding
-                </a>
+                </TransitionLink>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-400">
+                <TransitionLink href="#" className="hover:text-gray-400">
                   Digital Marketing
-                </a>
+                </TransitionLink>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-400">
+                <TransitionLink href="#" className="hover:text-gray-400">
                   Web Design & Development
-                </a>
+                </TransitionLink>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-400">
+                <TransitionLink href="#" className="hover:text-gray-400">
                   SEO
-                </a>
+                </TransitionLink>
               </li>
             </ul>
           </div>
@@ -118,24 +113,24 @@ export default function Footer() {
             </h4>
             <ul className="space-y-7 text-sm text-gray-500 text-[15px]">
               <li>
-                <a href="#" className="hover:text-gray-400">
+                <TransitionLink href="#" className="hover:text-gray-400">
                   Video Production
-                </a>
+                </TransitionLink>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-400">
+                <TransitionLink href="#" className="hover:text-gray-400">
                   Photogragpy
-                </a>
+                </TransitionLink>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-400">
+                <TransitionLink href="#" className="hover:text-gray-400">
                   Application Design and Development
-                </a>
+                </TransitionLink>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-400">
+                <TransitionLink href="#" className="hover:text-gray-400">
                   Packaging Design
-                </a>
+                </TransitionLink>
               </li>
             </ul>
           </div>
@@ -146,19 +141,19 @@ export default function Footer() {
             </h4>
             <ul className="space-y-7 text-sm text-gray-500 text-[15px]">
               <li>
-                <a href="#" className="hover:text-gray-400 ">
+                <TransitionLink href="#" className="hover:text-gray-400 ">
                   Privacy
-                </a>
+                </TransitionLink>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-400">
+                <TransitionLink href="#" className="hover:text-gray-400">
                   Terms
-                </a>
+                </TransitionLink>
               </li>
               <li>
-                <a href="#" className="hover:text-gray-400">
+                <TransitionLink href="#" className="hover:text-gray-400">
                   Contact
-                </a>
+                </TransitionLink>
               </li>
             </ul>
           </div>
@@ -168,9 +163,9 @@ export default function Footer() {
         <div className="flex justify-start gap-2 text-center items-center text-sm text-gray-500 font-relink-neue font-light">
           <p>&copy; 2026 Relink. All rights reserved</p>
           <div className="h-3 border border-gray-500"></div>
-          <a href="#" className="hover:text-gray-400">
+          <TransitionLink href="#" className="hover:text-gray-400">
             Privacy Policy
-          </a>
+          </TransitionLink>
         </div>
       </div>
     </footer>

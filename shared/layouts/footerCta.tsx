@@ -1,16 +1,22 @@
 "use client";
 import { useRef } from "react";
+import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Link from "next/link";
+import TransitionLink from "./transitionLink";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function FooterCta() {
   const wrapRef = useRef<HTMLDivElement | null>(null);
+  const pathname = usePathname(); 
+
   useGSAP(
     () => {
+      
+      ScrollTrigger.refresh();
+
       const lines = gsap.utils.toArray<HTMLElement>(".cta-line");
 
       gsap.from(lines, {
@@ -26,7 +32,7 @@ export default function FooterCta() {
         },
       });
     },
-    { scope: wrapRef }
+    { scope: wrapRef, dependencies: [pathname] }
   );
 
   return (
@@ -43,7 +49,7 @@ export default function FooterCta() {
 
         <div className="overflow-hidden mt-2 md:mt-6">
           <h2 className="cta-line font-relink-headline font-semibold text-white/95 text-[28px] leading-[1.05] md:text-[76px]">
-            <Link
+            <TransitionLink
               href="/contact-us"
               className="group relative inline-flex items-center gap-4 pb-2 md:pb-3"
             >
@@ -67,7 +73,7 @@ export default function FooterCta() {
                   />
                 </svg>
               </span>
-            </Link>
+            </TransitionLink>
           </h2>
         </div>
       </div>
