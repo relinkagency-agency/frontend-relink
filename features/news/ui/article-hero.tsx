@@ -8,6 +8,7 @@ interface ArticleHeroProps {
 }
 
 export default function ArticleHero({ article }: ArticleHeroProps) {
+
     const publishedDate = article.publishedAt
         ? new Date(article.publishedAt).toLocaleDateString("en-US", {
             month: "long",
@@ -25,7 +26,7 @@ export default function ArticleHero({ article }: ArticleHeroProps) {
                     alt={article.coverImage.alt || article.title}
                     fill
                     priority
-                    className="object-cover opacity-50"
+                    className="object-cover opacity-90"
                 />
             ) : (
                 <div className="absolute inset-0 bg-neutral-900" />
@@ -40,13 +41,13 @@ export default function ArticleHero({ article }: ArticleHeroProps) {
                             </span>
                         )}
                         {publishedDate && (
-                            <span className="text-[12px] font-medium tracking-[0.1em] text-white/50 uppercase">
+                            <span className="text-[13px] font-relink-neue font-medium tracking-[0.2em] text-white/70 uppercase">
                                 {publishedDate}
                             </span>
                         )}
                     </div>
 
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white leading-[1.1]">
+                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-relink-headline text-white leading-[1.1]">
                         {article.title}
                     </h1>
 
@@ -61,7 +62,7 @@ export default function ArticleHero({ article }: ArticleHeroProps) {
                 </div>
             </div>
 
-            <div className="absolute inset-0 bg-gradient-to-t from-relink-dark via-transparent to-transparent opacity-80" />
+            <div className="absolute inset-0 bg-gradient-to-t from-relink-dark via-transparent to-transparent opacity-50" />
         </section>
     );
 }

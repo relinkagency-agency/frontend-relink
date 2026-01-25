@@ -10,7 +10,7 @@ const RichTextBlock = ({ block }: { block: any }) => {
     if (!block.body) return null;
 
     return (
-        <div className="max-w-3xl mx-auto px-6 mb-16 selection:bg-black selection:text-white">
+        <div className="max-w-6xl font-sans mx-auto px-6 mb-16 selection:bg-black selection:text-white">
             <div
                 className="prose prose-lg max-w-none text-neutral-800 leading-relaxed font-light 
                    prose-headings:font-serif prose-headings:text-black prose-headings:font-normal
@@ -26,7 +26,7 @@ const QuoteBlock = ({ block }: { block: any }) => {
     return (
         <div className="max-w-4xl mx-auto px-6 mb-24 selection:bg-black selection:text-white">
             <blockquote className="border-l-4 border-black/5 pl-10 py-2">
-                <p className="text-3xl md:text-5xl font-serif text-black italic leading-tight mb-8">
+                <p className="text-3xl md:text-5xl font-sans text-black italic leading-tight mb-8">
                     "{block.body}"
                 </p>
                 {block.title && (
@@ -96,7 +96,7 @@ export default function ArticleContent({ blocks }: { blocks: any[] }) {
     if (!blocks || !blocks.length) return null;
 
     return (
-        <div className="py-24 bg-transparent">
+        <div className="mt-24 mb-0  bg-transparent">
             {blocks.map((block, index) => {
                 switch (block.__component) {
                     case "shared.rich-text":
