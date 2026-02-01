@@ -19,7 +19,7 @@ export default function Services({ services }: ServicesProps) {
       <div className="relative">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(1200px_380px_at_50%_0%,rgba(255,255,255,0.06),transparent_60%)]" />
 
-        <div className="relative mx-auto w-full px-8 md:px-12 py-10">
+        <div className="relative mx-auto w-full px-8 md:px-12 py-18">
           <div className="grid grid-cols-1 gap-14 md:grid-cols-4 md:gap-x-20">
             {services.map((service) => (
               <div key={service.id} className="min-w-0">
@@ -28,7 +28,7 @@ export default function Services({ services }: ServicesProps) {
                 </h3>
 
                 {service.shortDescription && (
-                  <p className="text-sm md:mt-7 md:text-[16px] leading-[1.9] text-white/90">
+                  <p className="text-sm md:mt-7 md:text-[16px] font-relink-neue leading-[1.9] text-white/90">
                     {service.shortDescription}
                   </p>
                 )}

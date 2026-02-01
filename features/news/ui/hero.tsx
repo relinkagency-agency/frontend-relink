@@ -1,4 +1,4 @@
-import bg from "../../../public/hero-bg-2.jpg";
+import bg from "../../../public/un-2.jpg";
 export default function Hero() {
   return (
     <>
@@ -40,37 +40,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <p className="p-8 mb-[200px]">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-        nesciunt possimus id! Consequatur reprehenderit esse perspiciatis
-        nostrum eveniet deleniti placeat quod sapiente obcaecati. Possimus
-        deleniti iusto consequuntur sed, iste optio. m excepturi. Cupiditate
-        voluptate molestiae quam accusantium veniam nobis magnam totam minima
-        dolorem sequi quos officiis eveniet, porro nam, amet repellat, nostrum
-        reprehenderit repellendus et atque veritatis rerum illum. Iusto
-        exercitationem sint iure sequi voluptate voluptas, eius ipsum qui sed
-        dolore quia adipisci, aut, perferendis quasi asperiores. Accusamus neque
-        nostrum ab asperiores sequi commodi aliquid cupiditate earum veritatis
-        possimus. Cum corporis culpa ratione blanditiis minus excepturi esse
-        eius necessitatibus. Tempora consectetur quo dicta impedit numquam totam
-        sunt! Ea nisi fugiat iste soluta deleniti. Vitae nulla animi perferendis
-        sit. Quod! Delectus animi eaque ipsam itaque adipisci assumenda, commodi
-        vitae error praesentium saepe quos exercitationem. Dolore, velit nam?
-        Nulla, architecto voluptate autem est dignissimos doloremque eaque nam
-        at eligendi optio natus! Dolorum, excepturi aliquid ducimus quaerat
-        fugiat sequi, error quidem, veniam tenetur ipsam praesentium. Quas hic
-        aliquid ratione vero quae impedit blanditiis dolorum fuga ipsam corporis
-        tempore ut dolorem, quos magni! Ab voluptas maiores inventore, nisi
-        beatae atque tempore neque. Possimus tempore aut unde. Cumque omnis
-        delectus dicta nam asperiores odio a sed temporibus, nobis, velit
-        debitis eos natus repellat corrupti. Ratione ipsa temporibus numquam
-        optio maxime deleniti, eius consequatur minima facilis dolores rem
-        cumque nam at veniam dolorum eligendi vero aliquid adipisci sed nobis
-        nulla? Error veniam culpa saepe ad? Eligendi rerum quos inventore
-        perspiciatis voluptates praesentium a id velit nam numquam obcaecati
-        doloribus placeat possimus nemo consequuntur sapiente eveniet itaque,
-        sed dolorem harum aliquid ratione? Qui facilis minima exercitationem?
-      </p>
     </>
   );
 }
