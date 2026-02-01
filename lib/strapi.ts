@@ -14,6 +14,12 @@ import type {
 } from "./strapi.types";
 
 const STRAPI_URL = (process.env.STRAPI_URL || "").replace(/\/$/, "");
+if (!STRAPI_URL) {
+  throw new Error(
+    "STRAPI_URL is not set. Add STRAPI_URL to your environment (.env.local / Vercel env) as an absolute URL, e.g. https://your-strapi.com"
+  );
+}
+
 const STRAPI_API_TOKEN = process.env.STRAPI_API_TOKEN;
 
 const getStrapiMediaUrl = (url: string | undefined | null): string => {
