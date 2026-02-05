@@ -4,11 +4,14 @@ import { useState } from "react";
 import Image from "next/image";
 import aboutImg from "../../../public/un-3.jpg";
 import aboutTeamImg from "../../../public/about-team.jpg";
-import carousel1 from "../../../public/un-2.jpg"
-import carousel2 from "../../../public/un-3.jpg"
-import carousel3 from "../../../public/teamwork.jpg"
-import carousel4 from "../../../public/un-2.jpg"
+import carousel1 from "../../../public/un-2.jpg";
+import carousel2 from "../../../public/un-3.jpg";
+import carousel3 from "../../../public/teamwork.jpg";
+import carousel4 from "../../../public/un-2.jpg";
 import AnimatedContinuousSection from "@/shared/ui/gsap/animatedContinuousSection";
+import BlogList from "@/features/home/ui/blog-list";
+import { Article } from "@/lib/strapi.types";
+import FlipSection from "@/shared/ui/gsap/flipSection";
 
 const faq = [
   {
@@ -29,12 +32,16 @@ const faq = [
   },
 ];
 
-export default function Main() {
+interface MainProps {
+  articles: Article[];
+}
+
+export default function Main({ articles }: MainProps) {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
     <>
-      <section className="bg-amber-50 py-16 md:py-24">
+      <section className="bg-amber-50 py-16 md:pt-24 ">
         <div className="mx-auto flex flex-col gap-10 px-6 py-4 md:max-w-7xl md:flex-row md:items-center md:gap-18">
           <div className="w-full md:w-1/2">
             <h1 className="font-relink-headline text-3xl leading-tight md:text-6xl md:leading-17">
@@ -73,7 +80,7 @@ export default function Main() {
         </div>
       </section>
 
-      <section className="bg-amber-50">
+      <section className="bg-amber-50 pb-16">
         <div className="mx-auto flex flex-col gap-12 px-6 py-8 md:flex-row md:items-start md:justify-center md:gap-32 md:px-0 md:py-28">
           <div className="w-full md:w-[40%]">
             <h3 className="font-relink-headline mb-8 text-4xl leading-tight tracking-tight md:text-6xl md:leading-17">
@@ -159,17 +166,20 @@ export default function Main() {
 
           <div className="max-w-md">
             <p className="font-relink-neue text-[16px] leading-8">
-              With agency homes in Canberra and Sydney we feel we’ve been pretty
+              With agency homes in Canberra and Sydney we feel we've been pretty
               fortunate to not only work nationally, but also internationally as
               part of our ongoing partnerships with clients that have provided
-              us the trust and opportunity. We’ve been given the space to flex
+              us the trust and opportunity. We've been given the space to flex
               our creativity and expertise across worlds through government,
               corporate, finance, and the music and entertainment industries.
             </p>
           </div>
         </div>
+
+
       </section>
-      <AnimatedContinuousSection
+      
+        {/* <AnimatedContinuousSection
         panels={[
           {
             image: carousel1,
@@ -180,19 +190,23 @@ export default function Main() {
             image: carousel2,
             heading: "Strategy meets creativity",
             label: "We plan & execute..",
-                  },
-           {
+          },
+          {
             image: carousel3,
             heading: "Culture-led, always.",
             label: "Our identity + growth",
-                  },
-            {
+          },
+          {
             image: carousel4,
             heading: "Reaching right audience.",
             label: "We deliver 100%",
           },
         ]}
-      />
+      /> */}
+      <FlipSection/>
+
+              {/* Blog List Section */}
+        <BlogList articles={articles} />
     </>
   );
 }
