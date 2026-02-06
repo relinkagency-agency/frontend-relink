@@ -130,7 +130,8 @@
 
 @layer base {
   body {
-    overscroll-behavior-y: none; /* Stops the top/bottom "bounce" */
+    margin: 0;
+    padding: 0;
     font-family: var(--font-relink-sans);
     /* background-color: var(--color-relink-purple-light); */
   }
