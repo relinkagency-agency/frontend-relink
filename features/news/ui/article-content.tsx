@@ -96,7 +96,7 @@ export default function ArticleContent({ blocks }: { blocks: any[] }) {
     if (!blocks || !blocks.length) return null;
 
     return (
-        <div className="mt-24 mb-0  bg-transparent">
+        <div className="md:mt-24 mt-12 mb-0  bg-transparent">
             {blocks.map((block, index) => {
                 switch (block.__component) {
                     case "shared.rich-text":

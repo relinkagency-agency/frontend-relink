@@ -16,12 +16,12 @@ export default function Hero() {
           className="object-cover"
         />
 
-        <div className="absolute text-white lg:top-98 lg:bottom-60 md:bottom-40 bottom-10 top-50 md:top-0 md:left-20 left-5  md:max-w-4xl max-w-2xl">
-          <h1 className="font-light font-relink-headline text-5xl lg:text-8xl">
+        <div className="absolute text-white lg:top-98 lg:bottom-60 md:bottom-40 bottom-10 top-40 md:top-0 md:left-20 left-5  md:max-w-4xl max-w-[750px]">
+          <h1 className="font-light font-relink-headline text-6xl lg:text-8xl">
             Building the brands people prefer{" "}
           </h1>
         </div>
-        <div className="absolute text-white bottom-20 md:bottom-30 left-5 md:left-0 lg:left-auto lg:right-20 font-relink-headline lg:text-4xl max-w-4xl uppercase">
+        <div className="absolute text-white bottom-10 md:bottom-30 left-5 md:left-0 lg:left-auto lg:right-20 font-relink-headline lg:text-4xl max-w-4xl uppercase">
           <div className="flex flex-col gap-2 font-relink-neue ">
             <p className="text-xs tracking-wide leading-4 font-medium">
               Cue Actors Web app
