@@ -66,7 +66,7 @@ export default function Main({ articles }: MainProps) {
           </div>
         </div>
 
-        <div className="mx-auto mt-10 w-full px-6 md:mt-10 md:w-[1250px] md:px-0">
+        <div className="mx-auto mt-10 w-full px-6 md:mt-16 md:w-[1250px] md:px-0">
           <div className="relative h-[320px] w-full overflow-hidden md:h-[800px]">
             <Image
               src={aboutImg}
