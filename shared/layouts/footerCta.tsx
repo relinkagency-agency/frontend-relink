@@ -38,7 +38,7 @@ export default function FooterCta() {
   return (
     <div
       ref={wrapRef}
-      className="relative z-20 container mx-auto md:px-2 px-4 md:mb-36 mb-32 md:py-18"
+      className="relative z-20 w-full px-4 md:px-22 md:mb-36 mb-32 md:py-18"
     >
       <div className="max-w-[1100px]">
         <div className="overflow-hidden">

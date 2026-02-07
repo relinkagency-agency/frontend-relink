@@ -35,7 +35,7 @@ export default function Footer() {
       <Faq />
       <FooterCta />
 
-      <div className="container mx-auto md:px-0 px-4 md:py-12 py-2 font-relink-neue font-light -mt-30 relative z-20">
+      <div className="w-full px-4 md:px-22 md:py-12 py-2 font-relink-neue font-light -mt-30 relative z-20">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4 items-start">
           <div>
             <h4 className="font-relink-headline font-light text-[50px] tracking-[-0.04em] select-none">
