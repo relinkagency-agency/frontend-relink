@@ -15,20 +15,20 @@ import FlipSection from "@/shared/ui/gsap/flipSection";
 
 const faq = [
   {
-    title: "Ratcheting up the cultural baseline.",
-    body: "Our responsibility is to bring culture into the work, to lift the standard for the brands we work with, and in doing so, raise the cultural baseline for everyone...",
+    title: "Automation First.",
+    body: "Why do it manually if AI can do it instantly? We build systems that save time and reduce error.",
   },
   {
-    title: "Don't method out the ambition",
-    body: "Ambition should never be diluted by process. We protect the idea first.",
+    title: "Code is Creative.",
+    body: "Great development isn't just about function; it's about crafting fluid, intuitive experiences.",
   },
   {
-    title: "Creativity and growth.",
-    body: "We believe creativity is a growth engine, not just an output.",
+    title: "Data-Driven Decisions.",
+    body: "We don't guess. We use data to guide our marketing and development strategies.",
   },
   {
-    title: "Seriously, unserious.",
-    body: "We take the work seriously, not ourselves.",
+    title: "Built to Scale.",
+    body: "We create solutions that grow with you, from MVP to enterprise-grade systems.",
   },
 ];
 
@@ -45,24 +45,17 @@ export default function Main({ articles }: MainProps) {
         <div className="mx-auto flex flex-col gap-10 px-6 py-4 md:max-w-7xl md:flex-row md:items-center md:gap-18">
           <div className="w-full md:w-1/2">
             <h1 className="font-relink-headline text-3xl leading-tight md:text-6xl md:leading-17">
-              We're for the brands that want to ratchet up culture, and the
-              creatives who live to shape it.
+              Smart automation meets creative excellence.
             </h1>
           </div>
 
           <div className="flex w-full flex-col gap-4 font-relink-neue text-[16px] leading-8 md:w-1/2 md:max-w-xl">
             <p>
-              We're all about building charismatic, culturally relevant brands,
-              and taking them from branded to brand-led.
+              The future belongs to brands that move fast. We combine
+              data-driven marketing strategies with custom software development
+              and AI workflows to give you an unfair advantage.
             </p>
-            <p>
-              From producing head-turning campaigns that motivate behavioural
-              change, to executing large-scale brand creative refreshes, to
-              developing digital touchpoints for the best possible consumer UX;
-              we combine creative and strategy to craft brands that are more
-              culturally relevant.
-            </p>
-            <p>We exist to create work that earns its place in culture.</p>
+            <p>Less manual work, more meaningful growth.</p>
           </div>
         </div>
 
@@ -94,14 +87,13 @@ export default function Main({ articles }: MainProps) {
                     onClick={() => setOpen(open === i ? null : i)}
                     className="flex max-w-md cursor-pointer items-center justify-between gap-8 group"
                   >
-                    <h3 className="font-relink-neue text-lg font-light md:text-xl transition-transform duration-400 group-hover:translate-x-2">
+                    <h3 className="font-relink-neue text-lg font-medium md:text-xl transition-transform duration-400 group-hover:translate-x-2">
                       {item.title}
                     </h3>
 
                     <span
-                      className={`transition-transform duration-500 ease-in-out ${
-                        open === i ? "rotate-180" : "rotate-0"
-                      }`}
+                      className={`transition-transform duration-500 ease-in-out ${open === i ? "rotate-180" : "rotate-0"
+                        }`}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -121,19 +113,17 @@ export default function Main({ articles }: MainProps) {
                   </div>
 
                   <div
-                    className={`grid transition-all duration-500 ease-in-out ${
-                      open === i
+                    className={`grid transition-all duration-500 ease-in-out ${open === i
                         ? "grid-rows-[1fr] mt-4"
                         : "grid-rows-[0fr] mt-0"
-                    }`}
+                      }`}
                   >
                     <div className="overflow-hidden">
                       <div
-                        className={`transform transition-transform duration-500 ease-in-out ${
-                          open === i ? "translate-y-0" : "-translate-y-2"
-                        }`}
+                        className={`transform transition-transform duration-500 ease-in-out ${open === i ? "translate-y-0" : "-translate-y-2"
+                          }`}
                       >
-                        <p className="max-w-xs text-sm leading-7 text-black/80">
+                        <p className="max-w-xs text-md leading-7 text-black/80">
                           {item.body}
                         </p>
                       </div>
@@ -160,26 +150,24 @@ export default function Main({ articles }: MainProps) {
         <div className="mx-auto flex flex-col gap-10 px-6 py-8 md:flex-row md:items-start md:justify-center md:gap-12 md:px-12 md:py-6">
           <div className="max-w-2xl">
             <h3 className="font-relink-headline text-4xl leading-tight md:text-6xl md:leading-17">
-              We service across industries, and borders.
+              Global tech solutions, delivered locally.
             </h3>
           </div>
 
           <div className="max-w-md">
             <p className="font-relink-neue text-[16px] leading-8">
-              With agency homes in Canberra and Sydney we feel we've been pretty
-              fortunate to not only work nationally, but also internationally as
-              part of our ongoing partnerships with clients that have provided
-              us the trust and opportunity. We've been given the space to flex
-              our creativity and expertise across worlds through government,
-              corporate, finance, and the music and entertainment industries.
+              From our hub in Alberta, Canada, we deploy digital products for
+              clients worldwide. Whether it&apos;s a mobile app for a
+              startup or an AI workflow for a corporation, we bring elite
+              engineering and strategy to every partnership.
             </p>
           </div>
         </div>
 
 
       </section>
-      
-        {/* <AnimatedContinuousSection
+
+      {/* <AnimatedContinuousSection
         panels={[
           {
             image: carousel1,
@@ -203,10 +191,10 @@ export default function Main({ articles }: MainProps) {
           },
         ]}
       /> */}
-      <FlipSection/>
+      <FlipSection />
 
-              {/* Blog List Section */}
-        <BlogList articles={articles} />
+      {/* Blog List Section */}
+      <BlogList articles={articles} />
     </>
   );
 }

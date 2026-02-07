@@ -15,7 +15,7 @@ export default function BlogMain({ articles }: { articles: Article[] }) {
         <div className="flex justify-between items-end mb-16">
           <div>
             <h3 className="font-relink-headline text-center md:text-left text-[35px] md:text-6xl leading-tight capitalize">
-              News & Updates
+              Industry Analysis & Updates
 
             </h3>
           </div>
@@ -43,7 +43,7 @@ export default function BlogMain({ articles }: { articles: Article[] }) {
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
-            
+
             <div className="absolute top-6 left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
               <span className="px-4 py-2 text-white bg-black/10 backdrop-blur-md text-[10px] uppercase font-relink-neue font-bold tracking-widest rounded-xs border border-black/20">
                 Featured
@@ -58,7 +58,7 @@ export default function BlogMain({ articles }: { articles: Article[] }) {
                     {featuredArticle.category.name}
                   </span>
                 )}
-                
+
               </div>
 
               <h2 className="text-2xl md:text-5xl font-medium font-relink-neue leading-tight mb-4 md:mb-6">
@@ -137,13 +137,13 @@ export default function BlogMain({ articles }: { articles: Article[] }) {
                   <span className="text-[11px] px-2 bg-black font-medium text-white uppercase tracking-widest">
                     {article.publishedAt
                       ? new Date(article.publishedAt).toLocaleDateString(
-                          "en-US",
-                          {
-                            month: "short",
-                            day: "numeric",
-                            year: "numeric",
-                          },
-                        )
+                        "en-US",
+                        {
+                          month: "short",
+                          day: "numeric",
+                          year: "numeric",
+                        },
+                      )
                       : "Recent"}
                   </span>
                 </div>
@@ -182,7 +182,7 @@ export default function BlogMain({ articles }: { articles: Article[] }) {
           ))}
         </div>
 
-        
+
       </div>
     </section>
   );

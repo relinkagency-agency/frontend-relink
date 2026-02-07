@@ -81,17 +81,17 @@ function DesktopOverview() {
             <div className="max-w-none">
               <div className="w-[600px] shrink-0">
                 <h2 className="text-[55px] font-light leading-tight text-black">
-                  We&apos;re here to create work
+                  We create digital
                   <br />
-                  that earns its place in
+                  products that drive
                   <br />
-                  culture.
+                  real business growth.
                 </h2>
 
                 <div className="max-w-[500px]">
                   <p className="mt-5 text-lg text-black/90 leading-relaxed">
-                    We&apos;re a strategic brand and creative agency built for
-                    the brands that want to ratchet up culture.
+                    We combine advanced AI automation, web development, and
+                    strategic marketing to build brands that lead the future.
                   </p>
                 </div>
 

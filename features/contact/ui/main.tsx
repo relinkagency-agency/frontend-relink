@@ -124,10 +124,10 @@ export default function Main() {
 
   // gsap
   const headlines = [
-    "Well, where do we start?",
-    "Tell us about your idea.",
-    "Let’s build greatness.",
-    "What are you planning?",
+    "Partner with experts.",
+    "Let’s solve complex problems.",
+    "Your vision, engineered.",
+    "Start the conversation.",
   ];
 
   const headlineRef = useRef<HTMLHeadingElement>(null);
@@ -171,10 +171,10 @@ export default function Main() {
         <section id="form" className="flex flex-col px-8 justify-center items-center py-24 gap-12 bg-amber-50">
           <div className="flex flex-col md:items-start  gap-4">
             <h1 ref={headlineRef} className="font-relink-headline lg:text-7xl text-5xl md:text-6xl">
-              Happy to have you here 😀
+              Tell us about your project.
             </h1>
             <p className="font-relink-neue uppercase font-bold text-sm tracking-wider">
-              I'm looking for
+              I am interested in...
             </p>
           </div>
 
@@ -191,11 +191,11 @@ export default function Main() {
                 className="bg-transparent border-b border-gray-300 py-3 text-gray-700 focus:outline-none focus:border-gray-600"
               >
                 <option value="">What are you looking for?</option>
-                <option value="website/app">Website / App</option>
-                <option value="website/app">AI Automation</option>
-                <option value="marketing">Marketing</option>
-                <option value="consulting">Consulting</option>
-                <option value="Other">Other</option>
+                <option value="software-dev">Custom Web/Mobile Dev</option>
+                <option value="ai-automation">AI & Automation</option>
+                <option value="growth-marketing">Growth Marketing</option>
+                <option value="consulting">Strategic Consulting</option>
+                <option value="other">Other</option>
               </select>
               {touched.services && errors.services && (
                 <p className="text-red-500 text-md font-relink-neue">

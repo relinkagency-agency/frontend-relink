@@ -13,10 +13,10 @@ export default function BlogList({ articles }: { articles: Article[] }) {
         <div className="flex justify-between items-end mb-16">
           <div>
             <h2 className="text-[13px] font-relink-neue font-bold tracking-[0.2em] text-black uppercase mb-5">
-              Insights & Updates
+              Tech & Trends
             </h2>
             <h3 className="font-relink-headline text-5xl md:text-6xl text-black leading-tight capitalize">
-              The Journal
+              Our Insights
             </h3>
           </div>
           <Link
@@ -85,13 +85,13 @@ export default function BlogList({ articles }: { articles: Article[] }) {
                   <span className="text-[11px] font-medium text-black uppercase tracking-widest">
                     {article.publishedAt
                       ? new Date(article.publishedAt).toLocaleDateString(
-                          "en-US",
-                          {
-                            month: "short",
-                            day: "numeric",
-                            year: "numeric",
-                          },
-                        )
+                        "en-US",
+                        {
+                          month: "short",
+                          day: "numeric",
+                          year: "numeric",
+                        },
+                      )
                       : "Recent"}
                   </span>
                 </div>

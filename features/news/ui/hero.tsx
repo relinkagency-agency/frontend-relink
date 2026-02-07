@@ -10,11 +10,11 @@ export default function Hero() {
         />
 
         <div className="absolute text-white lg:top-80 lg:bottom-20 md:bottom-40 bottom-10 top-50 md:top-0 md:left-30 left-5 font-relink-headline text-5xl lg:text-7xl md:max-w-4xl max-w-2xl">
-          <h1>Strategy, culture and creative. </h1>
+          <h1>Research, trends, and technology.</h1>
         </div>
         <div className="absolute text-white bottom-30 md:bottom-30 left-5 md:left-0 lg:left-auto lg:right-20 font-relink-headline lg:text-4xl max-w-4xl uppercase">
           <div className="flex gap-2 font-relink-neue group">
-            
+
             <a
               href="#"
               className="text-sm flex gap-1 items-center cursor-pointer ransition-transform duration-300 group-hover:translate-y-2"
