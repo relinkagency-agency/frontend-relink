@@ -6,22 +6,37 @@ export default function Hero() {
     <section className="relative h-[520px] md:h-[650px] lg:h-[750px] w-full overflow-hidden bg-[#0B0D13]">
       <Image
         src={bg}
-        alt="Strategy Culture Creative"
+        alt="Relink Strategy Culture Creative"
         fill
         priority
         sizes="100vw"
         className="object-cover opacity-60"
       />
 
-        <div className="absolute text-white lg:top-80 lg:bottom-20 md:bottom-40 bottom-10 top-50 md:top-0 md:left-30 left-5 font-relink-headline text-5xl lg:text-7xl md:max-w-4xl max-w-2xl">
-          <h1>High-impact digital solutions.</h1>
-        </div>
-        <div className="absolute text-white bottom-30 md:bottom-30 left-5 md:left-0 lg:left-auto lg:right-20 font-relink-headline lg:text-4xl max-w-4xl uppercase">
-          <div className="flex gap-2 font-relink-neue group">
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0B0D13] via-transparent to-transparent" />
 
-            <a
-              href="#"
-              className="text-sm flex gap-1 items-center cursor-pointer ransition-transform duration-300 group-hover:translate-y-2"
+      <div className="absolute text-white lg:top-98 lg:bottom-60 md:bottom-40 bottom-10 top-50 md:top-0 md:left-20 left-5 md:max-w-4xl max-w-2xl z-10">
+        <h1 className="font-light font-relink-headline text-5xl lg:text-8xl">
+          High-impact digital solutions.
+        </h1>
+      </div>
+
+      <div className="absolute text-white bottom-20 md:bottom-30 left-5 md:left-0 lg:left-auto lg:right-20 font-relink-headline lg:text-4xl max-w-4xl uppercase z-10">
+        <div className="flex flex-col gap-2 font-relink-neue">
+          <a
+            href="#projects"
+            className="text-sm flex gap-2 items-center cursor-pointer group"
+          >
+            <span className="tracking-wide leading-4 font-medium">
+              Explore Our Work
+            </span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-6 transition-transform duration-300 group-hover:translate-y-2"
             >
               <path
                 strokeLinecap="round"
@@ -32,11 +47,6 @@ export default function Hero() {
           </a>
         </div>
       </div>
-<<<<<<< HEAD
     </section>
-=======
-     
-    </>
->>>>>>> refs/remotes/origin/main
   );
 }
