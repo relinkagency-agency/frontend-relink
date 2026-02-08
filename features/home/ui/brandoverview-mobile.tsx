@@ -20,17 +20,17 @@ export default function MobileOverview() {
         <div className="w-full bg-amber-50 flex flex-col justify-center px-8 py-18 overflow-hidden text-black">
           <div className="max-w-xl">
             <h2 className="text-4xl font-light leading-tight text-black mb-6">
-              We&apos;re here to create work
-              <br />
-              that earns its place in
-              <br />
-              culture.
+              We create digital
+                  <br />
+                  products that drive
+                  <br />
+                  real business growth.
             </h2>
 
             <div className="max-w-[500px]">
               <p className="text-lg text-black/90 leading-relaxed">
-                We&apos;re a strategic brand and creative agency built for the
-                brands that want to ratchet up culture.
+                We combine advanced AI automation, web development, and
+                strategic marketing to build brands that lead the future.
               </p>
             </div>
 

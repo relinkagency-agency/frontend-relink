@@ -23,8 +23,9 @@ export async function ProjectsContainer() {
         ? allProjects[featuredProjectIndex]
         : allProjects[0];
 
+    // Link to debug IDs
     // Filter out the featured project from the list to avoid duplication
-    const listProjects = allProjects.filter(p => p.id !== featuredProject?.id).slice(0, 5);
+    const listProjects = allProjects.filter(p => p.id !== featuredProject?.id).slice(0, 10);
 
     return (
         <>
