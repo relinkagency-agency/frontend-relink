@@ -15,7 +15,7 @@ export default function FeaturedProject({ project }: { project: Project }) {
             src={project.thumbnail.url}
             alt={project.thumbnail.alt || project.title}
             fill
-            priority  
+            priority
             sizes="100vw"
             className="object-cover"
           />
@@ -39,10 +39,10 @@ export default function FeaturedProject({ project }: { project: Project }) {
             </h1>
 
             <a
-              href={`/work-services/${project.slug}`}
-              className="mt-6 inline-flex items-center gap-3 text-[13px] font-semibold tracking-[0.22em] text-white/85 uppercase"
+              href={`/projects/${project.slug}`}
+              className="mt-10 inline-flex items-center gap-3 bg-amber-50 px-6 py-3 text-[11px] font-bold tracking-[0.2em] text-black uppercase transition-all hover:gap-5"
             >
-              VIEW PROJECT <span className="text-[18px] leading-none">→</span>
+              VIEW PROJECT <span className="text-[16px] leading-none">→</span>
             </a>
           </div>
         </div>

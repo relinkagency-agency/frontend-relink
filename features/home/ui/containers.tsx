@@ -8,13 +8,25 @@ import { getServices, getProjects, getUpdates } from "@/lib/strapi";
 
 export async function ServicesContainer() {
     const res = await getServices();
+
+
     return <Services services={res.data} />;
 }
 
 export async function ProjectsContainer() {
-    const res = await getProjects({ featuredOnly: true, limit: 6 });
-    const featuredProject = res.data?.[0];
-    const listProjects = res.data?.slice(1) || [];
+    const res = await getProjects({ limit: 40 });
+    const allProjects = res.data || [];
+
+    // If no projects at all, return nothing
+    if (allProjects.length === 0) return null;
+
+    // First one (or featured one) goes to FeaturedProject
+    const featuredProject = allProjects.find(p => p.isFeatured) || allProjects[0];
+
+    // Everything else (excluding the one used for Featured) goes to ProjectList
+    const listProjects = allProjects
+        .filter(p => p.id !== featuredProject?.id)
+        .slice(0, 4);
 
     return (
         <>

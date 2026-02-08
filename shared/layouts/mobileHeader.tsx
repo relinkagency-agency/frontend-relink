@@ -88,9 +88,8 @@ export default function MobileHeader() {
   return (
     <>
       <div
-        className={`mobile-tool-bar fixed top-0 left-0 right-0 z-50 px-4 py-2 flex justify-between items-center text-white transition-colors duration-300 ${
-          isBgBlack ? "bg-[#0B0D13]" : "bg-transparent"
-        }`}
+        className={`mobile-tool-bar fixed top-0 left-0 right-0 z-50 px-4 py-2 flex justify-between items-center text-white transition-colors duration-300 ${isBgBlack ? "bg-[#0B0D13]" : "bg-transparent"
+          }`}
       >
         <TransitionLink onClick={() => setMenuOpen(false)} href="/" className="font-relink-headline text-[28px] lowercase">
           Relink
@@ -107,19 +106,16 @@ export default function MobileHeader() {
           className="relative w-10 h-10 flex items-center justify-center"
         >
           <span
-            className={`absolute h-[3px] w-9 bg-white transition-all duration-300 ${
-              menuOpen ? "rotate-45" : "-translate-y-[10px]"
-            }`}
+            className={`absolute h-[3px] w-9 bg-white transition-all duration-300 ${menuOpen ? "rotate-45" : "-translate-y-[10px]"
+              }`}
           />
           <span
-            className={`absolute h-[3px] w-9 bg-white transition-all duration-300 ${
-              menuOpen ? "opacity-0" : "opacity-100"
-            }`}
+            className={`absolute h-[3px] w-9 bg-white transition-all duration-300 ${menuOpen ? "opacity-0" : "opacity-100"
+              }`}
           />
           <span
-            className={`absolute h-[3px] w-9 bg-white transition-all duration-300 ${
-              menuOpen ? "-rotate-45" : "translate-y-[10px]"
-            }`}
+            className={`absolute h-[3px] w-9 bg-white transition-all duration-300 ${menuOpen ? "-rotate-45" : "translate-y-[10px]"
+              }`}
           />
         </button>
       </div>
@@ -132,11 +128,11 @@ export default function MobileHeader() {
             <div className="text-white flex flex-col gap-32  px-4 pt-28 justify-between overflow-hidden">
               <nav className="flex flex-col gap-6 text-[31px] font-light">
                 <TransitionLink
-                  href="/work-services"
+                  href="/projects"
                   className="leading-tight text-relink-purple-base"
                   onClick={() => setMenuOpen(false)}
                 >
-                  Work+Services
+                  Projects
                 </TransitionLink>
                 <TransitionLink
                   href="/about-culture"

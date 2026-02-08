@@ -49,16 +49,14 @@ export default function Header() {
         <MobileHeader />
       ) : (
         <div
-          className={`main-tool-bar fixed top-0 left-0 right-0 z-50 px-12 py-4 flex justify-between items-center font-semibold text-white  ${
-            isHeaderBgBlack ? "bg-[#0B0D13]" : "bg-transparent"
-          }`}
+          className={`main-tool-bar fixed top-0 left-0 right-0 z-50 px-12 py-4 flex justify-between items-center font-semibold text-white  ${isHeaderBgBlack ? "bg-[#0B0D13]" : "bg-transparent"
+            }`}
         >
           <div
-            className={`transition-all duration-300 ${
-              hideNav
+            className={`transition-all duration-300 ${hideNav
                 ? "opacity-0 -translate-y-3 pointer-events-none"
                 : "opacity-100 translate-y-0"
-            }`}
+              }`}
           >
             <h4 className="font-relink-headline text-[38px] select-none uppercase">
               <TransitionLink href="/">Relink</TransitionLink>
@@ -67,13 +65,12 @@ export default function Header() {
 
           <nav className="flex items-center gap-6">
             <div
-              className={`flex gap-6 items-center text-[14px] uppercase tracking-[0.15em] transition-all duration-300 ${
-                hideNav
+              className={`flex gap-6 items-center text-[14px] uppercase tracking-[0.15em] transition-all duration-300 ${hideNav
                   ? "opacity-0 -translate-y-3 pointer-events-none"
                   : "opacity-100 translate-y-0"
-              }`}
+                }`}
             >
-              <TransitionLink href="/work-services">WORK+SERVICES</TransitionLink>
+              <TransitionLink href="/projects">PROJECTS</TransitionLink>
               <TransitionLink href="/about-culture">ABOUT+CULTURE</TransitionLink>
               <TransitionLink href="/news-insight">NEWS+INSIGHT</TransitionLink>
             </div>
