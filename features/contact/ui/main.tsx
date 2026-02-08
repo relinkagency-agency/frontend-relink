@@ -124,10 +124,10 @@ export default function Main() {
 
   // gsap
   const headlines = [
-    "Well, where do we start?",
-    "Tell us about your idea.",
-    "Let’s build greatness.",
-    "What are you planning?",
+    "Partner with experts.",
+    "Let’s solve complex problems.",
+    "Your vision, engineered.",
+    "Start the conversation.",
   ];
 
   const headlineRef = useRef<HTMLHeadingElement>(null);
@@ -171,10 +171,10 @@ export default function Main() {
         <section id="form" className="flex flex-col px-8 justify-center items-center py-24 gap-12 bg-amber-50">
           <div className="flex flex-col md:items-start  gap-4">
             <h1 ref={headlineRef} className="font-relink-headline lg:text-7xl text-5xl md:text-6xl">
-              Happy to have you here 😀
+              Tell us about your project.
             </h1>
             <p className="font-relink-neue uppercase font-bold text-sm tracking-wider">
-              I'm looking for
+              I am interested in...
             </p>
           </div>
 
@@ -191,10 +191,11 @@ export default function Main() {
                 className="bg-transparent border-b border-gray-300 py-3 text-gray-700 focus:outline-none focus:border-gray-600"
               >
                 <option value="">What are you looking for?</option>
-                <option value="website/app">Website / App</option>
-                <option value="marketing">Marketing</option>
-                <option value="consulting">Consulting</option>
-                <option value="Other">Other</option>
+                <option value="software-dev">Custom Web/Mobile Dev</option>
+                <option value="ai-automation">AI & Automation</option>
+                <option value="growth-marketing">Growth Marketing</option>
+                <option value="consulting">Strategic Consulting</option>
+                <option value="other">Other</option>
               </select>
               {touched.services && errors.services && (
                 <p className="text-red-500 text-md font-relink-neue">
@@ -268,7 +269,7 @@ export default function Main() {
                 <label className="flex gap-3 items-center">
                   <input
                     type="checkbox"
-                    className="w-5 h-5 appearance-none  border-2 border-relink-purple-base  focus:outline-2 focus:outline-relink-purple-base focus:outline-offset-2 rounded checked:bg-relink-purple-base checked:border-relink-purple-base cursor-pointer  relative checked:after:content-['✔'] checked:after:absolute checked:after:text-white checked:after:text-sm checked:after:left-1/2 checked:after:top-1/2 checked:after:-translate-x-1/2 checked:after:-translate-y-1/2"
+                    className="w-5 h-5 appearance-none  border-2 border-[#0B0D12]  focus:outline-2 focus:outline-[#0B0D12] focus:outline-offset-2 rounded checked:bg-[#0B0D12] checked:border-[#0B0D12] cursor-pointer  relative checked:after:content-['✔'] checked:after:absolute checked:after:text-white checked:after:text-sm checked:after:left-1/2 checked:after:top-1/2 checked:after:-translate-x-1/2 checked:after:-translate-y-1/2"
                   />
                   <span className="text-gray-700">Google</span>
                 </label>
@@ -276,7 +277,7 @@ export default function Main() {
                   <input
                     type="checkbox"
                     name="linkedin"
-                    className="w-5 h-5 appearance-none  border-2 border-relink-purple-base  focus:outline-2 focus:outline-relink-purple-base focus:outline-offset-2 rounded checked:bg-relink-purple-base checked:border-relink-purple-base cursor-pointer  relative checked:after:content-['✔'] checked:after:absolute checked:after:text-white checked:after:text-sm checked:after:left-1/2 checked:after:top-1/2 checked:after:-translate-x-1/2 checked:after:-translate-y-1/2"
+                    className="w-5 h-5 appearance-none  border-2 border-[#0B0D12]  focus:outline-2 focus:outline-[#0B0D12] focus:outline-offset-2 rounded checked:bg-[#0B0D12] checked:border-[#0B0D12] cursor-pointer  relative checked:after:content-['✔'] checked:after:absolute checked:after:text-white checked:after:text-sm checked:after:left-1/2 checked:after:top-1/2 checked:after:-translate-x-1/2 checked:after:-translate-y-1/2"
                   />
                   <span className="text-gray-700">Linkedin</span>
                 </label>
@@ -284,7 +285,7 @@ export default function Main() {
                   <input
                     type="checkbox"
                     name="facebook"
-                    className="w-5 h-5 appearance-none  border-2 border-relink-purple-base focus:outline-2 focus:outline-relink-purple-base focus:outline-offset-2 rounded checked:bg-relink-purple-base checked:border-relink-purple-base cursor-pointer  relative checked:after:content-['✔'] checked:after:absolute checked:after:text-white checked:after:text-sm checked:after:left-1/2 checked:after:top-1/2 checked:after:-translate-x-1/2 checked:after:-translate-y-1/2"
+                    className="w-5 h-5 appearance-none  border-2 border-[#0B0D12] focus:outline-2 focus:outline-[#0B0D12] focus:outline-offset-2 rounded checked:bg-[#0B0D12] checked:border-[#0B0D12] cursor-pointer  relative checked:after:content-['✔'] checked:after:absolute checked:after:text-white checked:after:text-sm checked:after:left-1/2 checked:after:top-1/2 checked:after:-translate-x-1/2 checked:after:-translate-y-1/2"
                   />
                   <span className="text-gray-700">Facebook</span>
                 </label>
@@ -292,7 +293,7 @@ export default function Main() {
                   <input
                     type="checkbox"
                     name="referral"
-                    className="w-5 h-5 appearance-none  border-2 border-relink-purple-base focus:outline-2 focus:outline-relink-purple-base focus:outline-offset-2 rounded checked:bg-relink-purple-base checked:border-relink-purple-base cursor-pointer  relative checked:after:content-['✔'] checked:after:absolute checked:after:text-white checked:after:text-sm checked:after:left-1/2 checked:after:top-1/2 checked:after:-translate-x-1/2 checked:after:-translate-y-1/2"
+                    className="w-5 h-5 appearance-none  border-2 border-[#0B0D12] focus:outline-2 focus:outline-[#0B0D12] focus:outline-offset-2 rounded checked:bg-[#0B0D12] checked:border-[#0B0D12] cursor-pointer  relative checked:after:content-['✔'] checked:after:absolute checked:after:text-white checked:after:text-sm checked:after:left-1/2 checked:after:top-1/2 checked:after:-translate-x-1/2 checked:after:-translate-y-1/2"
                   />
                   <span className="text-gray-700">Referral</span>
                 </label>
@@ -300,7 +301,7 @@ export default function Main() {
                   <input
                     type="checkbox"
                     name="other"
-                    className="w-5 h-5 appearance-none  border-2 border-relink-purple-base  focus:outline-2 focus:outline-relink-purple-base focus:outline-offset-2 rounded checked:bg-relink-purple-base checked:border-relink-purple-base cursor-pointer  relative checked:after:content-['✔'] checked:after:absolute checked:after:text-white checked:after:text-sm checked:after:left-1/2 checked:after:top-1/2 checked:after:-translate-x-1/2 checked:after:-translate-y-1/2"
+                    className="w-5 h-5 appearance-none  border-2 border-[#0B0D12]  focus:outline-2 focus:outline-[#0B0D12] focus:outline-offset-2 rounded checked:bg-[#0B0D12] checked:border-[#0B0D12] cursor-pointer  relative checked:after:content-['✔'] checked:after:absolute checked:after:text-white checked:after:text-sm checked:after:left-1/2 checked:after:top-1/2 checked:after:-translate-x-1/2 checked:after:-translate-y-1/2"
                   />
                   <span className="text-gray-700">Other</span>
                 </label>
@@ -310,7 +311,7 @@ export default function Main() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-6 md:w-60 py-3 w-full tracking-wider text-md bg-relink-purple-base uppercase font-relink-neue font-bold text-white disabled:opacity-50 transition-all hover:bg-relink-purple-base/90"
+                className="mt-6 md:w-60 py-3 w-full tracking-wider text-md bg-[#0B0D12] uppercase font-relink-neue font-bold text-white disabled:opacity-50 transition-all hover:bg-[#0B0D12]/90"
               >
                 {isSubmitting ? "Sending..." : "Submit Enquiry"}
               </button>

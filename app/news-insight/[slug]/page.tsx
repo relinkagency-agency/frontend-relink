@@ -24,7 +24,7 @@ export default async function Page(props: {
         <ArticleContent blocks={article.blocks} />
 
         {/* Author Signature & Date */}
-        <div className="max-w-3xl mx-auto px-6 mb-20">
+        <div className="max-w-3xl mx-auto px-6 py-8">
           <div className="flex items-center justify-between pt-10 border-t border-black/5">
             <div className="flex items-center gap-4">
               <div className="w-10 h-10 font-relink-neue rounded-full bg-black/5 flex items-center justify-center text-xs font-bold text-black/40 uppercase">
@@ -41,7 +41,7 @@ export default async function Page(props: {
             </div>
             {article.publishedAt && (
               <div className="text-right">
-                <p className="text-xs font-relink-neue text-black/40 uppercase tracking-widest mb-1">
+                <p className="text-xs font-relink-neue text-black/40 uppercase tracking-widest">
                   Published
                 </p>
                 <p className="text-sm font-medium text-black/60">
@@ -57,7 +57,7 @@ export default async function Page(props: {
         </div>
       </article>
 
-      <div className="max-w-4xl mx-auto px-6 pt-12 pb-56 border-t border-black/10 text-center">
+      <div className="max-w-4xl mx-auto px-6 py-24 border-t border-black/10 text-center">
         <Link
           href="/news-insight"
           className="inline-flex font-relink-neue text-md items-center gap-2 text-black/60 hover:text-black transition-colors font-medium"

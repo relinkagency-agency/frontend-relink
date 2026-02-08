@@ -10,27 +10,37 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function FooterCta() {
   const wrapRef = useRef<HTMLDivElement | null>(null);
-  const pathname = usePathname(); 
+  const pathname = usePathname();
 
   useGSAP(
     () => {
-      
-      ScrollTrigger.refresh();
+      const timer = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 1000);
 
       const lines = gsap.utils.toArray<HTMLElement>(".cta-line");
 
-      gsap.from(lines, {
-        yPercent: 120,
-        opacity: 0,
-        duration: 0.9,
-        ease: "power3.out",
-        stagger: 0.18,
-        scrollTrigger: {
-          trigger: wrapRef.current,
-          start: "top 85%",
-          toggleActions: "play none none reverse",
+      gsap.fromTo(
+        lines,
+        {
+          yPercent: 120,
+          opacity: 0,
         },
-      });
+        {
+          yPercent: 0,
+          opacity: 1,
+          duration: 0.9,
+          ease: "power3.out",
+          stagger: 0.18,
+          scrollTrigger: {
+            trigger: wrapRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+
+      return () => clearTimeout(timer);
     },
     { scope: wrapRef, dependencies: [pathname] }
   );
@@ -38,7 +48,7 @@ export default function FooterCta() {
   return (
     <div
       ref={wrapRef}
-      className="relative z-20 container mx-auto md:px-2 px-4 md:mb-36 mb-32 md:py-18"
+      className="relative z-20 w-full px-4 md:px-22 md:mb-36 mb-32 md:py-18"
     >
       <div className="max-w-[1100px]">
         <div className="overflow-hidden">

@@ -171,8 +171,8 @@ export default function AnimatedContinuousSection({
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-amber-50">
-      <div className="mx-auto px-0 py-20 md:px-0">
+    <section ref={sectionRef} className="bg-amber-50  mb-0">
+      <div className="mx-auto px-0  md:px-0">
         <div
           ref={containerRef}
           className={`relative w-full overflow-hidden ${heightClass}`}
