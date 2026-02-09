@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 const faq = [
   {
@@ -20,19 +21,38 @@ const faq = [
   },
 ];
 
-export default function Faq() {
+interface FaqItem {
+  title: string;
+  body: string;
+}
+
+interface FaqProps {
+  title?: string;
+  subtitle?: string;
+  items?: FaqItem[];
+  className?: string;
+  bodyClassName?: string;
+}
+
+export default function Faq({
+  title = "Frequently Asked Questions",
+  subtitle = "Get to know more about us.",
+  items = faq,
+  className,
+  bodyClassName,
+}: FaqProps) {
   const [open, setOpen] = useState<number | null>(null);
   return (
-    <div className="w-full px-4 md:px-22 md:pb-14 pb-18">
+    <div className={cn("w-full px-4 md:px-22 md:pb-14 pb-18", className)}>
       <div className="flex flex-col md:gap-4 gap-2">
-        <h2 className="uppercase font-relink-neue">Frequently Asked Questions</h2>
+        <h2 className="uppercase font-relink-neue">{title}</h2>
         <h2 className="font-relink-headline mb-2 md:mb-8 md:text-6xl text-5xl leading-tight tracking-tight md:text-7xl md:leading-17">
-          Get to know more about us.
+          {subtitle}
         </h2>
       </div>
 
       <div className="space-y-8 mt-4">
-        {faq.map((item, i) => (
+        {items.map((item, i) => (
           <div key={i}>
             <div
               onClick={() => setOpen(open === i ? null : i)}
@@ -43,9 +63,8 @@ export default function Faq() {
               </h3>
 
               <span
-                className={`transition-transform duration-500 ease-in-out ${
-                  open === i ? "rotate-180" : "rotate-0"
-                }`}
+                className={`transition-transform duration-500 ease-in-out ${open === i ? "rotate-180" : "rotate-0"
+                  }`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -65,17 +84,15 @@ export default function Faq() {
             </div>
 
             <div
-              className={`grid transition-all duration-500 ease-in-out ${
-                open === i ? "grid-rows-[1fr] mt-4" : "grid-rows-[0fr] mt-0"
-              }`}
+              className={`grid transition-all duration-500 ease-in-out ${open === i ? "grid-rows-[1fr] mt-4" : "grid-rows-[0fr] mt-0"
+                }`}
             >
               <div className="overflow-hidden">
                 <div
-                  className={`transform transition-transform duration-500 ease-in-out ${
-                    open === i ? "translate-y-0" : "-translate-y-2"
-                  }`}
+                  className={`transform transition-transform duration-500 ease-in-out ${open === i ? "translate-y-0" : "-translate-y-2"
+                    }`}
                 >
-                  <p className="max-w-xl text-md leading-7 text-white/80 ">
+                  <p className={cn("max-w-xl text-md leading-7 text-white/80", bodyClassName)}>
                     {item.body}
                   </p>
                 </div>

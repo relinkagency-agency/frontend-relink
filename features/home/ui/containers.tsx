@@ -6,15 +6,17 @@ import FeaturedProject from "./project/featured-project";
 import BlogList from "./blog-list";
 import { getServices, getProjects, getUpdates } from "@/lib/strapi";
 
-export async function ServicesContainer() {
+export async function ServicesContainer({ serviceSlug }: { serviceSlug?: string }) {
     const res = await getServices();
+    const services = serviceSlug
+        ? res.data.filter((s) => s.slug === serviceSlug)
+        : res.data;
 
-
-    return <Services services={res.data} />;
+    return <Services services={services} />;
 }
 
-export async function ProjectsContainer() {
-    const res = await getProjects({ limit: 40 });
+export async function ProjectsContainer({ serviceSlug }: { serviceSlug?: string }) {
+    const res = await getProjects({ limit: 40, serviceSlug });
     const allProjects = res.data || [];
 
     // If no projects at all, return nothing

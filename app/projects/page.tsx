@@ -24,6 +24,6 @@ export default async function ProjectsPage() {
 }
 
 export const metadata = {
-    title: "Our Projects | Relink Agency",
+    title: "Our Projects",
     description: "Explore our recent work in branding, culture, and creative strategy.",
 };
