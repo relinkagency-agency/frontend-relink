@@ -155,6 +155,11 @@ export default function Footer() {
                   Contact
                 </TransitionLink>
               </li>
+              <li>
+                <TransitionLink href="/feedback" className="hover:text-gray-400">
+                  Feedback
+                </TransitionLink>
+              </li>
             </ul>
           </div>
         </div>

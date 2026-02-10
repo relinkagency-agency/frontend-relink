@@ -124,10 +124,8 @@ export default function Main() {
 
   // gsap
   const headlines = [
-    "Partner with experts.",
-    "Let’s solve complex problems.",
-    "Your vision, engineered.",
-    "Start the conversation.",
+    "Leave us a feedback.",
+    "Share your thoughts.",
   ];
 
   const headlineRef = useRef<HTMLHeadingElement>(null);
@@ -168,14 +166,12 @@ export default function Main() {
   return (
     <>
       <main>
-        <section id="form" className="flex flex-col px-8 justify-center items-center md:py-24 py-18 gap-12 bg-amber-50">
+        <section id="form" className="flex flex-col px-8 justify-center items-center md:py-32 py-18 gap-12 bg-amber-50">
           <div className="flex flex-col md:items-start  gap-4">
             <h1 ref={headlineRef} className="font-relink-headline lg:text-7xl text-5xl md:text-6xl">
-              Tell us about your project.
+              Give us a feedback.
             </h1>
-            <p className="font-relink-neue uppercase font-bold text-sm tracking-wider">
-              I am interested in...
-            </p>
+            
           </div>
 
           <form
@@ -190,11 +186,11 @@ export default function Main() {
                 name="services"
                 className="bg-transparent border-b border-gray-300 py-3 text-gray-700 focus:outline-none focus:border-gray-600"
               >
-                <option value="">What are you looking for?</option>
+                <option value="">Which of our services did you use?</option>
                 <option value="software-dev">Custom Web/Mobile Dev</option>
                 <option value="ai-automation">AI & Automation</option>
-                <option value="growth-marketing">Growth Marketing</option>
-                <option value="consulting">Strategic Consulting</option>
+                <option value="growth-marketing">Marketing</option>
+                <option value="consulting">Consulting</option>
                 <option value="other">Other</option>
               </select>
               {touched.services && errors.services && (
@@ -237,7 +233,7 @@ export default function Main() {
               <input
                 type="tel"
                 name="phone"
-                placeholder="Phone number (optional)"
+                placeholder="Business name"
                 className="bg-transparent border-b text-gray-700 placeholder:text-gray-400 border-gray-300 py-3 focus:outline-none focus:border-gray-600"
               />
             </div>
@@ -246,7 +242,7 @@ export default function Main() {
                 type="text"
                 name="location"
                 onBlur={() => markTouched("location")}
-                placeholder="Where are you located?"
+                placeholder="Photo"
                 className="bg-transparent border-b text-gray-700 placeholder:text-gray-400 border-gray-300 py-3 focus:outline-none focus:border-gray-600"
               />
             </div>
@@ -254,7 +250,7 @@ export default function Main() {
               <textarea
                 name="help"
                 onBlur={() => markTouched("help")}
-                placeholder="How can we help you?"
+                placeholder="Feedback"
                 className="bg-transparent border-b text-gray-700 placeholder:text-gray-400 border-gray-300 py-3 focus:outline-none focus:border-gray-600"
               />
               {touched.help && errors.help && (
@@ -263,7 +259,7 @@ export default function Main() {
                 </p>
               )}
             </div>
-            <div className="font-relink-neue text-gray-700 flex flex-col gap-4 w-full ">
+            {/* <div className="font-relink-neue text-gray-700 flex flex-col gap-4 w-full ">
               <p>How did you hear about us? (optional)</p>
               <div className="font-relink-neue font-bold flex flex-col gap-6">
                 <label className="flex gap-3 items-center">
@@ -306,14 +302,14 @@ export default function Main() {
                   <span className="text-gray-700">Other</span>
                 </label>
               </div>
-            </div>
+            </div> */}
             <div className="flex flex-col gap-4 w-full">
               <button
                 type="submit"
                 disabled={isSubmitting}
                 className="mt-6 md:w-60 py-3 w-full tracking-wider text-md bg-[#0B0D12] uppercase font-relink-neue font-bold text-white disabled:opacity-50 transition-all hover:bg-[#0B0D12]/90"
               >
-                {isSubmitting ? "Sending..." : "Submit Enquiry"}
+                {isSubmitting ? "Sending..." : "Submit Feedback"}
               </button>
 
               {submitStatus === "success" && (
