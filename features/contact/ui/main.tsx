@@ -170,7 +170,7 @@ export default function Main() {
       <main>
         <section id="form" className="flex flex-col px-8 justify-center items-center md:py-24 py-18 gap-12 bg-amber-50">
           <div className="flex flex-col md:items-start  gap-4">
-            <h1 ref={headlineRef} className="font-relink-headline lg:text-7xl text-5xl md:text-6xl">
+            <h1 ref={headlineRef} className="font-relink-headline lg:text-7xl text-3xl md:text-6xl">
               Tell us about your project.
             </h1>
             <p className="font-relink-neue uppercase font-bold text-sm tracking-wider">

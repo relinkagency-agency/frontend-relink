@@ -123,52 +123,16 @@ export default function Main() {
 
 
   // gsap
-  const headlines = [
-    "Leave us a feedback.",
-    "Share your thoughts.",
-  ];
 
-  const headlineRef = useRef<HTMLHeadingElement>(null);
-  const indexRef = useRef(0);
 
-  useEffect(() => {
-    const el = headlineRef.current;
-    if (!el) return;
 
-    const changeText = () => {
-      // animate out
-      gsap.to(el, {
-        opacity: 0,
-        x: -20,
-        duration: 0.5,
-        ease: "power2.out",
-        onComplete: () => {
-          indexRef.current =
-            (indexRef.current + 1) % headlines.length;
-
-          el.textContent = headlines[indexRef.current];
-
-          // animate in
-          gsap.fromTo(
-            el,
-            { opacity: 0, x: 20 },
-            { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }
-          );
-        },
-      });
-    };
-
-    const interval = setInterval(changeText, 4000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <>
       <main>
         <section id="form" className="flex flex-col px-8 justify-center items-center md:py-32 py-18 gap-12 bg-amber-50">
-          <div className="flex flex-col md:items-start  gap-4">
-            <h1 ref={headlineRef} className="font-relink-headline lg:text-7xl text-5xl md:text-6xl">
+          <div className="flex flex-col md:items-start  items-center">
+            <h1 className="font-relink-headline lg:text-7xl text-4xl md:text-6xl">
               Give us a feedback.
             </h1>
             
