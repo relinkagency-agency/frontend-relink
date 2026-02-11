@@ -32,6 +32,7 @@ export default function BlogMain({ articles }: { articles: Article[] }) {
                 src={featuredArticle.coverImage.url}
                 alt={featuredArticle.coverImage.alt || featuredArticle.title}
                 fill
+                sizes="100vw"
                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
               />
             ) : (
@@ -108,6 +109,7 @@ export default function BlogMain({ articles }: { articles: Article[] }) {
                     src={article.coverImage.url}
                     alt={article.coverImage.alt || article.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover transition-transform duration-1000 group-hover:scale-110"
                   />
                 ) : (

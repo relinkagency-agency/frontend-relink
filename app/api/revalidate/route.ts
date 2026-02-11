@@ -17,7 +17,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
     }
 
-    console.log("Revalidating:", model);
+    // console.log("Revalidating:", model);
 
     const revalidate = revalidateTag as any;
 

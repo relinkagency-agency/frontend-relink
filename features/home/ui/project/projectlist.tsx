@@ -19,13 +19,20 @@ export function ProjectList({ projects }: { projects: Project[] }) {
             ))}
           </div>
 
-          <div className="mt-20 flex justify-center">
-            <a
+          <div className="mt-20 flex justify-end">
+            {/* <a
               href="/projects"
-              className="inline-flex items-center gap-3 px-8 py-3 bg-amber-50 text-black text-[11px] font-bold tracking-[0.2em] uppercase transition-all hover:scale-[1.02]"
+              className="inline-flex items-center gap-3 px-8 py-3b text-lg font-semibold border-b-2 border-white/80 text-white transition-all hover:scale-[1.02]"
             >
               View all work <span className="text-[16px] leading-none">↗</span>
-            </a>
+            </a> */}
+
+              <a
+                    href="#"
+                    className="mt-10 inline-flex items-center gap-2 text-lg font-semibold border-b-2 border-white/80 pb-1 hover:gap-4 transition-all text-white w-fit"
+                  >
+                    View all work <span aria-hidden>↗</span>
+                  </a>
           </div>
         </div>
       </div>

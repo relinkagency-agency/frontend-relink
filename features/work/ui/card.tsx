@@ -16,7 +16,7 @@ export function ProjectCard({ project, className = "" }: { project: Project, cla
           src={project.thumbnail.url}
           alt={project.thumbnail.alt || project.title}
           fill
-          sizes="400px"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover transition-all duration-1000 group-hover:scale-105 group-hover:opacity-70 group-hover:rotate-1"
         />
       ) : (
@@ -26,8 +26,8 @@ export function ProjectCard({ project, className = "" }: { project: Project, cla
       )}
 
       {/* Cinematic Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0B0D13] via-[#0B0D13]/20 to-transparent transition-opacity duration-700 opacity-80 group-hover:opacity-90" />
-      <div className="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors duration-700" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0B0D13]/20 via-[#0B0D13]/10 to-transparent transition-opacity duration-700 opacity-100 group-hover:opacity-90" />
+      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/0 transition-colors duration-700" />
 
       {/* Metadata Reveal */}
       <div className="absolute inset-x-8 top-8 overflow-hidden">

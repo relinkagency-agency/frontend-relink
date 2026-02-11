@@ -4,6 +4,44 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
+const BlocksRenderer = ({ content }: { content: any }) => {
+    if (!content) return null;
+    if (typeof content === 'string') return <p>{content}</p>;
+    if (Array.isArray(content)) {
+        return content.map((block: any, i: number) => {
+            if (block.type === 'paragraph') {
+                return (
+                    <p key={i} className="mb-6 last:mb-0">
+                        {block.children?.map((c: any, ci: number) => (
+                            <span key={ci} className={c.bold ? 'font-bold' : ''}>
+                                {c.text}
+                            </span>
+                        ))}
+                    </p>
+                );
+            }
+            if (block.type === 'list') {
+                const Tag = block.format === 'ordered' ? 'ol' : 'ul';
+                return (
+                    <Tag key={i} className={`${block.format === 'ordered' ? 'list-decimal' : 'list-disc'} list-inside mb-8 space-y-3`}>
+                        {block.children?.map((li: any, lii: number) => (
+                            <li key={lii} className="pl-2">
+                                {li.children?.map((c: any, ci: number) => (
+                                    <span key={ci} className={c.bold ? 'font-bold' : ''}>
+                                        {c.text}
+                                    </span>
+                                ))}
+                            </li>
+                        ))}
+                    </Tag>
+                );
+            }
+            return null;
+        });
+    }
+    return null;
+};
+
 export default async function ProjectDetailPage(props: { params: Promise<{ slug: string }> }) {
     const params = await props.params;
     const { slug } = params;
@@ -18,12 +56,13 @@ export default async function ProjectDetailPage(props: { params: Promise<{ slug:
     return (
         <main className="min-h-screen bg-[#0B0D13] selection:bg-white selection:text-black">
             <section className="relative w-full h-[60vh] md:h-[80vh] min-h-[500px] flex items-end pb-20 px-10">
-                {project.thumbnail?.url && (
+                {(project.heroBanner?.url || project.thumbnail?.url) && (
                     <Image
-                        src={project.thumbnail.url}
-                        alt={project.thumbnail.alt || project.title}
+                        src={project.heroBanner?.url || project.thumbnail?.url || ''}
+                        alt={project.heroBanner?.alt || project.thumbnail?.alt || project.title}
                         fill
                         priority
+                        sizes="100vw"
                         className="object-cover opacity-60"
                     />
                 )}
@@ -48,42 +87,59 @@ export default async function ProjectDetailPage(props: { params: Promise<{ slug:
 
                 <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24">
                     <div className="lg:col-span-7">
-                        <h2 className="text-white/30 uppercase tracking-[0.3em] font-bold text-xs mb-10">Challenge & Vision</h2>
-                        <div className="text-white/90 text-2xl md:text-4xl font-light leading-snug">
-                            {project.excerpt}
-                        </div>
+                        {project.challenge && (
+                            <div className="mb-24">
+                                <h2 className="text-white/40 uppercase tracking-[0.2em] font-bold text-[11px] mb-10">Challenge & Vision</h2>
+                                <div className="text-white/90 text-xl md:text-2xl font-light leading-relaxed">
+                                    {project.challenge}
+                                </div>
+                            </div>
+                        )}
 
-                        {project.description && (
-                            <div className="mt-16 prose prose-invert prose-xl max-w-none text-white/60 font-light leading-relaxed">
-                                <p>{typeof project.description === 'string' ? project.description : ''}</p>
+                        {project.solution && (
+                            <div className="mt-20">
+                                <h2 className="text-white/40 uppercase tracking-[0.2em] font-bold text-[11px] mb-10">Solution</h2>
+                                <div className="prose prose-invert prose-xl max-w-none text-white/60 font-light leading-relaxed">
+                                    <BlocksRenderer content={project.solution} />
+                                </div>
                             </div>
                         )}
                     </div>
 
-                    <div className="lg:col-span-5 space-y-16">
-                        <div className="grid grid-cols-2 gap-8">
+                    <div className="lg:col-span-5 space-y-16 pt-2">
+                        <div className="grid grid-cols-2 gap-8 border-b border-white/5 pb-10">
                             <div>
-                                <h3 className="text-white/30 uppercase tracking-[0.2em] font-bold text-[10px] mb-4">Client</h3>
+                                <h3 className="text-white/40 uppercase tracking-[0.15em] font-bold text-[11px] mb-4">Client</h3>
                                 <p className="text-white text-xl font-medium">{project.clientName || 'Confidential'}</p>
                             </div>
                             <div>
-                                <h3 className="text-white/30 uppercase tracking-[0.2em] font-bold text-[10px] mb-4">Year</h3>
+                                <h3 className="text-white/40 uppercase tracking-[0.15em] font-bold text-[11px] mb-4">Date</h3>
                                 <p className="text-white text-xl font-medium">{project.year || '2024'}</p>
                             </div>
                         </div>
 
-                        <div>
-                            <h3 className="text-white/30 uppercase tracking-[0.2em] font-bold text-[10px] mb-6">Deliverables</h3>
-                            <div className="flex flex-wrap gap-2">
-                                {project.deliverables?.map((d, i) => (
-                                    <div key={i} className="group relative">
-                                        <span className="px-4 py-2 bg-white/5 border border-white/10 rounded-sm text-sm text-white/80 font-light block transition-colors hover:bg-white/10">
-                                            {d.label}
-                                        </span>
-                                    </div>
-                                ))}
+                        {project.deliverables && project.deliverables.length > 0 && (
+                            <div>
+                                <h3 className="text-white/40 uppercase tracking-[0.15em] font-bold text-[11px] mb-10">Deliverables</h3>
+                                <div className="space-y-10">
+                                    {project.deliverables?.map((d, i) => (
+                                        <div key={i} className="group">
+                                            <div className="flex items-start gap-4">
+                                                <div className="h-px w-6 bg-white/20 mt-3 group-hover:w-10 group-hover:bg-amber-50 transition-all duration-500" />
+                                                <div>
+                                                    <h4 className="text-white text-lg font-medium mb-2">{d.label}</h4>
+                                                    {d.details && (
+                                                        <p className="text-white/40 text-sm font-light max-w-md leading-relaxed">
+                                                            {d.details}
+                                                        </p>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
+                        )}
 
                         {project.liveUrl && (
                             <div>
@@ -106,6 +162,9 @@ export default async function ProjectDetailPage(props: { params: Promise<{ slug:
             {project.gallery && project.gallery.length > 0 && (
                 <section className="pb-32 px-4 md:px-10">
                     <div className="max-w-[1800px] mx-auto">
+                        <div className="px-6 mb-16">
+                            <h2 className="text-white/40 uppercase tracking-[0.2em] font-bold text-[11px]">Project Imagery</h2>
+                        </div>
                         <div className="columns-1 md:columns-2 gap-8 space-y-8">
                             {project.gallery.map((image, i) => (
                                 <div key={i} className="relative break-inside-avoid overflow-hidden bg-neutral-900 rounded-sm group">
@@ -114,6 +173,7 @@ export default async function ProjectDetailPage(props: { params: Promise<{ slug:
                                         alt={image.alt || project.title}
                                         width={1200}
                                         height={1600}
+                                        sizes="(max-width: 768px) 100vw, 50vw"
                                         className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-105"
                                     />
                                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

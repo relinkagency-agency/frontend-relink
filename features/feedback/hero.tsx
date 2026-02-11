@@ -1,4 +1,4 @@
-import bg from "../../../public/un-3.jpg";
+import bg from "../../public/sales.jpg";
 export default function Hero() {
   return (
     <>

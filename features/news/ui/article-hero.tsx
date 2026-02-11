@@ -26,6 +26,7 @@ export default function ArticleHero({ article }: ArticleHeroProps) {
                     alt={article.coverImage.alt || article.title}
                     fill
                     priority
+                    sizes="100vw"
                     className="object-cover opacity-90"
                 />
             ) : (

@@ -1,9 +1,9 @@
 import Image from "next/image";
-import bg from "../../../public/un-1.jpg";
+import bg from "../../../public/idea.jpg";
 
 export default function Hero() {
   return (
-    <section className="relative h-[520px] md:h-[650px] lg:h-[750px] w-full overflow-hidden bg-[#0B0D13]">
+    <section className="relative h-[520px] md:h-[650px] lg:h-screen w-full overflow-hidden bg-[#0B0D13]">
       <Image
         src={bg}
         alt="Relink Strategy Culture Creative"
@@ -13,15 +13,15 @@ export default function Hero() {
         className="object-cover opacity-60"
       />
 
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0B0D13] via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0B0D13]/20 via-transparent to-transparent" />
 
-      <div className="absolute text-white lg:top-98 lg:bottom-60 md:bottom-40 bottom-10 top-50 md:top-0 md:left-20 left-5 md:max-w-4xl max-w-2xl z-10">
+      <div className="absolute text-white bottom-32 md:bottom-20 lg:bottom-20 left-5 md:left-20 lg:left-20 md:max-w-4xl max-w-2xl z-10">
         <h1 className="font-light font-relink-headline text-5xl lg:text-8xl">
           High-impact digital solutions.
         </h1>
       </div>
 
-      <div className="absolute text-white bottom-20 md:bottom-30 left-5 md:left-0 lg:left-auto lg:right-20 font-relink-headline lg:text-4xl max-w-4xl uppercase z-10">
+      <div className="absolute text-white bottom-5 md:bottom-20 left-5 md:left-0 lg:left-auto lg:right-20 font-relink-headline lg:text-4xl max-w-4xl uppercase z-10">
         <div className="flex flex-col gap-2 font-relink-neue">
           <a
             href="#projects"

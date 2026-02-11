@@ -85,22 +85,22 @@ export default function Footer() {
             </h4>
             <ul className="space-y-7 text-sm text-gray-500 text-[15px]">
               <li>
-                <TransitionLink href="#" className="hover:text-gray-400">
+                <TransitionLink href="/marketing" className="hover:text-gray-400">
+                   Digital Marketing
+                </TransitionLink>
+              </li>
+              <li>
+                <TransitionLink href="/development" className="hover:text-gray-400">
                   Branding
                 </TransitionLink>
               </li>
               <li>
-                <TransitionLink href="#" className="hover:text-gray-400">
-                  Digital Marketing
-                </TransitionLink>
-              </li>
-              <li>
-                <TransitionLink href="#" className="hover:text-gray-400">
+                <TransitionLink href="/development" className="hover:text-gray-400">
                   Web Design & Development
                 </TransitionLink>
               </li>
               <li>
-                <TransitionLink href="#" className="hover:text-gray-400">
+                <TransitionLink href="/marketing" className="hover:text-gray-400">
                   SEO
                 </TransitionLink>
               </li>
@@ -113,22 +113,22 @@ export default function Footer() {
             </h4>
             <ul className="space-y-7 text-sm text-gray-500 text-[15px]">
               <li>
-                <TransitionLink href="#" className="hover:text-gray-400">
+                <TransitionLink href="/development" className="hover:text-gray-400">
                   Video Production
                 </TransitionLink>
               </li>
               <li>
-                <TransitionLink href="#" className="hover:text-gray-400">
+                <TransitionLink href="/development" className="hover:text-gray-400">
                   Photogragpy
                 </TransitionLink>
               </li>
               <li>
-                <TransitionLink href="#" className="hover:text-gray-400">
+                <TransitionLink href="/development" className="hover:text-gray-400">
                   Application Design and Development
                 </TransitionLink>
               </li>
               <li>
-                <TransitionLink href="#" className="hover:text-gray-400">
+                <TransitionLink href="/marketing" className="hover:text-gray-400">
                   Packaging Design
                 </TransitionLink>
               </li>
@@ -151,8 +151,13 @@ export default function Footer() {
                 </TransitionLink>
               </li>
               <li>
-                <TransitionLink href="#" className="hover:text-gray-400">
+                <TransitionLink href="/contact-us" className="hover:text-gray-400">
                   Contact
+                </TransitionLink>
+              </li>
+              <li>
+                <TransitionLink href="/feedback" className="hover:text-gray-400">
+                  Feedback
                 </TransitionLink>
               </li>
             </ul>

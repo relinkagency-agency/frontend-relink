@@ -61,7 +61,8 @@ export type StrapiProject = {
   title: string;
   slug: string;
   excerpt?: string | null;
-  description?: any;
+  challenge?: string | null;
+  solution?: any;
   year?: number | null;
   clientName?: string | null;
   liveUrl?: string | null;
@@ -71,6 +72,7 @@ export type StrapiProject = {
   gallery?: StrapiMedia[] | null;
   services?: Array<Pick<StrapiService, "id" | "title" | "slug">> | null;
   deliverable?: StrapiDeliverable[] | null;
+  heroBanner?: StrapiMedia | null;
 };
 
 export type Project = {
@@ -78,7 +80,8 @@ export type Project = {
   title: string;
   slug: string;
   excerpt?: string | null;
-  description?: any;
+  challenge?: string | null;
+  solution?: any;
   year?: number | null;
   clientName?: string | null;
   liveUrl?: string | null;
@@ -87,6 +90,7 @@ export type Project = {
   gallery?: Array<{ url: string; alt?: string | null }> | null;
   services: Array<{ id: number; title: string; slug: string }>;
   deliverables: Array<{ label: string; details?: string | null }>;
+  heroBanner?: { url: string; alt?: string | null } | null;
 };
 
 export type ProjectsResponse = {

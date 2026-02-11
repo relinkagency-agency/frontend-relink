@@ -46,14 +46,18 @@ export default async function ProjectDetailPage(props: { params: Promise<{ slug:
             <section className="py-32 px-10">
                 <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24">
                     <div className="lg:col-span-7">
-                        <h2 className="text-white/30 uppercase tracking-[0.3em] font-bold text-xs mb-10">Challenge & Vision</h2>
-                        <div className="text-white/90 text-2xl md:text-4xl font-light leading-snug">
-                            {project.excerpt}
-                        </div>
+                        {project.challenge && (
+                            <div className="mb-24">
+                                <h2 className="text-white/30 uppercase tracking-[0.3em] font-bold text-xs mb-10">Challenge & Vision</h2>
+                                <div className="text-white/90 text-2xl md:text-4xl font-light leading-snug">
+                                    {project.challenge}
+                                </div>
+                            </div>
+                        )}
 
-                        {project.description && (
+                        {project.solution && (
                             <div className="mt-16 prose prose-invert prose-xl max-w-none text-white/60 font-light leading-relaxed">
-                                <p>{typeof project.description === 'string' ? project.description : ''}</p>
+                                <p>{typeof project.solution === 'string' ? project.solution : ''}</p>
                             </div>
                         )}
                     </div>
@@ -100,7 +104,7 @@ export default async function ProjectDetailPage(props: { params: Promise<{ slug:
                 </div>
             </section>
 
-           
+
             {project.gallery && project.gallery.length > 0 && (
                 <section className="pb-32 px-4 md:px-10">
                     <div className="max-w-[1800px] mx-auto">

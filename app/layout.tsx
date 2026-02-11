@@ -57,6 +57,22 @@ export const metadata: Metadata = {
     template: "%s | Relink Agency",
   },
   description: "Brand Agency",
+  openGraph: {
+    title: "Relink Agency",
+    description: "Brand Agency",
+    url: "https://relinkagency.com",
+    siteName: "Relink Agency",
+    images: [
+      {
+        url: "https://relinkagency.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Relink Agency",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

@@ -2,17 +2,17 @@ import bg from "../../../public/un-2.jpg";
 export default function Hero() {
   return (
     <>
-      <div className="relative h-[520px] md:h-[650px] lg:h-[750px] w-full overflow-hidden">
+      <div className="relative h-[520px] md:h-[650px] lg:h-screen w-full overflow-hidden">
         <img
           src={bg.src}
           alt="background"
-          className="absolute inset-0 w-full md:h-full h-[520px] object-cover"
+          className="absolute inset-0 w-full md:h-full h-full object-cover"
         />
 
-        <div className="absolute text-white lg:top-80 lg:bottom-20 md:bottom-40 bottom-10 top-50 md:top-0 md:left-30 left-5 font-relink-headline text-5xl lg:text-7xl md:max-w-4xl max-w-2xl">
+        <div className="absolute text-white bottom-32 md:bottom-20 lg:bottom-20 left-5 md:left-20 lg:left-30 font-relink-headline text-5xl lg:text-7xl md:max-w-4xl max-w-2xl">
           <h1>Research, trends, and technology.</h1>
         </div>
-        <div className="absolute text-white bottom-30 md:bottom-30 left-5 md:left-0 lg:left-auto lg:right-20 font-relink-headline lg:text-4xl max-w-4xl uppercase">
+        <div className="absolute text-white bottom-5 md:bottom-20 left-5 md:left-0 lg:left-auto lg:right-20 font-relink-headline lg:text-4xl max-w-4xl uppercase">
           <div className="flex gap-2 font-relink-neue group">
 
             <a

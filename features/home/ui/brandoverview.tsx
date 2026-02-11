@@ -10,7 +10,27 @@ import MobileOverview from "./brandoverview-mobile";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function DesktopOverview() {
+interface OverviewProps {
+  title?: React.ReactNode;
+  description?: string;
+  image?: any;
+  showCta?: boolean;
+}
+
+function DesktopOverview({
+  title = (
+    <>
+      We create digital
+      <br />
+      products that drive
+      <br />
+      real business growth.
+    </>
+  ),
+  description = "We combine advanced AI automation, web development, and strategic marketing to build brands that lead the future.",
+  image = img,
+  showCta = true,
+}: OverviewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const leftRef = useRef<HTMLDivElement>(null);
@@ -62,7 +82,7 @@ function DesktopOverview() {
             <div className="w-full h-full">
               <div className="relative w-full h-full">
                 <Image
-                  src={img}
+                  src={image}
                   alt="about-relink"
                   fill
                   priority
@@ -81,26 +101,23 @@ function DesktopOverview() {
             <div className="max-w-none">
               <div className="w-[600px] shrink-0">
                 <h2 className="text-[55px] font-light leading-tight text-black">
-                  We create digital
-                  <br />
-                  products that drive
-                  <br />
-                  real business growth.
+                  {title}
                 </h2>
 
                 <div className="max-w-[500px]">
                   <p className="mt-5 text-lg text-black/90 leading-relaxed">
-                    We combine advanced AI automation, web development, and
-                    strategic marketing to build brands that lead the future.
+                    {description}
                   </p>
                 </div>
 
-                <a
-                  href="#"
-                  className="mt-10 inline-flex items-center gap-2 text-lg font-semibold border-b-2 border-black/80 pb-1 hover:gap-4 transition-all text-black w-fit"
-                >
-                  See what we do <span aria-hidden>↗</span>
-                </a>
+                {showCta && (
+                  <a
+                    href="#"
+                    className="mt-10 inline-flex items-center gap-2 text-lg font-semibold border-b-2 border-black/80 pb-1 hover:gap-4 transition-all text-black w-fit"
+                  >
+                    See what we do <span aria-hidden>↗</span>
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -110,7 +127,7 @@ function DesktopOverview() {
   );
 }
 
-export default function Overview() {
+export default function Overview(props: OverviewProps) {
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
   useEffect(() => {
@@ -126,5 +143,5 @@ export default function Overview() {
   // use a stable placeholder that looks like the section to avoid blank screens/jumps
   if (isMobile === null) return <div className="h-[80vh] bg-amber-50" />;
 
-  return isMobile ? <MobileOverview /> : <DesktopOverview />;
+  return isMobile ? <MobileOverview {...props} /> : <DesktopOverview {...props} />;
 }

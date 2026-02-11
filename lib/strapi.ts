@@ -29,13 +29,13 @@ const getStrapiMediaUrl = (url: string | undefined | null): string => {
 };
 
 const fetchStrapi = async (endpoint: string, options?: RequestInit) => {
-const headers = new Headers({
-  "Content-Type": "application/json",
-});
+  const headers = new Headers({
+    "Content-Type": "application/json",
+  });
 
-if (STRAPI_API_TOKEN) {
-  headers.set("Authorization", `Bearer ${STRAPI_API_TOKEN}`);
-}
+  if (STRAPI_API_TOKEN) {
+    headers.set("Authorization", `Bearer ${STRAPI_API_TOKEN}`);
+  }
 
 
   return fetch(`${STRAPI_URL}${endpoint}`, {
@@ -70,9 +70,9 @@ export async function getServices(): Promise<ServicesResponse> {
         order: s.order ?? 0,
         coverImage: s.coverImage
           ? {
-              url: getStrapiMediaUrl(s.coverImage.url),
-              alt: s.coverImage.alternativeText,
-            }
+            url: getStrapiMediaUrl(s.coverImage.url),
+            alt: s.coverImage.alternativeText,
+          }
           : null,
       })),
     };
@@ -91,41 +91,52 @@ const mapProject = (p: StrapiProject): Project => ({
   title: p.title,
   slug: p.slug,
   excerpt: p.excerpt ?? null,
-  description: p.description,
+  challenge: p.challenge ?? null,
+  solution: p.solution,
   year: p.year ?? null,
   clientName: p.clientName ?? null,
   liveUrl: p.liveUrl ?? null,
   isFeatured: Boolean(p.isFeatured),
   thumbnail: p.thumbnail
     ? {
-        url: getStrapiMediaUrl(p.thumbnail.url),
-        alt: p.thumbnail.alternativeText,
-      }
+      url: getStrapiMediaUrl(p.thumbnail.url),
+      alt: p.thumbnail.alternativeText,
+    }
     : null,
   gallery: p.gallery?.length
     ? p.gallery.map((m) => ({
-        url: getStrapiMediaUrl(m.url),
-        alt: m.alternativeText,
-      }))
+      url: getStrapiMediaUrl(m.url),
+      alt: m.alternativeText,
+    }))
     : null,
   services: p.services?.length
     ? p.services.map((s) => ({ id: s.id, title: s.title, slug: s.slug }))
     : [],
   deliverables: p.deliverable?.length
     ? p.deliverable.map((d) => ({
-        label: d.label,
-        details: d.details ?? null,
-      }))
+      label: d.label,
+      details: d.details ?? null,
+    }))
     : [],
+  heroBanner: p.heroBanner
+    ? {
+      url: getStrapiMediaUrl(p.heroBanner.url),
+      alt: p.heroBanner.alternativeText,
+    }
+    : null,
 });
 
 export async function getProjects(params?: {
   featuredOnly?: boolean;
   limit?: number;
+  serviceSlug?: string;
 }): Promise<ProjectsResponse> {
   try {
     const featuredFilter = params?.featuredOnly
       ? `&filters[isFeatured][$eq]=true`
+      : "";
+    const serviceFilter = params?.serviceSlug
+      ? `&filters[services][slug][$eq]=${params.serviceSlug}`
       : "";
     const limitParam =
       typeof params?.limit === "number"
@@ -133,7 +144,7 @@ export async function getProjects(params?: {
         : "";
 
     const res = await fetchStrapi(
-      `/api/projects?populate[0]=thumbnail&populate[1]=gallery&populate[2]=services&populate[3]=deliverable&sort=year:desc${featuredFilter}${limitParam}`,
+      `/api/projects?populate=*&sort=year:desc${featuredFilter}${serviceFilter}${limitParam}`,
       { next: { revalidate: 60, tags: ["projects"] } }
     );
 
@@ -171,7 +182,7 @@ export async function getProjectBySlug(slug: string): Promise<{
     const res = await fetchStrapi(
       `/api/projects?filters[slug][$eq]=${encodeURIComponent(
         slug
-      )}&populate[0]=thumbnail&populate[1]=gallery&populate[2]=services&populate[3]=deliverable`,
+      )}&populate=*`,
       { next: { revalidate: 60, tags: ["projects", `project-${slug}`] } }
     );
 
@@ -231,17 +242,17 @@ const mapArticle = (a: StrapiArticle): Article => ({
     : null,
   author: a.author
     ? {
-        id: a.author.id,
-        name: a.author.name ?? null,
-        slug: a.author.slug ?? null,
-      }
+      id: a.author.id,
+      name: a.author.name ?? null,
+      slug: a.author.slug ?? null,
+    }
     : null,
   category: a.category
     ? {
-        id: a.category.id,
-        name: a.category.name ?? null,
-        slug: a.category.slug ?? null,
-      }
+      id: a.category.id,
+      name: a.category.name ?? null,
+      slug: a.category.slug ?? null,
+    }
     : null,
   postStatus: a.postStatus ?? "draft",
   publishedAt: a.publishedAt ? new Date(a.publishedAt) : null,
