@@ -55,7 +55,6 @@ export function ProjectCard({ project, className = "" }: { project: Project, cla
         </div>
       </div>
 
-      {/* Decorative corner accent */}
       <div className="absolute top-0 right-0 w-20 h-20 pointer-events-none">
         <div className="absolute top-4 right-4 w-2 h-2 border-t border-r border-amber-50/40" />
       </div>

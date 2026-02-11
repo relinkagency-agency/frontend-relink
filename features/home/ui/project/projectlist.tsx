@@ -2,42 +2,11 @@
 "use client";
 
 import React from "react";
-import { ProjectCard } from "./card";
+import { ProjectCard } from "../../../work/ui/card";
 import { Project } from "@/lib/strapi.types";
 
 
 export function ProjectList({ projects }: { projects: Project[] }) {
-  const [activeIndex, setActiveIndex] = React.useState(0);
-  const scrollContainerRef = React.useRef<HTMLDivElement>(null);
-
-  const handleScroll = () => {
-    if (scrollContainerRef.current) {
-      const scrollLeft = scrollContainerRef.current.scrollLeft;
-      const itemWidth = 320 + 32; // Card width + gap-8
-      const index = Math.round(scrollLeft / itemWidth);
-      setActiveIndex(Math.min(Math.max(0, index), projects.length - 1));
-    }
-  };
-
-  const scrollToProject = (index: number) => {
-    if (scrollContainerRef.current) {
-      const itemWidth = 320 + 32;
-      scrollContainerRef.current.scrollTo({
-        left: index * itemWidth,
-        behavior: "smooth",
-      });
-      setActiveIndex(index);
-    }
-  };
-
-  React.useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (container) {
-      container.addEventListener("scroll", handleScroll);
-      return () => container.removeEventListener("scroll", handleScroll);
-    }
-  }, []);
-
   return (
     <section className="w-full bg-[#0B0D13]">
       <div className="relative">
