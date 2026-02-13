@@ -19,7 +19,7 @@ export async function submitContactForm(data: any) {
                 phone: data.phone,
                 services: data.services,
                 location: data.location,
-                message: data.help, 
+                message: data.help,
                 source: data.source,
                 status: 'new',
             })
@@ -107,12 +107,6 @@ export async function updateContactStatus(id: number, status: string) {
         };
     }
 }
-'use server';
-
-import { db } from '@/lib/db';
-import { contacts } from '@/lib/db/schema';
-import { eq } from 'drizzle-orm';
-import { revalidatePath } from 'next/cache';
 
 export async function deleteContact(id: number) {
     try {

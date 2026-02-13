@@ -93,7 +93,7 @@ export async function updateFeedbackStatus(id: number, status: string) {
             .returning();
 
         revalidatePath('/admin/feedbacks');
-        revalidatePath('/testimonials'); 
+        revalidatePath('/testimonials');
         return {
             success: true,
             data: updatedFeedback,
@@ -106,12 +106,6 @@ export async function updateFeedbackStatus(id: number, status: string) {
         };
     }
 }
-'use server';
-
-import { db } from '@/lib/db';
-import { feedbacks } from '@/lib/db/schema';
-import { eq } from 'drizzle-orm';
-import { revalidatePath } from 'next/cache';
 
 export async function deleteFeedback(id: number) {
     try {
