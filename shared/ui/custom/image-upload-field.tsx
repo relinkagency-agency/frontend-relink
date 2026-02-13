@@ -83,20 +83,22 @@ export function ImageUploadField({
                     }}
                     onUpload={() => setUploading(true)}
                     onSuccess={(result: any) => {
+                        const info = result?.info;
+                        if (info && typeof info !== 'string') {
+                            onChange({
+                                url: info.secure_url,
+                                publicId: info.public_id,
+                                width: info.width!,
+                                height: info.height!,
+                                format: info.format,
+                                resourceType: info.resource_type,
+                            });
+                        }
                         setUploading(false);
-                        const info = result.info;
-                        onChange({
-                            url: info.secure_url,
-                            publicId: info.public_id,
-                            width: info.width,
-                            height: info.height,
-                            format: info.format,
-                            resourceType: info.resource_type,
-                        });
                     }}
-                    onError={(error) => {
-                        setUploading(false);
+                    onError={(error: any) => {
                         console.error('Upload error:', error);
+                        setUploading(false);
                     }}
                 >
                     {({ open }) => (

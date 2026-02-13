@@ -318,3 +318,54 @@ export async function getCategories() {
         };
     }
 }
+
+export async function createAuthor(data: any) {
+    try {
+        const [newAuthor] = await db
+            .insert(authors)
+            .values({
+                name: data.name,
+                slug: data.slug,
+                bio: data.bio,
+                avatarId: data.avatarId,
+            })
+            .returning();
+
+        return {
+            success: true,
+            data: newAuthor,
+        };
+    } catch (error) {
+        console.error('Error creating author:', error);
+        return {
+            success: false,
+            error: 'Failed to create author',
+            data: null,
+        };
+    }
+}
+
+export async function createCategory(data: any) {
+    try {
+        const [newCategory] = await db
+            .insert(categories)
+            .values({
+                name: data.name,
+                slug: data.slug,
+                description: data.description,
+            })
+            .returning();
+
+        return {
+            success: true,
+            data: newCategory,
+        };
+    } catch (error) {
+        console.error('Error creating category:', error);
+        return {
+            success: false,
+            error: 'Failed to create category',
+            data: null,
+        };
+    }
+}

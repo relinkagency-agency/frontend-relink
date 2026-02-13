@@ -9,6 +9,7 @@ import { ImageUploadField } from '@/shared/ui/custom/image-upload-field';
 import { createArticle, updateArticle, getAuthors, getCategories } from '@/lib/actions/articles';
 import { saveMediaToDatabase } from '@/lib/actions/media';
 import { Loader2, Send, Save } from 'lucide-react';
+import { QuickAdd } from './quick-add';
 
 interface ArticleFormProps {
     initialData?: any;
@@ -153,6 +154,13 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
                                     <option key={cat.id} value={cat.id}>{cat.name}</option>
                                 ))}
                             </select>
+                            <QuickAdd
+                                type="category"
+                                onSuccess={(newCat) => {
+                                    setCategories([...categories, newCat]);
+                                    setFormData({ ...formData, categoryId: newCat.id });
+                                }}
+                            />
                         </div>
 
                         <div className="space-y-2">
@@ -169,6 +177,13 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
                                     <option key={author.id} value={author.id}>{author.name}</option>
                                 ))}
                             </select>
+                            <QuickAdd
+                                type="author"
+                                onSuccess={(newAuthor) => {
+                                    setAuthors([...authors, newAuthor]);
+                                    setFormData({ ...formData, authorId: newAuthor.id });
+                                }}
+                            />
                         </div>
 
                         <div className="pt-4 space-y-6">
