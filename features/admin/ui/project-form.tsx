@@ -82,7 +82,7 @@ export function ProjectForm({ initialData }: ProjectFormProps) {
 
     return (
         <form onSubmit={handleSubmit} className="space-y-12">
-            <section className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 space-y-8">
+            <section className="p-10 rounded-none bg-white/[0.02] border border-white/5 space-y-8">
                 <h2 className="text-xl font-[family-name:var(--font-relink-fine)] text-white">General Information</h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -135,13 +135,13 @@ export function ProjectForm({ initialData }: ProjectFormProps) {
                         type="button"
                         onClick={() => setFormData({ ...formData, isFeatured: !formData.isFeatured })}
                         className={cn(
-                            "w-12 h-6 rounded-full transition-all relative border",
-                            formData.isFeatured ? "bg-relink-purple-base border-relink-purple-base" : "bg-white/5 border-white/10"
+                            "w-12 h-6 rounded-none transition-all relative border",
+                            formData.isFeatured ? "bg-amber-50 border-amber-50" : "bg-white/5 border-white/10"
                         )}
                     >
                         <div className={cn(
-                            "absolute top-1 w-4 h-4 rounded-full transition-all",
-                            formData.isFeatured ? "right-1 bg-white" : "left-1 bg-white/40"
+                            "absolute top-1 w-4 h-4 rounded-none transition-all",
+                            formData.isFeatured ? "right-1 bg-[#0B0D13]" : "left-1 bg-white/40"
                         )} />
                     </button>
                     <span className="text-sm font-medium text-white/60 font-[family-name:var(--font-relink-neue)]">
@@ -151,7 +151,7 @@ export function ProjectForm({ initialData }: ProjectFormProps) {
             </section>
 
             <section className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 space-y-6">
+                <div className="p-10 rounded-none bg-white/[0.02] border border-white/5 space-y-6">
                     <h2 className="text-xl font-[family-name:var(--font-relink-fine)] text-white">Thumbnail</h2>
                     <ImageUploadField
                         value={thumbnail}
@@ -160,7 +160,7 @@ export function ProjectForm({ initialData }: ProjectFormProps) {
                         label=""
                     />
                 </div>
-                <div className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 space-y-6">
+                <div className="p-10 rounded-none bg-white/[0.02] border border-white/5 space-y-6">
                     <h2 className="text-xl font-[family-name:var(--font-relink-fine)] text-white">Hero Banner</h2>
                     <ImageUploadField
                         value={heroBanner}
@@ -175,14 +175,14 @@ export function ProjectForm({ initialData }: ProjectFormProps) {
                 <button
                     type="button"
                     onClick={() => router.back()}
-                    className="px-8 py-4 rounded-full text-white/40 hover:text-white transition-all font-medium font-[family-name:var(--font-relink-neue)]"
+                    className="px-8 py-4 rounded-none text-white/40 hover:text-white transition-all font-medium font-[family-name:var(--font-relink-neue)] uppercase tracking-widest text-xs"
                 >
                     Cancel
                 </button>
                 <button
                     type="submit"
                     disabled={loading}
-                    className="px-12 py-4 bg-white text-relink-dark rounded-full font-bold hover:bg-relink-purple-base hover:text-white transition-all duration-500 font-[family-name:var(--font-relink-neue)] flex items-center gap-2 disabled:opacity-50"
+                    className="px-12 py-4 bg-amber-50 text-[#0B0D13] rounded-none font-bold hover:bg-white transition-all duration-500 font-[family-name:var(--font-relink-neue)] flex items-center gap-2 disabled:opacity-50 uppercase tracking-widest text-xs shadow-xl"
                 >
                     {loading && <Loader2 className="w-4 h-4 animate-spin" />}
                     {initialData?.id ? 'Update Project' : 'Publish Project'}

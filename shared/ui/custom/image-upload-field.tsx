@@ -47,7 +47,7 @@ export function ImageUploadField({
 
             {value ? (
                 <div className="relative inline-block">
-                    <div className="relative rounded-[var(--radius)] overflow-hidden border-2 border-border bg-card">
+                    <div className="relative rounded-none overflow-hidden border-2 border-border bg-card">
                         <CldImage
                             src={value.publicId}
                             width={400}
@@ -61,7 +61,7 @@ export function ImageUploadField({
                         type="button"
                         onClick={handleRemove}
                         className="absolute -top-2 -right-2 p-1.5 bg-destructive text-destructive-foreground 
-                       rounded-full hover:bg-destructive/90 transition-colors shadow-lg"
+                       rounded-none hover:bg-destructive/90 transition-colors shadow-lg"
                         aria-label="Remove image"
                     >
                         <X className="w-4 h-4" />
@@ -105,14 +105,14 @@ export function ImageUploadField({
                             onClick={() => open()}
                             disabled={uploading}
                             className="relative w-full min-h-[200px] border-2 border-dashed border-border 
-                         rounded-[var(--radius)] bg-card hover:bg-accent transition-colors
+                         rounded-none bg-card hover:bg-accent transition-colors
                          flex flex-col items-center justify-center gap-3
                          disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             {uploading ? (
                                 <>
                                     <div className="w-8 h-8 border-4 border-primary border-t-transparent 
-                                  rounded-full animate-spin" />
+                                  rounded-none animate-spin" />
                                     <span className="text-sm font-[family-name:var(--font-relink-neue)] text-muted-foreground">
                                         Uploading...
                                     </span>

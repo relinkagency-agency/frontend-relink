@@ -90,7 +90,7 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
         <form className="space-y-12 pb-20">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                 <div className="lg:col-span-2 space-y-12">
-                    <section className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 space-y-8">
+                    <section className="p-10 rounded-none bg-white/[0.02] border border-white/5 space-y-8">
                         <h2 className="text-xl font-[family-name:var(--font-relink-fine)] text-white">Content</h2>
 
                         <AdminInput
@@ -122,7 +122,7 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
                                 Content Blocks (JSON Editor)
                             </label>
                             <textarea
-                                className="w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/5 text-white/80 font-mono text-xs min-h-[300px] resize-none outline-none focus:border-relink-purple-base/20 transition-all font-[family-name:var(--font-relink-neue)]"
+                                className="w-full px-5 py-4 rounded-none bg-white/5 border border-white/5 text-white/80 font-mono text-xs min-h-[300px] resize-none outline-none focus:border-amber-50/20 transition-all font-[family-name:var(--font-relink-neue)]"
                                 value={JSON.stringify(formData.blocks, null, 2)}
                                 onChange={(e) => {
                                     try {
@@ -136,7 +136,7 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
                 </div>
 
                 <div className="space-y-8">
-                    <section className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 space-y-8">
+                    <section className="p-10 rounded-none bg-white/[0.02] border border-white/5 space-y-8">
                         <h2 className="text-xl font-[family-name:var(--font-relink-fine)] text-white">Settings</h2>
 
                         <div className="space-y-2">
@@ -144,7 +144,7 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
                                 Category
                             </label>
                             <select
-                                className="w-full px-5 py-4 rounded-2xl bg-[#0B0D13] border border-white/5 text-white/80 text-sm outline-none focus:border-relink-purple-base/40 transition-all appearance-none font-[family-name:var(--font-relink-neue)]"
+                                className="w-full px-5 py-4 rounded-none bg-[#0B0D13] border border-white/5 text-white/80 text-sm outline-none focus:border-amber-50/40 transition-all appearance-none font-[family-name:var(--font-relink-neue)]"
                                 value={formData.categoryId}
                                 onChange={(e) => setFormData({ ...formData, categoryId: e.target.value })}
                             >
@@ -160,7 +160,7 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
                                 Author
                             </label>
                             <select
-                                className="w-full px-5 py-4 rounded-2xl bg-[#0B0D13] border border-white/5 text-white/80 text-sm outline-none focus:border-relink-purple-base/40 transition-all appearance-none font-[family-name:var(--font-relink-neue)]"
+                                className="w-full px-5 py-4 rounded-none bg-[#0B0D13] border border-white/5 text-white/80 text-sm outline-none focus:border-amber-50/40 transition-all appearance-none font-[family-name:var(--font-relink-neue)]"
                                 value={formData.authorId}
                                 onChange={(e) => setFormData({ ...formData, authorId: e.target.value })}
                             >
@@ -187,7 +187,7 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
                             type="button"
                             disabled={loading}
                             onClick={(e) => handleSubmit(e, 'published')}
-                            className="w-full px-8 py-5 bg-relink-purple-base text-white rounded-2xl font-bold hover:bg-relink-purple-deep transition-all duration-500 font-[family-name:var(--font-relink-neue)] flex items-center justify-center gap-3 disabled:opacity-50"
+                            className="w-full px-8 py-5 bg-amber-50 text-[#0B0D13] rounded-none font-bold hover:bg-white transition-all duration-500 font-[family-name:var(--font-relink-neue)] flex items-center justify-center gap-3 disabled:opacity-50 uppercase tracking-widest text-xs shadow-xl"
                         >
                             {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Send className="w-5 h-5" />}
                             Publish Now
@@ -197,7 +197,7 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
                             type="button"
                             disabled={loading}
                             onClick={(e) => handleSubmit(e, 'draft')}
-                            className="w-full px-8 py-5 bg-white/5 border border-white/5 text-white rounded-2xl font-bold hover:bg-white/10 transition-all duration-500 font-[family-name:var(--font-relink-neue)] flex items-center justify-center gap-3 disabled:opacity-50"
+                            className="w-full px-8 py-5 bg-white/5 border border-white/5 text-white rounded-none font-bold hover:bg-white/10 transition-all duration-500 font-[family-name:var(--font-relink-neue)] flex items-center justify-center gap-3 disabled:opacity-50 uppercase tracking-widest text-xs"
                         >
                             {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Save className="w-5 h-5 text-white/40" />}
                             Save as Draft

@@ -19,7 +19,7 @@ export const postStatusEnum = pgEnum('post_status', ['draft', 'published']);
 export const media = pgTable('media', {
     id: serial('id').primaryKey(),
     url: text('url').notNull(),
-    publicId: text('public_id').notNull(), 
+    publicId: text('public_id').notNull(),
     alternativeText: text('alternative_text'),
     width: integer('width'),
     height: integer('height'),

@@ -17,7 +17,7 @@ export function AdminInput({ label, error, className, ...props }: InputProps) {
             )}
             <input
                 className={cn(
-                    "w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/5 focus:border-relink-purple-base/40 focus:ring-1 focus:ring-relink-purple-base/40 text-white placeholder:text-white/20 outline-none transition-all font-[family-name:var(--font-relink-neue)] text-sm",
+                    "w-full px-5 py-4 rounded-none bg-white/5 border border-white/5 focus:border-amber-50/40 focus:ring-1 focus:ring-amber-50/40 text-white placeholder:text-white/20 outline-none transition-all font-[family-name:var(--font-relink-neue)] text-sm",
                     error && "border-red-500/50 focus:border-red-500",
                     className
                 )}
@@ -43,7 +43,7 @@ export function AdminTextarea({ label, error, className, ...props }: TextareaPro
             )}
             <textarea
                 className={cn(
-                    "w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/5 focus:border-relink-purple-base/40 focus:ring-1 focus:ring-relink-purple-base/40 text-white placeholder:text-white/20 outline-none transition-all font-[family-name:var(--font-relink-neue)] text-sm min-h-[120px] resize-none",
+                    "w-full px-5 py-4 rounded-none bg-white/5 border border-white/5 focus:border-amber-50/40 focus:ring-1 focus:ring-amber-50/40 text-white placeholder:text-white/20 outline-none transition-all font-[family-name:var(--font-relink-neue)] text-sm min-h-[120px] resize-none",
                     error && "border-red-500/50 focus:border-red-500",
                     className
                 )}

@@ -2,10 +2,7 @@ import type { Metadata } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
-import Footer from "../shared/layouts/footer";
 import "./globals.css";
-import Header from "@/shared/layouts/header";
-import PageTransition from "@/shared/layouts/pageTransitiion";
 
 const tiemposText = localFont({
   src: [
@@ -85,13 +82,9 @@ export default function RootLayout({
       lang="en"
       className={`${tiemposText.variable} ${tiemposHeadline.variable} ${tiemposFine.variable} ${neueHaasUnica.variable}`}
     >
-      <SpeedInsights/>
+      <SpeedInsights />
       <body>
-        <Header />
-        <PageTransition>
-          <main className="min-h-[70vh]">{children}</main>
-        </PageTransition>
-        <Footer />
+        {children}
       </body>
     </html>
   );

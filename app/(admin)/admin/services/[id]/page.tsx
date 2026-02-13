@@ -13,7 +13,7 @@ export default async function EditServicePage({ params }: { params: { id: string
     }
 
     return (
-        <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
+        <div className="space-y-12 ">
             <div>
                 <h1 className="text-4xl font-[family-name:var(--font-relink-fine)] text-white tracking-tight">
                     Edit Service
