@@ -3,19 +3,16 @@
 import Hero from "@/features/about/ui/hero";
 import Main from "@/features/about/ui/main";
 import BlogList from "@/features/home/ui/blog-list";
-import { getUpdates } from "@/lib/strapi";
+import { getArticles } from "@/lib/actions/articles";
+import { mapDrizzleArticle } from "@/lib/db/mappers";
 
 export default async function Index() {
 
-    const result = await getUpdates({
-        limit: 3,
-        onlyPublished: true,
-    })
-
-    const articles = result.success ? result.data : [];
+    const result = await getArticles('published');
+    const articles = (result.data || []).slice(0, 3).map(mapDrizzleArticle);
 
     return <>
         <Hero />
-        <Main articles={articles}/>
+        <Main articles={articles} />
     </>
 }

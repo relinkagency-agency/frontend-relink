@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getPostBySlug } from "@/lib/strapi";
+import { getArticleBySlug } from "@/lib/actions/articles";
+import { mapDrizzleArticle } from "@/lib/db/mappers";
 import ArticleHero from "@/features/news/ui/article-hero";
 import ArticleContent from "@/features/news/ui/article-content";
 
@@ -10,12 +11,14 @@ export default async function Page(props: {
   const params = await props.params;
   const { slug } = params;
 
-  const { success, data: article, error } = await getPostBySlug(slug);
+  const res = await getArticleBySlug(slug);
 
-  if (!success || !article) {
-    if (error) console.error(`Error loading article: ${error}`);
+  if (!res.success || !res.data) {
+    if (res.error) console.error(`Error loading article: ${res.error}`);
     notFound();
   }
+
+  const article = mapDrizzleArticle(res.data);
 
   return (
     <main className="min-h-screen bg-amber-50">
@@ -90,7 +93,8 @@ export async function generateMetadata(props: {
 }) {
   const params = await props.params;
   const { slug } = params;
-  const { data: article } = await getPostBySlug(slug);
+  const res = await getArticleBySlug(slug);
+  const article = res.data ? mapDrizzleArticle(res.data) : null;
 
   if (!article) return { title: "Article Not Found" };
 

@@ -1,5 +1,5 @@
-/** @format */
-import { getProjectBySlug } from "@/lib/strapi";
+import { getProjectBySlug } from "@/lib/actions/projects";
+import { mapDrizzleProject } from "@/lib/db/mappers";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,12 +8,14 @@ export default async function ProjectDetailPage(props: { params: Promise<{ slug:
     const params = await props.params;
     const { slug } = params;
 
-    const { success, data: project, error } = await getProjectBySlug(slug);
+    const res = await getProjectBySlug(slug);
 
-    if (!success || !project) {
-        if (error) console.error(`Error loading project: ${error}`);
+    if (!res.success || !res.data) {
+        if (res.error) console.error(`Error loading project: ${res.error}`);
         notFound();
     }
+
+    const project = mapDrizzleProject(res.data);
 
     return (
         <main className="min-h-screen bg-relink-dark selection:bg-white selection:text-black">
@@ -141,7 +143,8 @@ export default async function ProjectDetailPage(props: { params: Promise<{ slug:
 export async function generateMetadata(props: { params: Promise<{ slug: string }> }) {
     const params = await props.params;
     const { slug } = params;
-    const { data: project } = await getProjectBySlug(slug);
+    const res = await getProjectBySlug(slug);
+    const project = res.data ? mapDrizzleProject(res.data) : null;
 
     if (!project) return { title: "Project Not Found" };
 

@@ -1,19 +1,16 @@
 
 import BlogMain from "@/features/news/ui/blogMain";
 import Hero from "@/features/news/ui/hero";
-import { getUpdates } from "@/lib/strapi";
+import { getArticles } from "@/lib/actions/articles";
+import { mapDrizzleArticle } from "@/lib/db/mappers";
 
 export default async function page() {
-   const res = await getUpdates();
-   const articles = res.data.map((service: any) => ({
-     ...service,
-     postStatus: service.postStatus || 'published',
-     publishedAt: service.publishedAt || new Date().toISOString(),
-   }));
+  const res = await getArticles('published');
+  const articles = (res.data || []).map(mapDrizzleArticle);
   return (
     <>
       <Hero />
-      <BlogMain articles={articles}/>
+      <BlogMain articles={articles} />
     </>
   );
 }
