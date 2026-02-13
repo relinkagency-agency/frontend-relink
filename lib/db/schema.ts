@@ -196,6 +196,35 @@ export const articlesRelations = relations(articles, ({ one }) => ({
     }),
 }));
 
+// Contacts Table
+export const contacts = pgTable('contacts', {
+    id: serial('id').primaryKey(),
+    name: text('name').notNull(),
+    email: text('email').notNull(),
+    phone: text('phone'),
+    services: text('services'),
+    location: text('location'),
+    message: text('message'),
+    source: text('source'),
+    status: text('status').default('new').notNull(),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+    updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+
+// Feedbacks Table
+export const feedbacks = pgTable('feedbacks', {
+    id: serial('id').primaryKey(),
+    name: text('name').notNull(),
+    email: text('email').notNull(),
+    businessName: text('business_name'),
+    services: text('services'),
+    photoUrl: text('photo_url'),
+    content: text('content').notNull(),
+    status: text('status').default('pending').notNull(), // pending, approved, hidden
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+    updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+
 // Types for TypeScript
 export type Media = typeof media.$inferSelect;
 export type InsertMedia = typeof media.$inferInsert;
@@ -214,3 +243,9 @@ export type InsertCategory = typeof categories.$inferInsert;
 
 export type Article = typeof articles.$inferSelect;
 export type InsertArticle = typeof articles.$inferInsert;
+
+export type Contact = typeof contacts.$inferSelect;
+export type InsertContact = typeof contacts.$inferInsert;
+
+export type Feedback = typeof feedbacks.$inferSelect;
+export type InsertFeedback = typeof feedbacks.$inferInsert;

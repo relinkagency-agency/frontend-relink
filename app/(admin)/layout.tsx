@@ -12,7 +12,9 @@ import {
     Image as ImageIcon,
     LayoutDashboard,
     ExternalLink,
-    ChevronRight
+    ChevronRight,
+    Mail,
+    MessageSquare
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -22,6 +24,8 @@ const navItems = [
     { name: 'Services', href: '/admin/services', icon: Settings },
     { name: 'Articles', href: '/admin/articles', icon: FileText },
     { name: 'Media', href: '/admin/media', icon: ImageIcon },
+    { name: 'Contacts', href: '/admin/contacts', icon: Mail },
+    { name: 'Feedbacks', href: '/admin/feedbacks', icon: MessageSquare },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -89,7 +93,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             </main>
 
             <footer className="fixed bottom-6 right-8 z-40">
-               
+
             </footer>
         </div>
     );
