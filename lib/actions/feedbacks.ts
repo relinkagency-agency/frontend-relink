@@ -24,7 +24,6 @@ export async function submitFeedback(data: any) {
             })
             .returning();
 
-        // Send Email Notification
         try {
             await resend.emails.send({
                 from: 'Relink Agency <notifications@relink.agency>',
@@ -94,8 +93,7 @@ export async function updateFeedbackStatus(id: number, status: string) {
             .returning();
 
         revalidatePath('/admin/feedbacks');
-        revalidatePath('/testimonials'); // assuming there's a page showing approved feedbacks
-
+        revalidatePath('/testimonials'); 
         return {
             success: true,
             data: updatedFeedback,
