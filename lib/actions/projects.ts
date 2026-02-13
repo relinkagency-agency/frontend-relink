@@ -137,7 +137,6 @@ export async function getFeaturedProjects() {
     }
 }
 
-// Create project
 export async function createProject(data: any) {
     try {
         const [newProject] = await db
@@ -159,6 +158,28 @@ export async function createProject(data: any) {
             })
             .returning();
 
+        // Handle Deliverables
+        if (data.deliverables && Array.isArray(data.deliverables) && data.deliverables.length > 0) {
+            await db.insert(projectDeliverables).values(
+                data.deliverables.map((d: any, index: number) => ({
+                    projectId: newProject.id,
+                    label: d.label,
+                    details: d.details,
+                    order: index,
+                }))
+            );
+        }
+
+        if (data.gallery && Array.isArray(data.gallery) && data.gallery.length > 0) {
+            await db.insert(projectGallery).values(
+                data.gallery.map((g: any, index: number) => ({
+                    projectId: newProject.id,
+                    mediaId: g.mediaId || g.id, 
+                    order: index,
+                }))
+            );
+        }
+
         revalidatePath('/work');
         revalidatePath(`/work/${data.slug}`);
 
@@ -176,20 +197,69 @@ export async function createProject(data: any) {
     }
 }
 
-// Update project
 export async function updateProject(id: number, data: any) {
     try {
+        const projectFields: any = {};
+        const validFields = [
+            'title', 'slug', 'excerpt', 'challenge', 'solution', 'year',
+            'clientName', 'liveUrl', 'isFeatured', 'featuredOrder',
+            'thumbnailId', 'heroBannerId', 'publishedAt'
+        ];
+
+        validFields.forEach(field => {
+            if (data[field] !== undefined) {
+                projectFields[field] = data[field];
+            }
+        });
+
         const [updatedProject] = await db
             .update(projects)
             .set({
-                ...data,
+                ...projectFields,
                 updatedAt: new Date(),
             })
             .where(eq(projects.id, id))
             .returning();
 
+        // Handle Deliverables
+        if (data.deliverables !== undefined) {
+            // Delete existing
+            await db.delete(projectDeliverables).where(eq(projectDeliverables.projectId, id));
+
+            // Insert new if any
+            if (Array.isArray(data.deliverables) && data.deliverables.length > 0) {
+                await db.insert(projectDeliverables).values(
+                    data.deliverables.map((d: any, index: number) => ({
+                        projectId: id,
+                        label: d.label,
+                        details: typeof d.details === 'object' ? JSON.stringify(d.details) : d.details,
+                        order: index,
+                    }))
+                );
+            }
+        }
+
+        // Handle Gallery
+        if (data.gallery !== undefined) {
+            // Delete existing
+            await db.delete(projectGallery).where(eq(projectGallery.projectId, id));
+
+            // Insert new if any
+            if (Array.isArray(data.gallery) && data.gallery.length > 0) {
+                await db.insert(projectGallery).values(
+                    data.gallery.map((g: any, index: number) => ({
+                        projectId: id,
+                        mediaId: g.mediaId || g.id,
+                        order: index,
+                    }))
+                );
+            }
+        }
+
         revalidatePath('/work');
-        revalidatePath(`/work/${updatedProject.slug}`);
+        if (updatedProject) {
+            revalidatePath(`/work/${updatedProject.slug}`);
+        }
 
         return {
             success: true,
