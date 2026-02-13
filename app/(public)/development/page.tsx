@@ -2,9 +2,9 @@ import { Suspense } from "react";
 import Hero from "@/features/home/ui/hero";
 import Overview from "@/features/home/ui/brandoverview";
 import Faq from "@/shared/layouts/faq";
-import heroBg from "../../public/sales.jpg";
+import heroBg from "@/public/sales.jpg";
 import Image from "next/image";
-import web07 from "../../public/web07.jpg";
+import web07 from "@/public/web07.jpg";
 import {
     ProjectsContainer
 } from "@/features/home/ui/containers";

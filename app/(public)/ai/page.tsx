@@ -3,8 +3,8 @@ import Hero from "@/features/home/ui/hero";
 import Overview from "@/features/home/ui/brandoverview";
 import Faq from "@/shared/layouts/faq";
 import Image from "next/image";
-import web07 from "../../public/web07.jpg";
-import heroImage from "../../public/bg-new-2.jpg";
+import web07 from "@/public/web07.jpg";
+import heroImage from "@/public/bg-new-2.jpg";
 import {
     ProjectsContainer
 } from "@/features/home/ui/containers";
