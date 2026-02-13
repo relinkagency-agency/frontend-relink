@@ -1,27 +1,25 @@
 'use client';
 
-import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import NProgress from "nprogress";
-import "nprogress/nprogress.css";
+import NextTopLoader from 'nextjs-toploader';
 import "./nprogress-custom.css";
 
-NProgress.configure({ showSpinner: false });
-
 export function GlobalLoader() {
-    const pathname = usePathname();
-    const searchParams = useSearchParams();
-
-    useEffect(() => {
-        NProgress.start();
-        const timeout = setTimeout(() => {
-            NProgress.done();
-        }, 500);
-        return () => {
-            clearTimeout(timeout);
-            NProgress.done();
-        };
-    }, [pathname, searchParams]);
-
-    return null;
+    return (
+        <NextTopLoader
+            color="var(--color-relink-amber)"
+            initialPosition={0.08}
+            crawlSpeed={200}
+            height={2}
+            crawl={true}
+            showSpinner={false}
+            easing="ease"
+            speed={200}
+            shadow="0 0 10px var(--color-relink-amber),0 0 5px var(--color-relink-amber)"
+            template='<div class="bar" role="bar"><div class="peg"></div></div> 
+            <div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+            zIndex={1600}
+            showAtBottom={false}
+        />
+    );
 }
