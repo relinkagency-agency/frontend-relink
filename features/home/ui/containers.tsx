@@ -22,7 +22,6 @@ export async function ServicesContainer({ serviceSlug }: { serviceSlug?: string 
 }
 
 export async function ProjectsContainer({ serviceSlug }: { serviceSlug?: string }) {
-    // Note: serviceSlug filtering happens in-memory for now or you can update the action
     const res = await getProjects();
     const allProjectsRaw = res.data || [];
 

@@ -10,11 +10,11 @@ interface ServicesProps {
 }
 
 export default function Services({ services }: ServicesProps) {
-  // if (services.length === 0) {
-  //   return null;
-  // }
+  if (services.length === 0) {
+    return null;
+  }
 
-  console.log("services", services);
+  // console.log("services", services);
   
 
   return (

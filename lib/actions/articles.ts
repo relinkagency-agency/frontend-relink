@@ -195,10 +195,8 @@ export async function updateArticle(id: number, data: any) {
     }
 }
 
-// Delete article
 export async function deleteArticle(id: number) {
     try {
-        // Get article with media to clean up Cloudinary
         const article = await db.query.articles.findFirst({
             where: eq(articles.id, id),
             with: {
