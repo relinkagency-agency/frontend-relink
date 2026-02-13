@@ -29,12 +29,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
     return (
         <div className="min-h-screen bg-[#0B0D13] text-white selection:bg-amber-500/30 selection:text-amber-200">
-            {/* Subtle Texture */}
             <div className="fixed inset-0 pointer-events-none overflow-hidden">
                 <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] mix-blend-overlay" />
             </div>
 
-            {/* Unique Floating Navigation - Dark mode with square active state */}
             <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-fit px-4">
                 <nav className="flex items-center gap-1 p-1 bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-none shadow-2xl">
                     {navItems.map((item) => {
@@ -75,7 +73,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 </nav>
             </header>
 
-            {/* Main Content Area */}
             <main className="relative pt-32 pb-24 px-6 md:px-12 lg:px-24 max-w-[1400px] mx-auto">
                 {/* Breadcrumb - Square style */}
                 <div className="flex items-center gap-2 mb-8 text-[10px] uppercase tracking-[0.2em] font-bold text-white/20 font-[family-name:var(--font-relink-neue)]">
@@ -91,14 +88,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 {children}
             </main>
 
-            {/* Status Bar - Square */}
             <footer className="fixed bottom-6 right-8 z-40">
-                <div className="flex items-center gap-3 px-4 py-2 bg-white/[0.03] backdrop-blur-xl border border-white/5 rounded-none shadow-lg">
-                    <div className="w-1.5 h-1.5 rounded-none bg-amber-500 animate-pulse" />
-                    <span className="text-[10px] font-bold text-white/30 tracking-widest uppercase font-[family-name:var(--font-relink-neue)]">
-                        Control — Active
-                    </span>
-                </div>
+               
             </footer>
         </div>
     );

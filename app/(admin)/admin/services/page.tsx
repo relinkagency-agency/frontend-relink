@@ -42,17 +42,12 @@ export default async function AdminServicesPage() {
                         {services.map((service: any) => (
                             <tr key={service.id} className="group hover:bg-white/[0.02] transition-colors">
                                 <td className="px-8 py-6">
-                                    <div className="flex items-center gap-4">
-                                        <div className="w-12 h-12 rounded-none bg-white/5 border border-white/5 flex items-center justify-center text-amber-50 transition-colors group-hover:bg-white/10">
-                                            <Settings className="w-5 h-5" />
+                                    <div>
+                                        <div className="text-sm font-semibold text-white/90 font-[family-name:var(--font-relink-neue)] tracking-tight">
+                                            {service.title}
                                         </div>
-                                        <div>
-                                            <div className="text-sm font-semibold text-white/90 font-[family-name:var(--font-relink-neue)] tracking-tight">
-                                                {service.title}
-                                            </div>
-                                            <div className="text-[11px] text-white/40 mt-1 font-[family-name:var(--font-relink-neue)] line-clamp-1">
-                                                {service.shortDescription || 'No description provided'}
-                                            </div>
+                                        <div className="text-[11px] text-white/40 mt-1 font-[family-name:var(--font-relink-neue)] line-clamp-1">
+                                            {service.shortDescription || 'No description provided'}
                                         </div>
                                     </div>
                                 </td>
@@ -78,9 +73,6 @@ export default async function AdminServicesPage() {
                 </table>
                 {services.length === 0 && (
                     <div className="py-24 text-center">
-                        <div className="p-4 rounded-none bg-white/5 w-fit mx-auto mb-4 border border-white/5">
-                            <Settings className="w-6 h-6 text-white/20" />
-                        </div>
                         <p className="text-white/40 text-sm font-[family-name:var(--font-relink-neue)]">
                             No services defined yet.
                         </p>

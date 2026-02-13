@@ -12,7 +12,7 @@ export default async function MediaLibraryPage() {
     });
 
     return (
-        <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
+        <div className="space-y-12">
             <div>
                 <h1 className="text-4xl font-[family-name:var(--font-relink-fine)] text-white tracking-tight">
                     Media Library
@@ -24,7 +24,7 @@ export default async function MediaLibraryPage() {
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
                 {allMedia.map((item: any) => (
-                    <div key={item.id} className="group relative aspect-square rounded-[2rem] bg-white/5 border border-white/5 overflow-hidden hover:border-relink-purple-base/40 transition-all duration-500">
+                    <div key={item.id} className="group relative aspect-square rounded-none bg-white/5 border border-white/5 overflow-hidden hover:border-amber-50/40 transition-all duration-500">
                         <CldImage
                             src={item.publicId}
                             width={400}
@@ -41,10 +41,10 @@ export default async function MediaLibraryPage() {
                                     </p>
                                 </div>
                                 <div className="flex items-center gap-1">
-                                    <button className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all">
+                                    <button className="p-2 rounded-none bg-white/10 hover:bg-white/20 text-white transition-all">
                                         <ExternalLink className="w-3.5 h-3.5" />
                                     </button>
-                                    <button className="p-2 rounded-xl bg-red-500/20 hover:bg-red-500/40 text-red-500 transition-all">
+                                    <button className="p-2 rounded-none bg-red-500/20 hover:bg-red-500/40 text-red-500 transition-all">
                                         <Trash2 className="w-3.5 h-3.5" />
                                     </button>
                                 </div>
@@ -54,8 +54,8 @@ export default async function MediaLibraryPage() {
                 ))}
 
                 {allMedia.length === 0 && (
-                    <div className="col-span-full py-32 text-center rounded-[3rem] border border-dashed border-white/5">
-                        <div className="p-6 rounded-full bg-white/5 w-fit mx-auto mb-6">
+                    <div className="col-span-full py-32 text-center rounded-none border border-dashed border-white/5">
+                        <div className="p-6 rounded-none bg-white/5 w-fit mx-auto mb-6">
                             <ImageIcon className="w-8 h-8 text-white/20" />
                         </div>
                         <p className="text-white/40 font-[family-name:var(--font-relink-neue)]">
