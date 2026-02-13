@@ -3,6 +3,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import { GlobalLoader } from "./global-loader";
+import { Suspense } from "react";
 
 const tiemposText = localFont({
   src: [
@@ -84,6 +86,9 @@ export default function RootLayout({
     >
       <SpeedInsights />
       <body>
+        <Suspense fallback={null}>
+          <GlobalLoader />
+        </Suspense>
         {children}
       </body>
     </html>

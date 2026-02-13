@@ -107,3 +107,20 @@ export async function updateContactStatus(id: number, status: string) {
         };
     }
 }
+'use server';
+
+import { db } from '@/lib/db';
+import { contacts } from '@/lib/db/schema';
+import { eq } from 'drizzle-orm';
+import { revalidatePath } from 'next/cache';
+
+export async function deleteContact(id: number) {
+    try {
+        await db.delete(contacts).where(eq(contacts.id, id));
+        revalidatePath('/admin/contacts');
+        return { success: true };
+    } catch (error) {
+        console.error('Error deleting contact:', error);
+        throw new Error('Failed to delete contact');
+    }
+}

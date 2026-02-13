@@ -1,7 +1,8 @@
 /** @format */
 
 import { getContacts } from "@/lib/actions/contacts";
-import { Mail, Calendar, MapPin, MessageSquare, Trash2, CheckCircle2 } from "lucide-react";
+import { Mail, Calendar, MapPin, MessageSquare, CheckCircle2 } from "lucide-react";
+import { DeleteContactButton } from "./delete-button";
 
 export default async function AdminContactsPage() {
     const result = await getContacts();
@@ -75,9 +76,7 @@ export default async function AdminContactsPage() {
                                         <button className="p-2 rounded-none bg-white/5 border border-white/5 text-white/40 hover:text-emerald-500 hover:border-emerald-500/20 transition-all">
                                             <CheckCircle2 className="w-4 h-4" />
                                         </button>
-                                        <button className="p-2 rounded-none bg-red-500/5 border border-red-500/10 text-red-500/40 hover:text-red-500 transition-all">
-                                            <Trash2 className="w-4 h-4" />
-                                        </button>
+                                        <DeleteContactButton id={contact.id} />
                                     </div>
                                 </td>
                             </tr>

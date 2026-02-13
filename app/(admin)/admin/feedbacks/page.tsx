@@ -1,8 +1,9 @@
 /** @format */
 
 import { getFeedbacks } from "@/lib/actions/feedbacks";
-import { MessageSquare, Star, Trash2, CheckCircle2, Eye, EyeOff } from "lucide-react";
+import { MessageSquare, Star, CheckCircle2, Eye, EyeOff } from "lucide-react";
 import Image from "next/image";
+import { DeleteFeedbackButton } from "./delete-button";
 
 export default async function AdminFeedbacksPage() {
     const result = await getFeedbacks();
@@ -63,9 +64,7 @@ export default async function AdminFeedbacksPage() {
                                 <button className="p-2 rounded-none bg-white/5 border border-white/5 text-white/20 hover:text-emerald-500 transition-all" title="Approve">
                                     <CheckCircle2 className="w-3.5 h-3.5" />
                                 </button>
-                                <button className="p-2 rounded-none bg-red-500/5 border border-red-500/10 text-red-500/20 hover:text-red-500 transition-all" title="Delete">
-                                    <Trash2 className="w-3.5 h-3.5" />
-                                </button>
+                                <DeleteFeedbackButton id={feedback.id} />
                             </div>
                         </div>
                     </div>

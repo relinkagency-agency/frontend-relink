@@ -106,3 +106,20 @@ export async function updateFeedbackStatus(id: number, status: string) {
         };
     }
 }
+'use server';
+
+import { db } from '@/lib/db';
+import { feedbacks } from '@/lib/db/schema';
+import { eq } from 'drizzle-orm';
+import { revalidatePath } from 'next/cache';
+
+export async function deleteFeedback(id: number) {
+    try {
+        await db.delete(feedbacks).where(eq(feedbacks.id, id));
+        revalidatePath('/admin/feedbacks');
+        return { success: true };
+    } catch (error) {
+        console.error('Error deleting feedback:', error);
+        throw new Error('Failed to delete feedback');
+    }
+}

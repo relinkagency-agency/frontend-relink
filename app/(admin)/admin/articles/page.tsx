@@ -1,8 +1,10 @@
 /** @format */
 
 import Link from "next/link";
-import { Plus, Search, Edit, Trash2, FileText, Calendar, User } from "lucide-react";
+import { Plus, Edit, FileText, Calendar, User } from "lucide-react";
 import { getArticles } from "@/lib/actions/articles";
+import { DeleteArticleButton } from "./delete-button";
+import { cn } from "@/lib/utils";
 
 export default async function AdminArticlesPage() {
     const result = await getArticles();
@@ -86,9 +88,7 @@ export default async function AdminArticlesPage() {
                                         >
                                             <Edit className="w-4 h-4" />
                                         </Link>
-                                        <button className="p-2.5 rounded-none bg-red-500/5 border border-red-500/10 text-red-500/40 hover:text-red-500 hover:bg-red-500/10 transition-all font-[family-name:var(--font-relink-neue)]">
-                                            <Trash2 className="w-4 h-4" />
-                                        </button>
+                                        <DeleteArticleButton id={article.id} />
                                     </div>
                                 </td>
                             </tr>
@@ -110,6 +110,3 @@ export default async function AdminArticlesPage() {
     );
 }
 
-function cn(...inputs: any[]) {
-    return inputs.filter(Boolean).join(' ');
-}

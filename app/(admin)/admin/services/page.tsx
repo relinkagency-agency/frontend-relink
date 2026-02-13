@@ -1,8 +1,9 @@
 /** @format */
 
 import Link from "next/link";
-import { Plus, Search, Edit, Trash2, Settings } from "lucide-react";
+import { Plus, Search, Edit, Settings } from "lucide-react";
 import { getServices } from "@/lib/actions/services";
+import { DeleteServiceButton } from "./delete-button";
 
 export default async function AdminServicesPage() {
     const result = await getServices();
@@ -62,9 +63,7 @@ export default async function AdminServicesPage() {
                                         >
                                             <Edit className="w-4 h-4" />
                                         </Link>
-                                        <button className="p-2.5 rounded-none bg-red-500/5 border border-red-500/10 text-red-500/40 hover:text-red-500 hover:bg-red-500/10 transition-all font-[family-name:var(--font-relink-neue)]">
-                                            <Trash2 className="w-4 h-4" />
-                                        </button>
+                                        <DeleteServiceButton id={service.id} />
                                     </div>
                                 </td>
                             </tr>
