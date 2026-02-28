@@ -146,6 +146,7 @@ export async function createArticle(data: any) {
 
         revalidatePath('/news-insight');
         revalidatePath(`/news-insight/${data.slug}`);
+        revalidatePath('/', 'layout');
 
         return {
             success: true,
@@ -180,6 +181,7 @@ export async function updateArticle(id: number, data: any) {
 
         revalidatePath('/news-insight');
         revalidatePath(`/news-insight/${updatedArticle.slug}`);
+        revalidatePath('/', 'layout');
 
         return {
             success: true,
@@ -219,6 +221,7 @@ export async function deleteArticle(id: number) {
         await db.delete(articles).where(eq(articles.id, id));
 
         revalidatePath('/news-insight');
+        revalidatePath('/', 'layout');
 
         return {
             success: true,

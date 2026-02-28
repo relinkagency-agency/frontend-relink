@@ -12,9 +12,10 @@ import { slugify } from '@/lib/utils';
 
 interface ProjectFormProps {
     initialData?: any;
+    availableServices?: any[];
 }
 
-export function ProjectForm({ initialData }: ProjectFormProps) {
+export function ProjectForm({ initialData, availableServices = [] }: ProjectFormProps) {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
     const [thumbnail, setThumbnail] = useState<any>(initialData?.thumbnail || null);
@@ -24,6 +25,9 @@ export function ProjectForm({ initialData }: ProjectFormProps) {
     const [deliverables, setDeliverables] = useState<any[]>(initialData?.deliverables || []);
 
     const [gallery, setGallery] = useState<any[]>(initialData?.gallery?.map((g: any) => g.media) || []);
+    const [selectedServiceIds, setSelectedServiceIds] = useState<number[]>(
+        initialData?.services?.map((s: any) => s.serviceId || s.service.id) || []
+    );
 
     const [formData, setFormData] = useState({
         title: initialData?.title || '',
@@ -118,7 +122,8 @@ export function ProjectForm({ initialData }: ProjectFormProps) {
                 heroBannerId,
                 deliverables,
                 gallery: finalGallery,
-                solution: solutionPayload
+                solution: solutionPayload,
+                serviceIds: selectedServiceIds
             };
 
             let result;
@@ -228,6 +233,38 @@ export function ProjectForm({ initialData }: ProjectFormProps) {
                     <span className="text-sm font-medium text-white/60 font-[family-name:var(--font-relink-neue)]">
                         Featured Project
                     </span>
+                </div>
+
+                <div className="space-y-4">
+                    <label className="block text-xs font-bold uppercase tracking-widest text-white/40 font-[family-name:var(--font-relink-neue)]">
+                        Associated Services
+                    </label>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        {availableServices.map((service) => {
+                            const isSelected = selectedServiceIds.includes(service.id);
+                            return (
+                                <button
+                                    key={service.id}
+                                    type="button"
+                                    onClick={() => {
+                                        if (isSelected) {
+                                            setSelectedServiceIds(selectedServiceIds.filter(id => id !== service.id));
+                                        } else {
+                                            setSelectedServiceIds([...selectedServiceIds, service.id]);
+                                        }
+                                    }}
+                                    className={cn(
+                                        "px-4 py-3 text-left border transition-all text-xs font-bold uppercase tracking-widest font-[family-name:var(--font-relink-neue)]",
+                                        isSelected
+                                            ? "bg-amber-50 border-amber-50 text-[#0B0D13]"
+                                            : "bg-white/5 border-white/10 text-white/40 hover:border-white/20"
+                                    )}
+                                >
+                                    {service.title}
+                                </button>
+                            );
+                        })}
+                    </div>
                 </div>
             </section>
 

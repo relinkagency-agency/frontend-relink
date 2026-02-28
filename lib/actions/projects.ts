@@ -196,9 +196,20 @@ export async function createProject(data: any) {
             );
         }
 
+        // Handle Services
+        if (data.serviceIds && Array.isArray(data.serviceIds) && data.serviceIds.length > 0) {
+            await db.insert(projectServices).values(
+                data.serviceIds.map((serviceId: number) => ({
+                    projectId: newProject.id,
+                    serviceId: serviceId,
+                }))
+            );
+        }
+
         revalidatePath('/projects');
         revalidatePath('/admin/projects');
         revalidatePath(`/projects/${data.slug}`);
+        revalidatePath('/', 'layout');
 
         return {
             success: true,
@@ -273,11 +284,28 @@ export async function updateProject(id: number, data: any) {
             }
         }
 
+        // Handle Services
+        if (data.serviceIds !== undefined) {
+            // Delete existing
+            await db.delete(projectServices).where(eq(projectServices.projectId, id));
+
+            // Insert new if any
+            if (Array.isArray(data.serviceIds) && data.serviceIds.length > 0) {
+                await db.insert(projectServices).values(
+                    data.serviceIds.map((serviceId: number) => ({
+                        projectId: id,
+                        serviceId: serviceId,
+                    }))
+                );
+            }
+        }
+
         revalidatePath('/projects');
         revalidatePath('/admin/projects');
         if (updatedProject) {
             revalidatePath(`/projects/${updatedProject.slug}`);
         }
+        revalidatePath('/', 'layout');
 
         return {
             success: true,
@@ -335,6 +363,7 @@ export async function deleteProject(id: number) {
 
         revalidatePath('/projects');
         revalidatePath('/admin/projects');
+        revalidatePath('/', 'layout');
 
         return {
             success: true,

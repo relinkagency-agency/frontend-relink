@@ -96,7 +96,7 @@ export async function getServiceById(id: number) {
     }
 }
 
-// Create service
+
 export async function createService(data: any) {
     try {
         const [newService] = await db
@@ -114,6 +114,7 @@ export async function createService(data: any) {
 
         revalidatePath('/services');
         revalidatePath(`/services/${data.slug}`);
+        revalidatePath('/', 'layout');
 
         return {
             success: true,
@@ -142,6 +143,7 @@ export async function updateService(id: number, data: any) {
 
         revalidatePath('/services');
         revalidatePath(`/services/${updatedService.slug}`);
+        revalidatePath('/', 'layout');
 
         return {
             success: true,
@@ -185,6 +187,7 @@ export async function deleteService(id: number) {
         await db.delete(services).where(eq(services.id, id));
 
         revalidatePath('/services');
+        revalidatePath('/', 'layout');
 
         return {
             success: true,

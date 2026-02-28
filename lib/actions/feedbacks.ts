@@ -24,6 +24,9 @@ export async function submitFeedback(data: any) {
             })
             .returning();
 
+        revalidatePath('/admin/feedbacks');
+        revalidatePath('/', 'layout');
+
         try {
             await resend.emails.send({
                 from: 'Relink Agency <notifications@relink.agency>',
@@ -94,6 +97,7 @@ export async function updateFeedbackStatus(id: number, status: string) {
 
         revalidatePath('/admin/feedbacks');
         revalidatePath('/testimonials');
+        revalidatePath('/', 'layout');
         return {
             success: true,
             data: updatedFeedback,
@@ -111,6 +115,7 @@ export async function deleteFeedback(id: number) {
     try {
         await db.delete(feedbacks).where(eq(feedbacks.id, id));
         revalidatePath('/admin/feedbacks');
+        revalidatePath('/', 'layout');
         return { success: true };
     } catch (error) {
         console.error('Error deleting feedback:', error);

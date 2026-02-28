@@ -14,7 +14,7 @@ export default function Services({ services }: ServicesProps) {
     return null;
   }
 
-  // console.log("services", services);
+  console.log("services", services);
   
 
   return (

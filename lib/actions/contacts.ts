@@ -25,6 +25,9 @@ export async function submitContactForm(data: any) {
             })
             .returning();
 
+        revalidatePath('/admin/contacts');
+        revalidatePath('/', 'layout');
+
         try {
             await resend.emails.send({
                 from: 'Relink Agency <notifications@relink.agency>',
@@ -94,6 +97,7 @@ export async function updateContactStatus(id: number, status: string) {
             .returning();
 
         revalidatePath('/admin/contacts');
+        revalidatePath('/', 'layout');
 
         return {
             success: true,
@@ -112,6 +116,7 @@ export async function deleteContact(id: number) {
     try {
         await db.delete(contacts).where(eq(contacts.id, id));
         revalidatePath('/admin/contacts');
+        revalidatePath('/', 'layout');
         return { success: true };
     } catch (error) {
         console.error('Error deleting contact:', error);

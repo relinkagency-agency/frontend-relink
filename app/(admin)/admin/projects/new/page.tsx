@@ -1,8 +1,12 @@
 /** @format */
 
 import { ProjectForm } from "@/features/admin/ui/project-form";
+import { getServices } from "@/lib/actions/services";
 
-export default function NewProjectPage() {
+export default async function NewProjectPage() {
+    const servicesRes = await getServices();
+    const services = servicesRes.data || [];
+
     return (
         <div className="space-y-12 ">
             <div>
@@ -14,7 +18,7 @@ export default function NewProjectPage() {
                 </p>
             </div>
 
-            <ProjectForm />
+            <ProjectForm availableServices={services} />
         </div>
     );
 }
