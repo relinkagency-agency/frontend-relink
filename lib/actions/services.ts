@@ -114,6 +114,8 @@ export async function createService(data: any) {
 
         revalidatePath('/services');
         revalidatePath(`/services/${data.slug}`);
+        revalidatePath('/admin/services');
+        revalidatePath('/admin');
         revalidatePath('/', 'layout');
 
         return {
@@ -143,6 +145,8 @@ export async function updateService(id: number, data: any) {
 
         revalidatePath('/services');
         revalidatePath(`/services/${updatedService.slug}`);
+        revalidatePath('/admin/services');
+        revalidatePath('/admin');
         revalidatePath('/', 'layout');
 
         return {
@@ -187,6 +191,8 @@ export async function deleteService(id: number) {
         await db.delete(services).where(eq(services.id, id));
 
         revalidatePath('/services');
+        revalidatePath('/admin/services');
+        revalidatePath('/admin');
         revalidatePath('/', 'layout');
 
         return {

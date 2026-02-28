@@ -146,6 +146,8 @@ export async function createArticle(data: any) {
 
         revalidatePath('/news-insight');
         revalidatePath(`/news-insight/${data.slug}`);
+        revalidatePath('/admin/articles');
+        revalidatePath('/admin');
         revalidatePath('/', 'layout');
 
         return {
@@ -181,6 +183,8 @@ export async function updateArticle(id: number, data: any) {
 
         revalidatePath('/news-insight');
         revalidatePath(`/news-insight/${updatedArticle.slug}`);
+        revalidatePath('/admin/articles');
+        revalidatePath('/admin');
         revalidatePath('/', 'layout');
 
         return {
@@ -221,6 +225,8 @@ export async function deleteArticle(id: number) {
         await db.delete(articles).where(eq(articles.id, id));
 
         revalidatePath('/news-insight');
+        revalidatePath('/admin/articles');
+        revalidatePath('/admin');
         revalidatePath('/', 'layout');
 
         return {
@@ -332,6 +338,10 @@ export async function createAuthor(data: any) {
             })
             .returning();
 
+        revalidatePath('/', 'layout');
+        revalidatePath('/admin/articles');
+        revalidatePath('/admin');
+
         return {
             success: true,
             data: newAuthor,
@@ -356,6 +366,10 @@ export async function createCategory(data: any) {
                 description: data.description,
             })
             .returning();
+
+        revalidatePath('/', 'layout');
+        revalidatePath('/admin/articles');
+        revalidatePath('/admin');
 
         return {
             success: true,

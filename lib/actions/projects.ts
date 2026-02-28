@@ -208,6 +208,7 @@ export async function createProject(data: any) {
 
         revalidatePath('/projects');
         revalidatePath('/admin/projects');
+        revalidatePath('/admin');
         revalidatePath(`/projects/${data.slug}`);
         revalidatePath('/', 'layout');
 
@@ -302,6 +303,7 @@ export async function updateProject(id: number, data: any) {
 
         revalidatePath('/projects');
         revalidatePath('/admin/projects');
+        revalidatePath('/admin');
         if (updatedProject) {
             revalidatePath(`/projects/${updatedProject.slug}`);
         }
@@ -363,6 +365,7 @@ export async function deleteProject(id: number) {
 
         revalidatePath('/projects');
         revalidatePath('/admin/projects');
+        revalidatePath('/admin');
         revalidatePath('/', 'layout');
 
         return {

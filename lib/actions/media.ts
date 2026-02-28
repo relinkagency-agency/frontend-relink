@@ -35,6 +35,7 @@ export async function saveMediaToDatabase(input: SaveMediaInput) {
             .returning();
 
         revalidatePath('/admin/media');
+        revalidatePath('/admin');
         revalidatePath('/', 'layout');
 
         return {
@@ -66,6 +67,7 @@ export async function deleteMediaFromDatabase(id: number) {
         await db.delete(media).where(eq(media.id, id));
 
         revalidatePath('/admin/media');
+        revalidatePath('/admin');
         revalidatePath('/', 'layout');
 
         return {

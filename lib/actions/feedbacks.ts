@@ -25,6 +25,7 @@ export async function submitFeedback(data: any) {
             .returning();
 
         revalidatePath('/admin/feedbacks');
+        revalidatePath('/admin');
         revalidatePath('/', 'layout');
 
         try {
@@ -96,6 +97,7 @@ export async function updateFeedbackStatus(id: number, status: string) {
             .returning();
 
         revalidatePath('/admin/feedbacks');
+        revalidatePath('/admin');
         revalidatePath('/testimonials');
         revalidatePath('/', 'layout');
         return {
@@ -115,6 +117,7 @@ export async function deleteFeedback(id: number) {
     try {
         await db.delete(feedbacks).where(eq(feedbacks.id, id));
         revalidatePath('/admin/feedbacks');
+        revalidatePath('/admin');
         revalidatePath('/', 'layout');
         return { success: true };
     } catch (error) {

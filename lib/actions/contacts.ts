@@ -26,6 +26,7 @@ export async function submitContactForm(data: any) {
             .returning();
 
         revalidatePath('/admin/contacts');
+        revalidatePath('/admin');
         revalidatePath('/', 'layout');
 
         try {
@@ -97,6 +98,7 @@ export async function updateContactStatus(id: number, status: string) {
             .returning();
 
         revalidatePath('/admin/contacts');
+        revalidatePath('/admin');
         revalidatePath('/', 'layout');
 
         return {
@@ -116,6 +118,7 @@ export async function deleteContact(id: number) {
     try {
         await db.delete(contacts).where(eq(contacts.id, id));
         revalidatePath('/admin/contacts');
+        revalidatePath('/admin');
         revalidatePath('/', 'layout');
         return { success: true };
     } catch (error) {
