@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Article } from "@/lib/strapi.types";
+import { Article } from "@/lib/types";
 
 export default function BlogMain({ articles }: { articles: Article[] }) {
   if (!articles?.length) return null;

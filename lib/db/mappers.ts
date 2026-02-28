@@ -1,6 +1,6 @@
 /** @format */
 
-import { Project, Service, Article } from "@/lib/strapi.types";
+import { Project, Service, Article } from "@/lib/types";
 
 /**
  * Maps Drizzle Project (with relations) to UI Project type

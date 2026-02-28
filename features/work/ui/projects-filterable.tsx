@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Project, Service } from "@/lib/strapi.types";
+import { Project, Service } from "@/lib/types";
 import { ProjectCard } from "@/features/work/ui/card";
 import { motion, AnimatePresence } from "framer-motion";
 

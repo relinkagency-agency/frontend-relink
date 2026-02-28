@@ -1,6 +1,6 @@
 'use client';
 
-import { Project } from "@/lib/strapi.types";
+import { Project } from "@/lib/types";
 import { CldImage } from "next-cloudinary";
 
 export default function FeaturedProject({ project }: { project: Project }) {

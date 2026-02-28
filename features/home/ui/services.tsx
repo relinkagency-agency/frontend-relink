@@ -3,7 +3,7 @@
 "use client";
 
 import React from "react";
-import type { Service } from "@/lib/strapi.types";
+import type { Service } from "@/lib/types";
 
 interface ServicesProps {
   services: Service[];

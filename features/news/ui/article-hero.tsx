@@ -1,7 +1,7 @@
 /** @format */
 import React from "react";
 import Image from "next/image";
-import { Article } from "@/lib/strapi.types";
+import { Article } from "@/lib/types";
 
 interface ArticleHeroProps {
     article: Article;

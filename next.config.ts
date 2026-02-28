@@ -10,20 +10,8 @@ const nextConfig = {
         hostname: "**.cloudinary.com",
       },
       {
-        protocol: "http",
-        hostname: "localhost",
-      },
-      {
-        protocol: "http",
-        hostname: "127.0.0.1",
-      },
-      {
         protocol: "https",
-        hostname: "**.placehold.co",
-      },
-      {
-        protocol: "https",
-        hostname: "**.strapiapp.com",
+        hostname: "**.cloudinary.com",
       },
     ],
   },

@@ -3,7 +3,7 @@
 
 import React from "react";
 import { ProjectCard } from "../../../work/ui/card";
-import { Project } from "@/lib/strapi.types";
+import { Project } from "@/lib/types";
 
 
 export function ProjectList({ projects }: { projects: Project[] }) {

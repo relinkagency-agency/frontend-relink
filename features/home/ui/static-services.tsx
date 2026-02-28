@@ -4,7 +4,7 @@
 
 import React from "react";
 import Services from "./services";
-import type { Service } from "@/lib/strapi.types";
+import type { Service } from "@/lib/types";
 
 export type ServiceCategory = "development" | "marketing" | "ai";
 

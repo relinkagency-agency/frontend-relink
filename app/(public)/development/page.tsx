@@ -59,7 +59,7 @@ export default function DevelopmentPage() {
                         items={[
                             {
                                 title: "01 - What tech stack do you use?",
-                                body: "We primarily work with Next.js, React, Node.js, and modern headless CMS solutions like Strapi."
+                                body: "We primarily work with Next.js, React, Node.js, and modern headless database solutions like Neon."
                             },
                             {
                                 title: "02 - Do you build mobile apps?",

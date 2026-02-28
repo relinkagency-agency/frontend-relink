@@ -1,6 +1,6 @@
 'use client';
 
-import { Project } from "@/lib/strapi.types";
+import { Project } from "@/lib/types";
 import { CldImage } from "next-cloudinary";
 
 export function ProjectCard({ project, className = "" }: { project: Project, className?: string }) {
