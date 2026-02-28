@@ -8,6 +8,7 @@ import { createProject, updateProject } from '@/lib/actions/projects';
 import { saveMediaToDatabase } from '@/lib/actions/media';
 import { Loader2, Plus, X, Trash2, GripVertical } from 'lucide-react';
 import { CldUploadWidget } from 'next-cloudinary';
+import { slugify } from '@/lib/utils';
 
 interface ProjectFormProps {
     initialData?: any;
@@ -18,6 +19,7 @@ export function ProjectForm({ initialData }: ProjectFormProps) {
     const [loading, setLoading] = useState(false);
     const [thumbnail, setThumbnail] = useState<any>(initialData?.thumbnail || null);
     const [heroBanner, setHeroBanner] = useState<any>(initialData?.heroBanner || null);
+    const [isSlugManual, setIsSlugManual] = useState(!!initialData?.slug);
 
     const [deliverables, setDeliverables] = useState<any[]>(initialData?.deliverables || []);
 
@@ -35,6 +37,12 @@ export function ProjectForm({ initialData }: ProjectFormProps) {
         challenge: initialData?.challenge || '',
         solution: initialData?.solution ? (typeof initialData.solution === 'string' ? initialData.solution : JSON.stringify(initialData.solution, null, 2)) : '',
     });
+
+    useEffect(() => {
+        if (!isSlugManual && formData.title) {
+            setFormData(prev => ({ ...prev, slug: slugify(prev.title) }));
+        }
+    }, [formData.title, isSlugManual]);
 
     const handleAddDeliverable = () => {
         setDeliverables([...deliverables, { label: '', details: '' }]);
@@ -121,8 +129,9 @@ export function ProjectForm({ initialData }: ProjectFormProps) {
             }
 
             if (result.success) {
-                router.push('/admin/projects'); 
-                router.refresh(); 
+                router.push('/admin/projects');
+                router.refresh();
+            } else {
                 alert(result.error || 'Something went wrong');
             }
         } catch (error) {
@@ -150,7 +159,10 @@ export function ProjectForm({ initialData }: ProjectFormProps) {
                         label="Slug"
                         placeholder="e.g. relink-agency"
                         value={formData.slug}
-                        onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
+                        onChange={(e) => {
+                            setIsSlugManual(true);
+                            setFormData({ ...formData, slug: e.target.value });
+                        }}
                         required
                     />
                 </div>
@@ -309,6 +321,9 @@ export function ProjectForm({ initialData }: ProjectFormProps) {
                     <CldUploadWidget
                         uploadPreset="relink-preset"
                         options={{ folder: 'projects/gallery' }}
+                        onClose={() => {
+                            document.body.style.overflow = 'auto';
+                        }}
                         onSuccess={(result: any) => {
                             const info = result?.info;
                             if (info && typeof info !== 'string') {
@@ -321,6 +336,7 @@ export function ProjectForm({ initialData }: ProjectFormProps) {
                                     resourceType: info.resource_type,
                                 });
                             }
+                            document.body.style.overflow = 'auto';
                         }}
                     >
                         {({ open }) => (

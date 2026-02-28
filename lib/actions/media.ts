@@ -5,6 +5,8 @@
 import { db } from '@/lib/db';
 import { media } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
+import { revalidatePath } from 'next/cache';
+import { deleteImage } from '@/lib/cloudinary';
 
 interface SaveMediaInput {
     url: string;
@@ -47,9 +49,20 @@ export async function saveMediaToDatabase(input: SaveMediaInput) {
 }
 
 
+
 export async function deleteMediaFromDatabase(id: number) {
     try {
+        const record = await db.query.media.findFirst({
+            where: eq(media.id, id)
+        });
+
+        if (record?.publicId) {
+            await deleteImage(record.publicId);
+        }
+
         await db.delete(media).where(eq(media.id, id));
+
+        revalidatePath('/admin/media');
 
         return {
             success: true,

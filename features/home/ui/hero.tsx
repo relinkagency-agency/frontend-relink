@@ -1,7 +1,7 @@
 /** @format */
 
 import Image from "next/image";
-import bg from "../../../public/hero-bg-4.jpg";
+import bg from "../../../public/hero.jpg";
 
 interface HeroProps {
   title?: React.ReactNode;
@@ -56,8 +56,9 @@ export default function Hero({
           alt="Relink Agency Hero"
           fill
           priority
+          quality={100}
           sizes="100vw"
-          className="object-cover"
+          className="object-cover object-center"
         />
 
         <div className="absolute text-white bottom-20 md:bottom-20 lg:bottom-20 left-5 md:left-20 lg:left-20 md:max-w-4xl max-w-[800px]">

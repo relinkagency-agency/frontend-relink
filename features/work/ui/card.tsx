@@ -1,7 +1,7 @@
-/** @format */
+'use client';
 
-import Image from "next/image";
 import { Project } from "@/lib/strapi.types";
+import { CldImage } from "next-cloudinary";
 
 export function ProjectCard({ project, className = "" }: { project: Project, className?: string }) {
   const category = project.services?.map(s => s.title).join(", ") || "Project";
@@ -11,9 +11,9 @@ export function ProjectCard({ project, className = "" }: { project: Project, cla
       href={`/projects/${project.slug}`}
       className={`group relative h-[480px] w-full overflow-hidden bg-[#0B0D13] block border border-white/5 transition-all duration-700 hover:border-white/20 hover:shadow-[0_0_40px_rgba(0,0,0,0.5)] ${className}`}
     >
-      {project.thumbnail?.url ? (
-        <Image
-          src={project.thumbnail.url}
+      {project.thumbnail?.publicId ? (
+        <CldImage
+          src={project.thumbnail.publicId}
           alt={project.thumbnail.alt || project.title}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

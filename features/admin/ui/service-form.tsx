@@ -2,11 +2,12 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { AdminInput } from './form-controls';
 import { createService, updateService } from '@/lib/actions/services';
 import { Loader2 } from 'lucide-react';
+import { slugify } from '@/lib/utils';
 
 interface ServiceFormProps {
     initialData?: any;
@@ -15,6 +16,7 @@ interface ServiceFormProps {
 export function ServiceForm({ initialData }: ServiceFormProps) {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
+    const [isSlugManual, setIsSlugManual] = useState(!!initialData?.slug);
 
     const [formData, setFormData] = useState({
         title: initialData?.title || '',
@@ -22,6 +24,12 @@ export function ServiceForm({ initialData }: ServiceFormProps) {
         shortDescription: initialData?.shortDescription || '',
         order: initialData?.order || 0,
     });
+
+    useEffect(() => {
+        if (!isSlugManual && formData.title) {
+            setFormData(prev => ({ ...prev, slug: slugify(prev.title) }));
+        }
+    }, [formData.title, isSlugManual]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -72,7 +80,10 @@ export function ServiceForm({ initialData }: ServiceFormProps) {
                         label="Slug"
                         placeholder="e.g. brand-strategy"
                         value={formData.slug}
-                        onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
+                        onChange={(e) => {
+                            setIsSlugManual(true);
+                            setFormData({ ...formData, slug: e.target.value });
+                        }}
                         required
                     />
                 </div>

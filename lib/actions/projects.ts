@@ -10,10 +10,18 @@ import cloudinary, { uploadImage, deleteImage } from '@/lib/cloudinary';
 
 export async function getProjects() {
     try {
-        const allProjects = await db
-            .select()
-            .from(projects)
-            .orderBy(desc(projects.createdAt));
+        const allProjects = await db.query.projects.findMany({
+            orderBy: desc(projects.createdAt),
+            with: {
+                thumbnail: true,
+                heroBanner: true,
+                services: {
+                    with: {
+                        service: true,
+                    },
+                },
+            },
+        });
 
         return {
             success: true,
@@ -117,11 +125,19 @@ export async function getProjectById(id: number) {
 
 export async function getFeaturedProjects() {
     try {
-        const featuredProjects = await db
-            .select()
-            .from(projects)
-            .where(eq(projects.isFeatured, true))
-            .orderBy(projects.featuredOrder);
+        const featuredProjects = await db.query.projects.findMany({
+            where: eq(projects.isFeatured, true),
+            orderBy: projects.featuredOrder,
+            with: {
+                thumbnail: true,
+                heroBanner: true,
+                services: {
+                    with: {
+                        service: true,
+                    },
+                },
+            },
+        });
 
         return {
             success: true,
@@ -174,14 +190,15 @@ export async function createProject(data: any) {
             await db.insert(projectGallery).values(
                 data.gallery.map((g: any, index: number) => ({
                     projectId: newProject.id,
-                    mediaId: g.mediaId || g.id, 
+                    mediaId: g.mediaId || g.id,
                     order: index,
                 }))
             );
         }
 
-        revalidatePath('/work');
-        revalidatePath(`/work/${data.slug}`);
+        revalidatePath('/projects');
+        revalidatePath('/admin/projects');
+        revalidatePath(`/projects/${data.slug}`);
 
         return {
             success: true,
@@ -256,9 +273,10 @@ export async function updateProject(id: number, data: any) {
             }
         }
 
-        revalidatePath('/work');
+        revalidatePath('/projects');
+        revalidatePath('/admin/projects');
         if (updatedProject) {
-            revalidatePath(`/work/${updatedProject.slug}`);
+            revalidatePath(`/projects/${updatedProject.slug}`);
         }
 
         return {
@@ -315,7 +333,8 @@ export async function deleteProject(id: number) {
         // Delete from database
         await db.delete(projects).where(eq(projects.id, id));
 
-        revalidatePath('/work');
+        revalidatePath('/projects');
+        revalidatePath('/admin/projects');
 
         return {
             success: true,

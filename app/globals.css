@@ -147,4 +147,8 @@
   p {
     font-family: var(--font-relink-neue);
   }
+
+  button {
+    cursor: pointer;
+  }
 }

@@ -1,8 +1,10 @@
 /** @format */
 
 import Link from "next/link";
-import { Plus, Search, MoreHorizontal, Edit, Trash2, ExternalLink, Briefcase } from "lucide-react";
+import { Plus, Search, Briefcase } from "lucide-react";
 import { getProjects } from "@/lib/actions/projects";
+import { ProjectThumbnail } from "@/features/admin/ui/project-thumbnail";
+import { ProjectActions } from "@/features/admin/ui/project-actions";
 
 export default async function AdminProjectsPage() {
     const result = await getProjects();
@@ -55,9 +57,10 @@ export default async function AdminProjectsPage() {
                             <tr key={project.id} className="group hover:bg-white/[0.02] transition-colors">
                                 <td className="px-8 py-6">
                                     <div className="flex items-center gap-4">
-                                        <div className="w-16 h-12 rounded-none bg-white/5 overflow-hidden border border-white/5 flex items-center justify-center text-white/10 font-bold uppercase transition-colors group-hover:bg-white/10">
-                                            {project.title.charAt(0)}
-                                        </div>
+                                        <ProjectThumbnail
+                                            publicId={project.thumbnail?.publicId}
+                                            title={project.title}
+                                        />
                                         <div>
                                             <div className="text-sm font-semibold text-white/90 font-[family-name:var(--font-relink-neue)] tracking-tight">
                                                 {project.title}
@@ -83,27 +86,7 @@ export default async function AdminProjectsPage() {
                                     {project.year || "2024"}
                                 </td>
                                 <td className="px-8 py-6 text-right">
-                                    <div className="flex items-center justify-end gap-2">
-                                        <Link
-                                            href={`/admin/projects/${project.id}`}
-                                            className="p-2.5 rounded-none bg-white/5 border border-white/5 text-white/40 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all"
-                                        >
-                                            <Edit className="w-4 h-4" />
-                                        </Link>
-                                        <button className="p-2.5 rounded-none bg-red-500/5 border border-red-500/10 text-red-500/40 hover:text-red-500 hover:bg-red-500/10 hover:border-red-500/20 transition-all">
-                                            <Trash2 className="w-4 h-4" />
-                                        </button>
-                                        {project.liveUrl && (
-                                            <a
-                                                href={project.liveUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="p-2.5 rounded-none bg-white/5 border border-white/5 text-white/40 hover:text-white hover:bg-white/10 transition-all"
-                                            >
-                                                <ExternalLink className="w-4 h-4" />
-                                            </a>
-                                        )}
-                                    </div>
+                                    <ProjectActions id={project.id} liveUrl={project.liveUrl} />
                                 </td>
                             </tr>
                         ))}

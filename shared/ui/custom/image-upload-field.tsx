@@ -45,7 +45,7 @@ export function ImageUploadField({
                 </label>
             )}
 
-            {value ? (
+            {value && (
                 <div className="relative inline-block">
                     <div className="relative rounded-none overflow-hidden border-2 border-border bg-card">
                         <CldImage
@@ -71,7 +71,9 @@ export function ImageUploadField({
                         {value.width} × {value.height}px • {value.format.toUpperCase()}
                     </div>
                 </div>
-            ) : (
+            )}
+
+            <div className={value ? "hidden" : "block"}>
                 <CldUploadWidget
                     uploadPreset="relink-preset"
                     options={{
@@ -82,6 +84,11 @@ export function ImageUploadField({
                         maxFileSize: 10000000, // 10MB
                     }}
                     onUpload={() => setUploading(true)}
+                    onClose={() => {
+                        setUploading(false);
+                        // Fallback to ensure scroll is restored
+                        document.body.style.overflow = 'auto';
+                    }}
                     onSuccess={(result: any) => {
                         const info = result?.info;
                         if (info && typeof info !== 'string') {
@@ -95,10 +102,12 @@ export function ImageUploadField({
                             });
                         }
                         setUploading(false);
+                        document.body.style.overflow = 'auto';
                     }}
                     onError={(error: any) => {
                         console.error('Upload error:', error);
                         setUploading(false);
+                        document.body.style.overflow = 'auto';
                     }}
                 >
                     {({ open }) => (
@@ -147,7 +156,7 @@ export function ImageUploadField({
                         </button>
                     )}
                 </CldUploadWidget>
-            )}
+            </div>
         </div>
     );
 }

@@ -10,6 +10,7 @@ import { createArticle, updateArticle, getAuthors, getCategories } from '@/lib/a
 import { saveMediaToDatabase } from '@/lib/actions/media';
 import { Loader2, Send, Save } from 'lucide-react';
 import { QuickAdd } from './quick-add';
+import { slugify } from '@/lib/utils';
 
 interface ArticleFormProps {
     initialData?: any;
@@ -21,6 +22,7 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
     const [cover, setCover] = useState<any>(initialData?.cover || null);
     const [authors, setAuthors] = useState<any[]>([]);
     const [categories, setCategories] = useState<any[]>([]);
+    const [isSlugManual, setIsSlugManual] = useState(!!initialData?.slug);
 
     const [formData, setFormData] = useState({
         title: initialData?.title || '',
@@ -31,6 +33,12 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
         authorId: initialData?.authorId || '',
         categoryId: initialData?.categoryId || '',
     });
+
+    useEffect(() => {
+        if (!isSlugManual && formData.title) {
+            setFormData(prev => ({ ...prev, slug: slugify(prev.title) }));
+        }
+    }, [formData.title, isSlugManual]);
 
     useEffect(() => {
         async function loadData() {
@@ -106,7 +114,10 @@ export function ArticleForm({ initialData }: ArticleFormProps) {
                             label="Slug"
                             placeholder="future-of-digital-agencies"
                             value={formData.slug}
-                            onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
+                            onChange={(e) => {
+                                setIsSlugManual(true);
+                                setFormData({ ...formData, slug: e.target.value });
+                            }}
                             required
                         />
 

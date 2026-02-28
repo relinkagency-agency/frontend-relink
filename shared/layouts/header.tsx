@@ -54,8 +54,8 @@ export default function Header() {
         >
           <div
             className={`transition-all duration-300 ${hideNav
-                ? "opacity-0 -translate-y-3 pointer-events-none"
-                : "opacity-100 translate-y-0"
+              ? "opacity-0 -translate-y-3 pointer-events-none"
+              : "opacity-100 translate-y-0"
               }`}
           >
             <h4 className="font-relink-headline text-[38px] select-none uppercase">
@@ -66,8 +66,8 @@ export default function Header() {
           <nav className="flex items-center gap-6">
             <div
               className={`flex gap-6 items-center text-[14px] uppercase tracking-[0.15em] transition-all duration-300 ${hideNav
-                  ? "opacity-0 -translate-y-3 pointer-events-none"
-                  : "opacity-100 translate-y-0"
+                ? "opacity-0 -translate-y-3 pointer-events-none"
+                : "opacity-100 translate-y-0"
                 }`}
             >
               <TransitionLink href="/projects">PROJECTS</TransitionLink>

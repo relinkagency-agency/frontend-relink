@@ -45,10 +45,10 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
             await authClient.signOut({
                 fetchOptions: {
                     onSuccess: () => {
-                        router.push("/login"); 
+                        router.push("/login");
                     },
                     onError: () => {
-                        setLoading(false); 
+                        setLoading(false);
                     }
                 },
             });
@@ -63,54 +63,58 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
                 <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] mix-blend-overlay" />
             </div>
 
-            <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-fit px-4">
-                <nav className="flex items-center gap-1 p-1 bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-none shadow-2xl">
-                    {navItems.map((item) => {
-                        const isActive = pathname === item.href || (item.href !== '/admin' && pathname.startsWith(item.href));
+            <header className="fixed top-6 left-0 right-0 z-50 px-6 md:px-12 lg:px-24">
+                <nav className="mx-auto max-w-[1400px] w-full flex items-center justify-between p-1 bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-none shadow-2xl">
+                    <div className="flex items-center gap-1">
+                        {navItems.map((item) => {
+                            const isActive = pathname === item.href || (item.href !== '/admin' && pathname.startsWith(item.href));
 
-                        return (
-                            <Link
-                                key={item.name}
-                                href={item.href}
-                                className={cn(
-                                    "relative px-4 py-2 rounded-none text-sm font-medium transition-all duration-300 flex items-center gap-2 group",
-                                    isActive ? "text-[#0B0D13]" : "text-white/40 hover:text-white/70"
-                                )}
-                            >
-                                {isActive && (
-                                    <motion.div
-                                        layoutId="nav-active"
-                                        className="absolute inset-0 bg-amber-50 rounded-none"
-                                        transition={{ type: "spring", bounce: 0, duration: 0.4 }}
-                                    />
-                                )}
-                                <item.icon className={cn("w-4 h-4 transition-colors relative z-10", isActive ? "text-[#0B0D13]" : "text-white/20 group-hover:text-white/40")} />
-                                <span className="hidden sm:inline font-[family-name:var(--font-relink-neue)] relative z-10">{item.name}</span>
-                            </Link>
-                        );
-                    })}
+                            return (
+                                <Link
+                                    key={item.name}
+                                    href={item.href}
+                                    className={cn(
+                                        "relative px-4 py-2 rounded-none text-sm font-medium transition-all duration-300 flex items-center gap-2 group",
+                                        isActive ? "text-[#0B0D13]" : "text-white/40 hover:text-white/70"
+                                    )}
+                                >
+                                    {isActive && (
+                                        <motion.div
+                                            layoutId="nav-active"
+                                            className="absolute inset-0 bg-amber-50 rounded-none"
+                                            transition={{ type: "spring", bounce: 0, duration: 0.4 }}
+                                        />
+                                    )}
+                                    <item.icon className={cn("w-4 h-4 transition-colors relative z-10", isActive ? "text-[#0B0D13]" : "text-white/20 group-hover:text-white/40")} />
+                                    <span className="hidden sm:inline font-[family-name:var(--font-relink-neue)] relative z-10">{item.name}</span>
+                                </Link>
+                            );
+                        })}
+                    </div>
 
-                    <div className="w-[1px] h-4 bg-white/10 mx-2 hidden sm:block" />
+                    <div className="flex items-center gap-1">
+                        <div className="w-[1px] h-4 bg-white/10 mx-2 hidden sm:block" />
 
-                    <Link
-                        href="/"
-                        target="_blank"
-                        className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white/40 hover:text-white transition-all duration-300 font-[family-name:var(--font-relink-neue)] group"
-                    >
-                        <span className="hidden sm:inline">Site</span>
-                        <ExternalLink className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                    </Link>
+                        <Link
+                            href="/"
+                            target="_blank"
+                            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white/40 hover:text-white transition-all duration-300 font-[family-name:var(--font-relink-neue)] group"
+                        >
+                            <span className="hidden sm:inline">Site</span>
+                            <ExternalLink className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                        </Link>
 
-                    <div className="w-[1px] h-4 bg-white/10 mx-2 hidden sm:block" />
+                        <div className="w-[1px] h-4 bg-white/10 mx-2 hidden sm:block" />
 
-                    <button
-                        onClick={handleLogout}
-                        disabled={loading}
-                        className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-red-400/60 hover:text-red-400 transition-all duration-300 font-[family-name:var(--font-relink-neue)] group disabled:opacity-50"
-                    >
-                        <span className="hidden sm:inline">Logout</span>
-                        {loading ? <Loader2 className="w-3 h-3 animate-spin" /> : <LogOut className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />}
-                    </button>
+                        <button
+                            onClick={handleLogout}
+                            disabled={loading}
+                            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-red-400/60 hover:text-red-400 transition-all duration-300 font-[family-name:var(--font-relink-neue)] group disabled:opacity-50"
+                        >
+                            <span className="hidden sm:inline">Logout</span>
+                            {loading ? <Loader2 className="w-3 h-3 animate-spin" /> : <LogOut className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />}
+                        </button>
+                    </div>
                 </nav>
             </header>
 

@@ -20,6 +20,7 @@ export type StrapiSingleResponse<T> = {
 export type StrapiMedia = {
   id: number;
   url: string;
+  publicId: string;
   alternativeText?: string | null;
 };
 
@@ -40,8 +41,8 @@ export type Service = {
   slug: string;
   shortDescription?: string | null;
   order: number;
-  icon?: { url: string; alt?: string | null } | null;
-  coverImage?: { url: string; alt?: string | null } | null;
+  icon?: { id: number; url: string; publicId: string; alt?: string | null } | null;
+  coverImage?: { id: number; url: string; publicId: string; alt?: string | null } | null;
 };
 
 export type ServicesResponse = {
@@ -86,11 +87,11 @@ export type Project = {
   clientName?: string | null;
   liveUrl?: string | null;
   isFeatured: boolean;
-  thumbnail?: { url: string; alt?: string | null } | null;
-  gallery?: Array<{ url: string; alt?: string | null }> | null;
+  thumbnail?: { id: number; url: string; publicId: string; alt?: string | null } | null;
+  gallery?: Array<{ id: number; url: string; publicId: string; alt?: string | null }> | null;
   services: Array<{ id: number; title: string; slug: string }>;
   deliverables: Array<{ label: string; details?: string | null }>;
-  heroBanner?: { url: string; alt?: string | null } | null;
+  heroBanner?: { id: number; url: string; publicId: string; alt?: string | null } | null;
 };
 
 export type ProjectsResponse = {
@@ -133,7 +134,7 @@ export type Article = {
   title: string;
   excerpt?: string | null;
   slug: string;
-  coverImage?: { url: string; alt?: string | null } | null;
+  coverImage?: { id: number; url: string; publicId: string; alt?: string | null } | null;
   author?: { id: number; name?: string | null; slug?: string | null } | null;
   category?: { id: number; name?: string | null; slug?: string | null } | null;
   blocks?: any;

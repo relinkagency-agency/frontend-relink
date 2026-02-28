@@ -144,8 +144,8 @@ export async function createArticle(data: any) {
             })
             .returning();
 
-        revalidatePath('/news');
-        revalidatePath(`/news/${data.slug}`);
+        revalidatePath('/news-insight');
+        revalidatePath(`/news-insight/${data.slug}`);
 
         return {
             success: true,
@@ -178,8 +178,8 @@ export async function updateArticle(id: number, data: any) {
             .where(eq(articles.id, id))
             .returning();
 
-        revalidatePath('/news');
-        revalidatePath(`/news/${updatedArticle.slug}`);
+        revalidatePath('/news-insight');
+        revalidatePath(`/news-insight/${updatedArticle.slug}`);
 
         return {
             success: true,
@@ -218,7 +218,7 @@ export async function deleteArticle(id: number) {
 
         await db.delete(articles).where(eq(articles.id, id));
 
-        revalidatePath('/news');
+        revalidatePath('/news-insight');
 
         return {
             success: true,
