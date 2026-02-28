@@ -122,6 +122,6 @@ export async function deleteFeedback(id: number) {
         return { success: true };
     } catch (error) {
         console.error('Error deleting feedback:', error);
-        throw new Error('Failed to delete feedback');
+        return { success: false, error: 'Failed to delete feedback' };
     }
 }

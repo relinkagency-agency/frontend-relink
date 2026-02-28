@@ -7,6 +7,7 @@ import { deleteMediaFromDatabase } from "@/lib/actions/media";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ConfirmDialog } from "@/shared/ui/custom/confirm-dialog";
+import { toast } from "sonner";
 
 interface MediaItem {
     id: number;
@@ -34,14 +35,15 @@ export function MediaGrid({ items }: MediaGridProps) {
         try {
             const result = await deleteMediaFromDatabase(itemToDelete);
             if (result.success) {
+                toast.success("Media deleted successfully");
                 router.refresh();
                 setItemToDelete(null);
             } else {
-                alert(result.error || "Failed to delete media");
+                toast.error(result.error || "Failed to delete media");
             }
         } catch (error) {
             console.error(error);
-            alert("An error occurred");
+            toast.error("An error occurred");
         } finally {
             setDeletingId(null);
         }

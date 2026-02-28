@@ -5,21 +5,27 @@ import { deleteContact } from "@/lib/actions/contacts";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
+import { toast } from "sonner";
 
 export function DeleteContactButton({ id }: { id: number }) {
     const router = useRouter();
     const [isDeleting, setIsDeleting] = useState(false);
 
     const handleDelete = async () => {
-        if (!confirm("Are you sure you want to delete this enquiry?")) return;
+        if (!confirm("Are you sure? This will permanently delete the enquiry.")) return;
 
         setIsDeleting(true);
         try {
-            await deleteContact(id);
-            router.refresh();
+            const result = await deleteContact(id);
+            if (result.success) {
+                toast.success("Enquiry deleted successfully");
+                router.refresh();
+            } else {
+                toast.error(result.error || "Failed to delete enquiry");
+            }
         } catch (error) {
             console.error(error);
-            alert("Failed to delete contact");
+            toast.error("An error occurred");
         } finally {
             setIsDeleting(false);
         }

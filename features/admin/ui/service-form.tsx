@@ -8,6 +8,7 @@ import { AdminInput } from './form-controls';
 import { createService, updateService } from '@/lib/actions/services';
 import { Loader2 } from 'lucide-react';
 import { slugify } from '@/lib/utils';
+import { toast } from 'sonner';
 
 interface ServiceFormProps {
     initialData?: any;
@@ -50,14 +51,15 @@ export function ServiceForm({ initialData }: ServiceFormProps) {
             }
 
             if (result.success) {
+                toast.success(initialData ? 'Service updated successfully' : 'Service created successfully');
                 router.push('/admin/services');
                 router.refresh();
             } else {
-                alert(result.error || 'Something went wrong');
+                toast.error(result.error || 'Something went wrong');
             }
         } catch (error) {
             console.error(error);
-            alert('An error occurred');
+            toast.error('An error occurred');
         } finally {
             setLoading(false);
         }

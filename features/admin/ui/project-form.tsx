@@ -9,6 +9,7 @@ import { saveMediaToDatabase } from '@/lib/actions/media';
 import { Loader2, Plus, X, Trash2, GripVertical } from 'lucide-react';
 import { CldUploadWidget } from 'next-cloudinary';
 import { slugify } from '@/lib/utils';
+import { toast } from 'sonner';
 
 interface ProjectFormProps {
     initialData?: any;
@@ -134,14 +135,15 @@ export function ProjectForm({ initialData, availableServices = [] }: ProjectForm
             }
 
             if (result.success) {
+                toast.success(initialData ? 'Project updated successfully' : 'Project created successfully');
                 router.push('/admin/projects');
                 router.refresh();
             } else {
-                alert(result.error || 'Something went wrong');
+                toast.error(result.error || 'Something went wrong');
             }
         } catch (error) {
             console.error(error);
-            alert('An error occurred');
+            toast.error('An error occurred');
         } finally {
             setLoading(false);
         }

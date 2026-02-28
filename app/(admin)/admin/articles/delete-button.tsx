@@ -5,21 +5,27 @@ import { deleteArticle } from "@/lib/actions/articles";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
+import { toast } from "sonner";
 
 export function DeleteArticleButton({ id }: { id: number }) {
     const router = useRouter();
     const [isDeleting, setIsDeleting] = useState(false);
 
     const handleDelete = async () => {
-        if (!confirm("Are you sure you want to delete this article?")) return;
+        if (!confirm("Are you sure? This will permanently delete the article.")) return;
 
         setIsDeleting(true);
         try {
-            await deleteArticle(id);
-            router.refresh();
+            const result = await deleteArticle(id);
+            if (result.success) {
+                toast.success("Article deleted successfully");
+                router.refresh();
+            } else {
+                toast.error(result.error || "Failed to delete article");
+            }
         } catch (error) {
             console.error(error);
-            alert("Failed to delete article");
+            toast.error("An error occurred");
         } finally {
             setIsDeleting(false);
         }

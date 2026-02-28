@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { deleteProject } from "@/lib/actions/projects";
 import { ConfirmDialog } from "@/shared/ui/custom/confirm-dialog";
+import { toast } from "sonner";
 
 interface ProjectActionsProps {
     id: number;
@@ -23,14 +24,15 @@ export function ProjectActions({ id, liveUrl }: ProjectActionsProps) {
         try {
             const result = await deleteProject(id);
             if (result.success) {
+                toast.success("Project deleted successfully");
                 router.refresh();
                 setShowConfirm(false);
             } else {
-                alert(result.error || "Failed to delete project");
+                toast.error(result.error || "Failed to delete project");
             }
         } catch (error) {
             console.error(error);
-            alert("An error occurred");
+            toast.error("An error occurred");
         } finally {
             setIsDeleting(false);
         }

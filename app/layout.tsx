@@ -74,6 +74,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { Toaster } from "sonner";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -86,6 +88,7 @@ export default function RootLayout({
     >
       <SpeedInsights />
       <body>
+        <Toaster closeButton position="top-right" expand={false} richColors />
         <Suspense fallback={null}>
           <GlobalLoader />
         </Suspense>

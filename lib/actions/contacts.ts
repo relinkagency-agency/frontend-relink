@@ -123,6 +123,6 @@ export async function deleteContact(id: number) {
         return { success: true };
     } catch (error) {
         console.error('Error deleting contact:', error);
-        throw new Error('Failed to delete contact');
+        return { success: false, error: 'Failed to delete contact' };
     }
 }

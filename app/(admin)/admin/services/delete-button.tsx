@@ -5,21 +5,27 @@ import { deleteService } from "@/lib/actions/services";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
+import { toast } from "sonner";
 
 export function DeleteServiceButton({ id }: { id: number }) {
     const router = useRouter();
     const [isDeleting, setIsDeleting] = useState(false);
 
     const handleDelete = async () => {
-        if (!confirm("Are you sure you want to delete this service?")) return;
+        if (!confirm("Are you sure? This will permanently delete the service.")) return;
 
         setIsDeleting(true);
         try {
-            await deleteService(id);
-            router.refresh();
+            const result = await deleteService(id);
+            if (result.success) {
+                toast.success("Service deleted successfully");
+                router.refresh();
+            } else {
+                toast.error(result.error || "Failed to delete service");
+            }
         } catch (error) {
             console.error(error);
-            alert("Failed to delete service");
+            toast.error("An error occurred");
         } finally {
             setIsDeleting(false);
         }
