@@ -29,6 +29,9 @@ export default function Page() {
       <Suspense fallback={<BlogListSkeleton />}>
         <BlogListContainer />
       </Suspense>
+
+
+      
     </>
   );
 }

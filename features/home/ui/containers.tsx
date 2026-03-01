@@ -28,12 +28,14 @@ export async function ProjectsContainer({ serviceSlug }: { serviceSlug?: string 
     // Everything else (excluding the one used for Featured) goes to ProjectList
     const listProjects = allProjects
         .filter(p => p.id !== featuredProject?.id)
-        .slice(0, 4);
+        .slice(0, 8);
 
     return (
         <>
             {featuredProject && <FeaturedProject project={featuredProject} />}
             {listProjects.length > 0 && <ProjectList projects={listProjects} />}
+
+            
         </>
     );
 }

@@ -4,6 +4,8 @@
 import React from "react";
 import { ProjectCard } from "./card";
 import { Project } from "@/lib/strapi.types";
+import Image from "next/image";
+import JenyAvatar from "../../../../public/jen.jpg";
 
 
 export function ProjectList({ projects }: { projects: Project[] }) {
@@ -50,7 +52,7 @@ export function ProjectList({ projects }: { projects: Project[] }) {
             ))}
           </div>
 
-          <div className="mt-20 flex justify-end">
+          <div className="mt-18 flex justify-end">
             {/* <a
               href="/projects"
               className="inline-flex items-center gap-3 px-8 py-3b text-lg font-semibold border-b-2 border-white/80 text-white transition-all hover:scale-[1.02]"
@@ -58,12 +60,47 @@ export function ProjectList({ projects }: { projects: Project[] }) {
               View all work <span className="text-[16px] leading-none">↗</span>
             </a> */}
 
-              <a
-                    href="#"
-                    className="mt-10 inline-flex items-center gap-2 text-lg font-semibold border-b-2 border-white/80 pb-1 hover:gap-4 transition-all text-white w-fit"
-                  >
-                    View all work <span aria-hidden>↗</span>
-                  </a>
+            <a
+              href="#"
+              className="mt-10 inline-flex items-center gap-2 text-lg font-semibold border-b-2 border-white/80 pb-1 hover:gap-4 transition-all text-white w-fit"
+            >
+              View all work <span aria-hidden>↗</span>
+            </a>
+          </div>
+
+          <div className="w-full py-12   mx-auto text-white font-relink-neue">
+            <h3 className="text-[55px] capitalize">What our clients say</h3>
+
+            <div className="flex gap-8 justify-center items-end mt-12">
+              <div className="flex gap-6 items-end">
+                <div><Image className="w-10 h-10 rounded-full object-cover" src={JenyAvatar} alt="client with quote" width={50} height={50} /></div>
+                <div className="flex flex-col gap-1 ">
+                  <h4 className="text-[25px]"> John Doe</h4>
+                  <p className="text-[20px]">CEO, Company</p>
+                  <p className="max-w-[350px] font-relink-neue flex-wrap">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+                </div>
+              </div>
+
+
+              <div className="flex gap-6  items-end">
+                <div><Image className="w-10 h-10 rounded-full object-cover" src={JenyAvatar} alt="client with quote" width={50} height={50} /></div>
+                <div className="flex flex-col gap-1 ">
+                  <h4 className="text-[25px]"> John Doe</h4>
+                  <p className="text-[20px]">CEO, Company</p>
+                  <p className="max-w-[350px] font-relink-neue">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+                </div>
+              </div>
+
+
+              <div className="flex gap-6 items-end">
+                <div><Image className="w-10 h-10 rounded-full object-cover" src={JenyAvatar} alt="client with quote" width={50} height={50} /></div>
+                <div className="flex flex-col gap-1 ">
+                  <h4 className="text-[25px]"> John Doe</h4>
+                  <p className="text-[20px]">CEO, Company</p>
+                  <p className="max-w-[350px] font-relink-neue">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
