@@ -20,18 +20,12 @@ export default function MarketingPage() {
     return (
         <>
             <Hero
-                title={
-                    <>
-                        Data-driven strategies
-                        <br />
-                        for real growth
-                    </>
-                }
+                title=""
                 image={heroImage}
                 subtitle={
                     <div className="flex flex-col gap-2 font-relink-neue ">
                         <p className="text-xs tracking-wide leading-4 font-medium">
-                            SEO • PPC • Content Strategy
+                            SEO • Content Strategy
                         </p>
                     </div>
                 }
