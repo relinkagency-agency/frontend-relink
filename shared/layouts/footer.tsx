@@ -166,7 +166,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t my-6 md:my-8 border-gray-500"></div>
+        <div className="border-t my-6 md:my-8 border-[0.1px] border-gray-700"></div>
         <div className="flex justify-start gap-2 text-center items-center text-sm text-gray-500 font-relink-neue font-light">
           <p>&copy; 2026 Relink. All rights reserved</p>
           <div className="h-3 border border-gray-500"></div>

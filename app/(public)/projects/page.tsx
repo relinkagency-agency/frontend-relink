@@ -6,6 +6,9 @@ import ProjectsFilterable from "@/features/work/ui/projects-filterable";
 import { Suspense } from "react";
 import Link from "next/link";
 
+import { Testimonials } from "@/shared/ui/testimonials";
+import { ArrowRightIcon } from "lucide-react";
+
 export default async function ProjectsPage() {
     const [projectsRes, servicesRes] = await Promise.all([
         getProjects(),
@@ -25,12 +28,16 @@ export default async function ProjectsPage() {
                 />
             </Suspense>
 
-            <section className="py-40 px-8 relative overflow-hidden border-t border-white/5">
+            <section className="w-full bg-amber-50">
+                <Testimonials className="text-black" titleClassName="text-black" subtitleClassName="text-black" quoteClassName="text-black" />
+            </section>
+
+            <section className="py-30 px-8 relative overflow-hidden border-t border-white/5 bg-[#0B0D13]">
                 <div className="absolute inset-0 bg-[#0B0D13]" />
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(1000px_400px_at_50%_100%,rgba(255,255,255,0.03),transparent_60%)]" />
 
                 <div className="relative max-w-7xl mx-auto text-center">
-                    <h2 className="text-white/30 uppercase tracking-[0.4em] font-bold text-[10px] mb-12">Ready to start?</h2>
+                    <h2 className="text-white/40 uppercase tracking-[0.3rem] font-bold text-[12px] mb-12">Ready to start?</h2>
                     <div className="mb-16">
                         <span className="block text-5xl md:text-8xl lg:text-9xl font-serif text-white tracking-tight leading-[0.8] mb-4">
                             Have a vision?
@@ -41,17 +48,19 @@ export default async function ProjectsPage() {
                     </div>
                     <Link
                         href="/contact-us"
-                        className="inline-flex items-center gap-6 group transition-all"
+                        className="inline-flex items-center gap-4 group transition-all"
                     >
-                        <span className="text-white/80 text-sm md:text-base font-bold tracking-[0.3em] uppercase border-b border-white/10 pb-2 group-hover:border-white/40 group-hover:text-white transition-all">
+                        <span className="text-white/80 text-sm md:text-base font-bold tracking-widest uppercase border-b border-white/10 pb-2 group-hover:border-white/40 group-hover:text-white transition-all">
                             Start a Conversation
                         </span>
-                        <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white text-xl group-hover:bg-white group-hover:text-black transition-all transform group-hover:rotate-[-45deg]">
-                            →
+                        <div className="  flex items-center justify-center text-white text-xl  transition-all transform group-hover:rotate-[-45deg]">
+                            <ArrowRightIcon className="w-6 h-6" />
                         </div>
                     </Link>
                 </div>
             </section>
+
+            
         </main>
     );
 }

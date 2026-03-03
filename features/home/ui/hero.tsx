@@ -23,7 +23,7 @@ export default function Hero({
         Cue Actors Web app
       </p>
       <a
-        href="#"
+        href="projects/kwmortgagegal.com"
         className="text-sm flex gap-2 items-center cursor-pointer group"
       >
         <span className="tracking-wide leading-4 font-medium">
