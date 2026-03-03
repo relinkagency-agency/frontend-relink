@@ -3,8 +3,10 @@ import Hero from "@/features/home/ui/hero";
 import Overview from "@/features/home/ui/brandoverview";
 import Faq from "@/shared/layouts/faq";
 import Image from "next/image";
-import growth from "@/public/growth.jpg";
-import heroImage from "@/public/idea.jpg";
+import growth from "@/public/relink-MK-3.jpg";
+import wordmark from "@/public/relink-Wordmark-1.png";
+import heroImage from "@/public/relink-MK-1.jpg";
+import overviewImage from "@/public/relink-MK-2.jpg";
 import {
     ProjectsContainer
 } from "@/features/home/ui/containers";
@@ -35,6 +37,7 @@ export default function MarketingPage() {
                 }
             />
             <Overview
+                image={overviewImage}
                 title={
                     <>
                         Connecting brands
@@ -82,11 +85,16 @@ export default function MarketingPage() {
                         ]}
                     />
                 </div>
-                <div className="w-full md:w-1/2 flex justify-center">
+                <div className="w-full md:w-1/2 flex flex-col gap-8 items-center justify-center">
                     <Image
                         src={growth}
                         alt="Marketing Growth"
-                        className="object-cover w-full h-auto max-w-[500px]"
+                        className="object-cover w-full h-full max-w-[500px]"
+                    />
+                     <Image
+                        src={wordmark}
+                        alt="Marketing Growth"
+                        className="object-cover h-full max-w-[300px] mx-auto"
                     />
                 </div>
             </div>
