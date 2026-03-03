@@ -167,30 +167,8 @@ export default function Main({ articles }: MainProps) {
 
       </section>
 
-      {/* <AnimatedContinuousSection
-        panels={[
-          {
-            image: carousel1,
-            heading: "Bussiness Growth",
-            label: "Growth, always. ",
-          },
-          {
-            image: carousel2,
-            heading: "Strategy meets creativity",
-            label: "We plan & execute..",
-          },
-          {
-            image: carousel3,
-            heading: "Culture-led, always.",
-            label: "Our identity + growth",
-          },
-          {
-            image: carousel4,
-            heading: "Reaching right audience.",
-            label: "We deliver 100%",
-          },
-        ]}
-      /> */}
+     
+     
       <FlipSection />
 
       {/* Blog List Section */}
