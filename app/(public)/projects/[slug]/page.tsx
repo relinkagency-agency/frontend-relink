@@ -71,13 +71,7 @@ export default async function ProjectDetailPage(props: { params: Promise<{ slug:
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0B0D13] via-transparent to-transparent" />
 
                 <div className="relative z-10 max-w-7xl mx-auto w-full">
-                    <div className="mb-6 flex flex-wrap gap-3">
-                        {project.services.map(s => (
-                            <span key={s.id} className="px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-[10px] uppercase font-bold tracking-[0.2em] text-white/90 border border-white/10">
-                                {s.title}
-                            </span>
-                        ))}
-                    </div>
+                   
                     <h1 className="text-5xl md:text-8xl lg:text-9xl font-serif text-white tracking-tight leading-[0.9]">
                         {project.title}
                     </h1>
@@ -92,7 +86,7 @@ export default async function ProjectDetailPage(props: { params: Promise<{ slug:
                         {project.challenge && (
                             <div className="mb-24">
                                 <h2 className="text-white/40 uppercase tracking-[0.2em] font-bold text-[11px] mb-10">Challenge & Vision</h2>
-                                <div className="text-white/90 text-xl md:text-2xl font-light leading-relaxed">
+                                <div className="text-white/90 text-xl md:text-lg font-light leading-relaxed">
                                     {project.challenge}
                                 </div>
                             </div>
@@ -101,7 +95,7 @@ export default async function ProjectDetailPage(props: { params: Promise<{ slug:
                         {project.solution && (
                             <div className="mt-20">
                                 <h2 className="text-white/40 uppercase tracking-[0.2em] font-bold text-[11px] mb-10">Solution</h2>
-                                <div className="prose prose-invert prose-xl max-w-none text-white/60 font-light leading-relaxed">
+                                <div className="text-white/90 text-xl md:text-lg font-light leading-relaxed prose prose-invert prose-xl max-w-none">
                                     <BlocksRenderer content={project.solution} />
                                 </div>
                             </div>
@@ -109,7 +103,7 @@ export default async function ProjectDetailPage(props: { params: Promise<{ slug:
                     </div>
 
                     <div className="lg:col-span-5 space-y-16 pt-2">
-                        <div className="grid grid-cols-2 gap-8 border-b border-white/5 pb-10">
+                        <div className="grid grid-cols-3 gap-8 border-b border-white/5 pb-10">
                             <div>
                                 <h3 className="text-white/40 uppercase tracking-[0.15em] font-bold text-[11px] mb-4">Client</h3>
                                 <p className="text-white text-xl font-medium">{project.clientName || 'Confidential'}</p>
@@ -118,16 +112,25 @@ export default async function ProjectDetailPage(props: { params: Promise<{ slug:
                                 <h3 className="text-white/40 uppercase tracking-[0.15em] font-bold text-[11px] mb-4">Date</h3>
                                 <p className="text-white text-xl font-medium">{project.year || '2024'}</p>
                             </div>
+
+                            <div className="">
+                                <h3 className="text-white/40 uppercase tracking-[0.15em] font-bold text-[11px] mb-4">Type</h3>
+                                {project.services.map(s => (
+                                    <span key={s.id} className="uppercase font-bold text-white/90">
+                                        {s.title}
+                                    </span>
+                                ))}
+                            </div>
                         </div>
 
                         {project.deliverables && project.deliverables.length > 0 && (
                             <div>
-                                <h3 className="text-white/40 uppercase tracking-[0.15em] font-bold text-[11px] mb-10">Deliverables</h3>
+                                <h3 className="text-white/40 uppercase tracking-[0.15em] font-bold text-[12px] mb-10">Deliverables</h3>
                                 <div className="space-y-10">
                                     {project.deliverables?.map((d, i) => (
                                         <div key={i} className="group">
                                             <div className="flex items-start gap-4">
-                                                <div className="h-px w-6 bg-white/20 mt-3 group-hover:w-10 group-hover:bg-amber-50 transition-all duration-500" />
+                                                {/* <div className="h-px w-6 bg-white/20 mt-3 group-hover:w-10 group-hover:bg-amber-50 transition-all duration-500" /> */}
                                                 <div>
                                                     <h4 className="text-white text-lg font-medium mb-2">{d.label}</h4>
                                                     {d.details && (
@@ -149,7 +152,7 @@ export default async function ProjectDetailPage(props: { params: Promise<{ slug:
                                     href={project.liveUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-4 bg-amber-50 px-8 py-4 text-black font-bold tracking-widest text-xs uppercase transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                                    className="inline-flex items-center gap-4 bg-amber-50 px-4 py-2 text-black font-medium tracking-widest text-xs uppercase transition-transform hover:scale-[1.02] active:scale-[0.98]"
                                 >
                                     Visit Live Project
                                     <span className="text-xl">↗</span>

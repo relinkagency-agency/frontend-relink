@@ -1,8 +1,9 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import MobileHeader from "./mobileHeader";
-import Link from "next/link";
+import Image from "next/image";
 import TransitionLink from "./transitionLink";
+import logo from "@/public/relink-Wordmark-2.png";
 
 export default function Header() {
   const lastY = useRef(0);
@@ -59,7 +60,9 @@ export default function Header() {
               }`}
           >
             <h4 className="font-relink-headline text-[38px] select-none uppercase">
-              <TransitionLink href="/">Relink</TransitionLink>
+              <TransitionLink href="/">
+                <Image src={logo} alt="logo" className="w-35 " />
+              </TransitionLink>
             </h4>
           </div>
 

@@ -8,12 +8,12 @@ import Image from "next/image";
 gsap.registerPlugin(Flip);
 
 const images = [
-  { id: "one", src: "/team-1.jpg" },
-  { id: "two", src: "/growth.jpg" },
-  { id: "four", src: "/who.jpg" },
-  { id: "five", src: "/sales.jpg" },
-  { id: "six", src: "/idea.jpg" },
-  { id: "three", src: "/stra.jpg" },
+  { id: "one", src: "/relink-mk-1.jpg" },
+  { id: "two", src: "/relink1.jpg" },
+  { id: "four", src: "/relink2.jpg" },
+  { id: "five", src: "/relink-mk-4.jpg" },
+  { id: "six", src: "/relink-mk-5.jpg" },
+  { id: "three", src: "/relink-mk-3.jpg" },
 ];
 
 function FlipSection() {

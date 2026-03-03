@@ -10,7 +10,7 @@ const RichTextBlock = ({ block }: { block: any }) => {
     if (!block.body) return null;
 
     return (
-        <div className="max-w-6xl font-sans mx-auto px-6 mb-16 selection:bg-black selection:text-white">
+        <div className="max-w-[850px] font-sans mx-auto px-6 mb-16 selection:bg-black selection:text-white">
             <div
                 className="prose prose-lg max-w-none text-neutral-800 leading-relaxed font-light 
                    prose-headings:font-serif prose-headings:text-black prose-headings:font-normal

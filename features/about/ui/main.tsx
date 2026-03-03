@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import aboutImg from "../../../public/un-3.jpg";
+import aboutImg from "../../../public/relink-MK-5.jpg";
 import aboutTeamImg from "../../../public/about-team.jpg";
 import carousel1 from "../../../public/un-2.jpg";
 import carousel2 from "../../../public/un-3.jpg";
@@ -60,13 +60,13 @@ export default function Main({ articles }: MainProps) {
         </div>
 
         <div className="mx-auto mt-10 w-full px-6 md:mt-16 md:w-[1250px] md:px-0">
-          <div className="relative h-[320px] w-full overflow-hidden md:h-[800px]">
+          <div className="relative h-[300px] w-full overflow-hidden md:h-[700px]">
             <Image
               src={aboutImg}
               alt="About us"
               fill
               priority
-              className="object-cover"
+              className="object-cover h-[100px]"
               sizes="(max-width: 768px) 100vw, 1250px"
             />
           </div>

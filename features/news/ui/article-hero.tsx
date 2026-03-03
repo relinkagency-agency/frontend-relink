@@ -27,7 +27,7 @@ export default function ArticleHero({ article }: ArticleHeroProps) {
                     fill
                     priority
                     sizes="100vw"
-                    className="object-cover opacity-90"
+                    className="object-cover opacity-45"
                 />
             ) : (
                 <div className="absolute inset-0 bg-neutral-900" />
@@ -35,7 +35,7 @@ export default function ArticleHero({ article }: ArticleHeroProps) {
 
             <div className="relative z-20 px-10">
                 <div className="max-w-4xl mx-auto">
-                    <div className="flex items-center gap-4 mb-8">
+                    {/* <div className="flex items-center gap-4 mb-8">
                         {article.category && (
                             <span className="text-[12px] font-bold tracking-[0.2em] text-white/80 uppercase px-3 py-1 bg-white/10 backdrop-blur-md rounded-sm">
                                 {article.category.name}
@@ -46,12 +46,12 @@ export default function ArticleHero({ article }: ArticleHeroProps) {
                                 {publishedDate}
                             </span>
                         )}
-                    </div>
+                    </div> */}
 
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-relink-headline text-white leading-[1.1]">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-relink-headline text-white ">
                         {article.title}
                     </h1>
-
+{/* 
                     {article.author && (
                         <div className="flex items-center gap-3 mt-10">
                             <div className="h-8 w-8 rounded-full bg-white/20 overflow-hidden" />
@@ -59,7 +59,7 @@ export default function ArticleHero({ article }: ArticleHeroProps) {
                                 By {article.author.name}
                             </span>
                         </div>
-                    )}
+                    )} */}
                 </div>
             </div>
 

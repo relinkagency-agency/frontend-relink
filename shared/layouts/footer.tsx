@@ -6,6 +6,8 @@ import { FaXTwitter } from "react-icons/fa6";
 import FooterCta from "./footerCta";
 import Faq from "./faq";
 import TransitionLink from "./transitionLink";
+import logo from "@/public/relink-Wordmark-1.png";
+import Image from "next/image";
 
 export default function Footer() {
   const footerRef = useRef<HTMLElement | null>(null);
@@ -39,7 +41,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4 items-start">
           <div>
             <h4 className="font-relink-headline font-light text-[50px] tracking-[-0.04em] select-none">
-              Relink
+             <Image src={logo} alt="logo" className="w-35 " />
             </h4>
             <TransitionLink
               href="mailto:info@relinkagency.com"
