@@ -3,16 +3,16 @@
 "use client";
 
 import React from "react";
-import type { Service } from "@/lib/strapi.types";
+import type { Service } from "@/lib/types";
 
 interface ServicesProps {
   services: Service[];
 }
 
 export default function Services({ services }: ServicesProps) {
-  // if (services.length === 0) {
-  //   return null;
-  // }
+  if (services.length === 0) {
+    return null;
+  }
 
   console.log("services", services);
   

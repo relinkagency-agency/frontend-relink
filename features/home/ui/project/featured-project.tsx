@@ -1,8 +1,7 @@
-/** @format */
-import Image from "next/image";
-import { Project } from "@/lib/strapi.types";
+'use client';
 
-
+import { Project } from "@/lib/types";
+import { CldImage } from "next-cloudinary";
 
 export default function FeaturedProject({ project }: { project: Project }) {
   const category = project.services?.map(s => s.title).join(", ") || "Project";
@@ -10,9 +9,9 @@ export default function FeaturedProject({ project }: { project: Project }) {
   return (
     <section className="relative w-full bg-relink-dark/50">
       <div className="relative h-[72vh] min-h-[520px] w-full overflow-hidden">
-        {project.thumbnail?.url && (
-          <Image
-            src={project.thumbnail.url}
+        {project.thumbnail?.publicId && (
+          <CldImage
+            src={project.thumbnail.publicId}
             alt={project.thumbnail.alt || project.title}
             fill
             priority

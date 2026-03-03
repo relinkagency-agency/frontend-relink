@@ -2,8 +2,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { Project, Service } from "@/lib/strapi.types";
-import { ProjectCard } from "@/features/home/ui/project/card";
+import { Project, Service } from "@/lib/types";
+import { ProjectCard } from "@/features/work/ui/card";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ProjectsFilterableProps {
@@ -30,7 +30,6 @@ export default function ProjectsFilterable({
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(1200px_380px_at_50%_0%,rgba(255,255,255,0.06),transparent_60%)]" />
 
                 <div className="relative mx-auto max-w-7xl px-8 md:px-12 pt-20">
-                    {/* Filters */}
                     <div className="flex flex-wrap gap-x-12 gap-y-6 mb-20 border-b border-white/10 pb-10">
                         <button
                             onClick={() => setActiveFilter("all")}

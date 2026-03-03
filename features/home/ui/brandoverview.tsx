@@ -5,8 +5,9 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
-import img from "../../../public/overview2.jpg";
+import img from "../../../public/overview.jpg";
 import MobileOverview from "./brandoverview-mobile";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -111,12 +112,12 @@ function DesktopOverview({
                 </div>
 
                 {showCta && (
-                  <a
-                    href="#"
+                  <Link
+                    href="/about"
                     className="mt-10 inline-flex items-center gap-2 text-lg font-semibold border-b-2 border-black/80 pb-1 hover:gap-4 transition-all text-black w-fit"
                   >
                     See what we do <span aria-hidden>↗</span>
-                  </a>
+                  </Link>
                 )}
               </div>
             </div>
@@ -140,7 +141,6 @@ export default function Overview(props: OverviewProps) {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
-  // use a stable placeholder that looks like the section to avoid blank screens/jumps
   if (isMobile === null) return <div className="h-[80vh] bg-amber-50" />;
 
   return isMobile ? <MobileOverview {...props} /> : <DesktopOverview {...props} />;

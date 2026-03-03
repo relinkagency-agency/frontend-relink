@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
-import Footer from "../shared/layouts/footer";
 import "./globals.css";
-import Header from "@/shared/layouts/header";
-import PageTransition from "@/shared/layouts/pageTransitiion";
+import { GlobalLoader } from "./global-loader";
+import { Suspense } from "react";
 
 const tiemposText = localFont({
   src: [
@@ -57,7 +56,25 @@ export const metadata: Metadata = {
     template: "%s | Relink Agency",
   },
   description: "Brand Agency",
+  openGraph: {
+    title: "Relink Agency",
+    description: "Brand Agency",
+    url: "https://relinkagency.com",
+    siteName: "Relink Agency",
+    images: [
+      {
+        url: "https://relinkagency.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Relink Agency",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
+
+import { Toaster } from "sonner";
 
 export default function RootLayout({
   children,
@@ -69,13 +86,13 @@ export default function RootLayout({
       lang="en"
       className={`${tiemposText.variable} ${tiemposHeadline.variable} ${tiemposFine.variable} ${neueHaasUnica.variable}`}
     >
-      <SpeedInsights/>
+      <SpeedInsights />
       <body>
-        <Header />
-        <PageTransition>
-          <main className="min-h-[70vh]">{children}</main>
-        </PageTransition>
-        <Footer />
+        <Toaster closeButton position="top-right" expand={false} richColors />
+        <Suspense fallback={null}>
+          <GlobalLoader />
+        </Suspense>
+        {children}
       </body>
     </html>
   );

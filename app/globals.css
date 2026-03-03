@@ -115,10 +115,9 @@
 }
 
 @theme {
-  --color-relink-purple-light: #dfdcff;
-  --color-relink-purple-medium: #c4bbff;
-  --color-relink-purple-base: #b8b0ff;
-  --color-relink-purple-deep: #a69eff;
+
+  --color-relink-bg: #0B0D13;
+  --color-relink-amber: #fffbeb;
   --color-relink-purple-dark: #2d1b4e;
 
   --color-relink-dark: #0B0D13;
@@ -147,5 +146,9 @@
 
   p {
     font-family: var(--font-relink-neue);
+  }
+
+  button {
+    cursor: pointer;
   }
 }

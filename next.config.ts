@@ -4,27 +4,17 @@
  */
 const nextConfig = {
   images: {
-    unoptimized: true,
     remotePatterns: [
-
       {
         protocol: "https",
-        hostname: "res.cloudinary.com",
-      },
-      {
-        protocol: "http",
-        hostname: "localhost",
-      },
-      {
-        protocol: "http",
-        hostname: "127.0.0.1",
+        hostname: "**.cloudinary.com",
       },
       {
         protocol: "https",
-        hostname: "placehold.co",
+        hostname: "**.cloudinary.com",
       },
     ],
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;

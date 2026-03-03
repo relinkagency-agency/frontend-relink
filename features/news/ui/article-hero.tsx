@@ -1,7 +1,7 @@
 /** @format */
 import React from "react";
 import Image from "next/image";
-import { Article } from "@/lib/strapi.types";
+import { Article } from "@/lib/types";
 
 interface ArticleHeroProps {
     article: Article;
@@ -26,6 +26,7 @@ export default function ArticleHero({ article }: ArticleHeroProps) {
                     alt={article.coverImage.alt || article.title}
                     fill
                     priority
+                    sizes="100vw"
                     className="object-cover opacity-90"
                 />
             ) : (

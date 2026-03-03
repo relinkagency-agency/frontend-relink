@@ -3,7 +3,7 @@
 
 import React from "react";
 import { ProjectCard } from "./card";
-import { Project } from "@/lib/strapi.types";
+import { Project } from "@/lib/types";
 import Image from "next/image";
 import JenyAvatar from "../../../../public/jen.jpg";
 

@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 
+import { submitContactForm } from "@/lib/actions/contacts";
+
 interface FormDataProps {
   services: string;
   name: string;
@@ -50,10 +52,10 @@ export default function Main() {
     }
 
     if (!formData.services) {
-      newErrors.services = "Please an option";
+      newErrors.services = "Please choose an option";
     }
     if (formData.help === '') {
-      newErrors.help = "How can we help you?";
+      newErrors.help = "Please tell us how we can help";
     }
 
     return newErrors;
@@ -95,21 +97,12 @@ export default function Main() {
     setIsSubmitting(true);
 
     try {
-      const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
-      const response = await fetch(`${strapiUrl}/api/contacts`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ data: formData }),
-      });
+      const result = await submitContactForm(formData);
 
-      if (response.ok) {
+      if (result.success) {
         setSubmitStatus("success");
         (e.target as HTMLFormElement).reset();
       } else {
-        const errData = await response.json();
-        console.error("Strapi error:", errData);
         setSubmitStatus("error");
       }
     } catch (error) {

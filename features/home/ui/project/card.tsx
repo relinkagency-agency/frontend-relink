@@ -1,7 +1,7 @@
 /** @format */
 
 import Image from "next/image";
-import { Project } from "@/lib/strapi.types";
+import { Project } from "@/lib/types";
 
 export function ProjectCard({ project, className = "" }: { project: Project, className?: string }) {
   const category = project.services?.map(s => s.title).join(", ") || "Project";

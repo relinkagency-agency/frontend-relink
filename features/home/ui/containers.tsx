@@ -1,31 +1,36 @@
-/** @format */
 import React from "react";
 import Services from "./services";
 import { ProjectList } from "./project/projectlist";
 import FeaturedProject from "./project/featured-project";
 import BlogList from "./blog-list";
-import { getServices, getProjects, getUpdates } from "@/lib/strapi";
+import { getServices } from "@/lib/actions/services";
+import { getProjects } from "@/lib/actions/projects";
+import { getArticles } from "@/lib/actions/articles";
+import { mapDrizzleService, mapDrizzleProject, mapDrizzleArticle } from "@/lib/db/mappers";
 
 export async function ServicesContainer({ serviceSlug }: { serviceSlug?: string }) {
     const res = await getServices();
-    const services = serviceSlug
-        ? res.data.filter((s) => s.slug === serviceSlug)
-        : res.data;
+    const data = res.data || [];
+
+    const filteredData = serviceSlug
+        ? data.filter((s) => s.slug === serviceSlug)
+        : data;
+
+    const services = filteredData.map(mapDrizzleService);
 
     return <Services services={services} />;
 }
 
 export async function ProjectsContainer({ serviceSlug }: { serviceSlug?: string }) {
-    const res = await getProjects({ limit: 40, serviceSlug });
-    const allProjects = res.data || [];
+    const res = await getProjects();
+    const allProjectsRaw = res.data || [];
 
-    // If no projects at all, return nothing
+    const allProjects = allProjectsRaw.map(mapDrizzleProject);
+
     if (allProjects.length === 0) return null;
 
-    // First one (or featured one) goes to FeaturedProject
     const featuredProject = allProjects.find(p => p.isFeatured) || allProjects[0];
 
-    // Everything else (excluding the one used for Featured) goes to ProjectList
     const listProjects = allProjects
         .filter(p => p.id !== featuredProject?.id)
         .slice(0, 8);
@@ -41,6 +46,7 @@ export async function ProjectsContainer({ serviceSlug }: { serviceSlug?: string 
 }
 
 export async function BlogListContainer() {
-    const res = await getUpdates({ limit: 3, onlyPublished: true });
-    return <BlogList articles={res.data} />;
+    const res = await getArticles('published');
+    const articles = (res.data || []).slice(0, 3).map(mapDrizzleArticle);
+    return <BlogList articles={articles} />;
 }

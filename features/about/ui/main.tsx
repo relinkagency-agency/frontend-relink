@@ -10,7 +10,7 @@ import carousel3 from "../../../public/teamwork.jpg";
 import carousel4 from "../../../public/un-2.jpg";
 import AnimatedContinuousSection from "@/shared/ui/gsap/animatedContinuousSection";
 import BlogList from "@/features/home/ui/blog-list";
-import { Article } from "@/lib/strapi.types";
+import { Article } from "@/lib/types";
 import FlipSection from "@/shared/ui/gsap/flipSection";
 
 const faq = [
