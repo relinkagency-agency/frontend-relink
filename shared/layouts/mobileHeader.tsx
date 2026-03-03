@@ -5,6 +5,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { FaS, FaXTwitter } from "react-icons/fa6";
 import TransitionLink from "./transitionLink";
+import logo from "@/public/relink-Wordmark-2.png";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -94,7 +96,7 @@ export default function MobileHeader() {
           }`}
       >
         <TransitionLink onClick={() => setMenuOpen(false)} href="/" className="font-relink-headline text-[28px] lowercase">
-          Relink
+         <Image src={logo} alt="logo" className="w-25" />
         </TransitionLink>
         <button
           onClick={() => {
@@ -134,7 +136,7 @@ export default function MobileHeader() {
                   className={`leading-tight ${pathname === "/projects" ? "text-amber-50" : "text-white/70"}`}
                   onClick={() => setMenuOpen(false)}
                 >
-                  Projects
+                  Projects+Delivery
                 </TransitionLink>
                 <TransitionLink
                   href="/about-culture"
@@ -189,7 +191,7 @@ export default function MobileHeader() {
                 <div className="text-center">
                   <a
                     href="mailto:info@relinkagency.com"
-                    className="text-sm font-light text-white/80 hover:text-gray-900"
+                    className="text-sm font-light text-white/80 hover:text-white"
                   >
                     info@relinkagency.com
                   </a>

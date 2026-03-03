@@ -51,7 +51,7 @@ export default function MobileOverview({
 
           {showCta && (
             <a
-              href="#"
+              href="/about-culture"
               className="mt-10 inline-flex items-center gap-2 text-lg font-semibold border-b-2 border-black/80 pb-1 hover:gap-4 transition-all text-black w-fit"
             >
               See what we do <span aria-hidden>↗</span>

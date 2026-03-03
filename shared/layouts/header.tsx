@@ -73,7 +73,7 @@ export default function Header() {
                 : "opacity-100 translate-y-0"
                 }`}
             >
-              <TransitionLink href="/projects">PROJECTS</TransitionLink>
+              <TransitionLink href="/projects">PROJECTS+DELIVERY</TransitionLink>
               <TransitionLink href="/about-culture">ABOUT+CULTURE</TransitionLink>
               <TransitionLink href="/news-insight">NEWS+INSIGHT</TransitionLink>
             </div>

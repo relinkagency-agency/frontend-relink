@@ -1,5 +1,5 @@
 import Image from "next/image";
-import bg from "../../../public/idea.jpg";
+import bg from "../../../public/relink-MK-4.jpg";
 
 export default function Hero() {
   return (
@@ -22,12 +22,12 @@ export default function Hero() {
       </div>
 
       <div className="absolute text-white bottom-5 md:bottom-20 left-5 md:left-0 lg:left-auto lg:right-20 font-relink-headline lg:text-4xl max-w-4xl uppercase z-10">
-        <div className="flex flex-col gap-2 font-relink-neue">
+        <div className="flex flex-col gap-2 font-relink-neue group">
           <a
             href="#projects"
-            className="text-sm flex gap-2 items-center cursor-pointer group"
+            className="text-sm flex gap-2 items-center cursor-pointer  transition-transform duration-300 group-hover:translate-y-2"
           >
-            <span className="tracking-wide leading-4 font-medium">
+            <span className="tracking-wide leading-4 font-medium text-white">
               Explore Our Work
             </span>
             <svg
@@ -36,7 +36,7 @@ export default function Hero() {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="size-6 transition-transform duration-300 group-hover:translate-y-2"
+              className="size-6"
             >
               <path
                 strokeLinecap="round"
