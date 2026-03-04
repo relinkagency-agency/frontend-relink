@@ -30,10 +30,10 @@ export default function ProjectsFilterable({
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(1200px_380px_at_50%_0%,rgba(255,255,255,0.06),transparent_60%)]" />
 
                 <div className="relative mx-auto max-w-7xl px-8 md:px-12 pt-20">
-                    <div className="flex flex-wrap gap-x-12 gap-y-6 mb-20 border-b border-white/10 pb-10">
+                    <div className="grid grid-cols-2 md:grid-cols-8 items-center md:gap-x-4 gap-y-4 lg:justify-start justify-center mb-20 border-b border-white/10 pb-10">
                         <button
                             onClick={() => setActiveFilter("all")}
-                            className={`px-6 py-2 text-[10px] uppercase tracking-[0.2em] font-bold transition-all rounded-full border ${activeFilter === "all"
+                            className={`w-[140px] py-2 text-[10px] uppercase tracking-[0.2em] font-bold transition-all rounded-full border ${activeFilter === "all"
                                 ? "bg-amber-50 text-black border-amber-50"
                                 : "text-white/40 border-white/10 hover:border-white/20 hover:text-white"
                                 }`}
@@ -44,9 +44,9 @@ export default function ProjectsFilterable({
                             <button
                                 key={service.id}
                                 onClick={() => setActiveFilter(service.slug)}
-                                className={`px-6 py-2 text-[10px] uppercase tracking-[0.2em] font-bold transition-all rounded-full border ${activeFilter === service.slug
+                                className={`w-[140px]   py-2 text-[10px] uppercase tracking-[0.2em] font-bold transition-all rounded-full border ${activeFilter === service.slug
                                     ? "bg-amber-50 text-black border-amber-50"
-                                    : "text-white/40 border-white/10 hover:border-white/20 hover:text-white"
+                                    : "text-white/50 border-white/20 hover:border-white/20 hover:text-white"
                                     }`}
                             >
                                 {service.title}
@@ -75,7 +75,7 @@ export default function ProjectsFilterable({
 
                     {filteredProjects.length === 0 && (
                         <div className="py-20 text-center">
-                            <p className="text-white/30 uppercase tracking-widest text-xs">No projects found in this category</p>
+                            <p className="text-white/50 font-relink-neue text-lg">No projects found in this category</p>
                         </div>
                     )}
                 </div>

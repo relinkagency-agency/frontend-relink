@@ -136,22 +136,7 @@ export default function BlogList({ articles }: { articles: Article[] }) {
             className="inline-flex items-center gap-3 border-b border-white/30 pb-2 text-[16px] font-semibold text-white/90 hover:text-white transition-colors"
           >
             View all stories{" "}
-            <span className="text-[18px] leading-none">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
-                />
-              </svg>
-            </span>
+            <span aria-hidden>↗</span>
           </Link>
         </div>
       </div>

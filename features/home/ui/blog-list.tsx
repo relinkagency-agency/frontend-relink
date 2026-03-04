@@ -21,7 +21,7 @@ export default function BlogList({ articles }: { articles: Article[] }) {
           </div>
           <Link
             href="/news-insight"
-            className="hidden font-relink-neue md:inline-flex items-center gap-4 border-b border-black/30 pb-2 text-[16px] font-medium text-black/70 hover:text-black hover:border-black transition-all duration-500 group"
+            className="hidden font-relink-neue md:inline-flex items-center gap-2 border-b border-black/30 pb-2 text-[16px] font-medium text-black/70 hover:text-black hover:border-black transition-all duration-500 group"
           >
             Explore all stories{" "}
             <span className="text-[20px] transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1">
@@ -44,7 +44,9 @@ export default function BlogList({ articles }: { articles: Article[] }) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">
+          
           {articles.map((article) => (
+            <>
             <Link
               key={article.id}
               href={`/news-insight/${article.slug}`}
@@ -96,62 +98,36 @@ export default function BlogList({ articles }: { articles: Article[] }) {
                   </span>
                 </div>
 
-                <h4 className="text-2xl md:text-2xl font-medium font-relink-neue text-black group-hover:text-black transition-colors duration-500 leading-tight mb-2">
+                <h4 className="text-2xl md:text-lg font-medium flex-wrap font-relink-neue text-black group-hover:text-black transition-colors duration-500 leading-tight mb-2">
                   {article.title}
                 </h4>
 
                 {article.excerpt && (
-                  <p className="text-black/50  text-base leading-relaxed line-clamp-2 mb-4 font-light">
+                  <p className="text-black/50 text-base leading-relaxed line-clamp-2 mb-4  font-light">
                     {article.excerpt}
                   </p>
                 )}
 
-                <div className="mt-auto flex items-center gap-2 text-black font-semibold text-xs uppercase tracking-widest group-hover:text-black transition-all duration-500">
-                  Full Story{" "}
-                  <span className="text-lg transition-transform duration-500 group-hover:translate-x-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="size-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
-                      />
-                    </svg>
-                  </span>
+                
                 </div>
-              </div>
+                 <button className="flex items-center gap-2 w-28 py-2 hover:border-b hover:border-black/80 pb-1 font-semibold text-xs uppercase tracking-widest group-hover:text-black transition-all duration-500">
+                  Full Story{" "}
+                  <span aria-hidden>↗</span>
+                </button>
+              
             </Link>
+           
+            </>
           ))}
         </div>
 
         <div className="mt-16 md:hidden flex justify-center">
           <Link
             href="/news-insight"
-            className="inline-flex items-center gap-3 border-b border-black pb-2 text-[16px] font-semibold text-black/90 hover:text-black transition-colors"
+            className="inline-flex items-center gap-2 border-b border-black pb-2 text-[16px] font-semibold text-black/90 hover:text-black transition-colors"
           >
             View all stories{" "}
-            <span className="text-[18px] leading-none">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
-                />
-              </svg>
-            </span>
+            <span aria-hidden>↗</span>
           </Link>
         </div>
       </div>

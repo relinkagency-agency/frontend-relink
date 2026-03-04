@@ -51,9 +51,7 @@ export function ProjectList({ projects }: { projects: Project[] }) {
             ))}
           </div>
 
-          <div className="mt-18 flex justify-end">
-
-
+          <div className="md:mt-18 mt-12 flex md:justify-end justify-center">
             <a
               href="/projects"
               className="md:mt-10 mt-2 inline-flex items-center gap-2 text-lg font-semibold border-b-2 border-white/80 pb-1 hover:gap-4 transition-all text-white w-fit"
