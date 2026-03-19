@@ -106,6 +106,11 @@ export default function Footer() {
                   SEO
                 </TransitionLink>
               </li>
+              <li>
+                <TransitionLink href="/non-profits" className="hover:text-gray-400">
+                  Non-profits
+                </TransitionLink>
+              </li>
             </ul>
           </div>
 
