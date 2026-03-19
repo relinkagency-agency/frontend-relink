@@ -9,10 +9,10 @@ export default function Hero() {
           className="absolute inset-0 w-full md:h-full h-full object-cover"
         />
 
-        <div className="absolute text-white bottom-32 md:bottom-20 lg:bottom-40 left-5 md:left-20 lg:left-30 font-relink-headline text-5xl lg:text-7xl md:max-w-4xl max-w-2xl">
+        <div className="absolute text-white bottom-32 md:bottom-30 lg:bottom-40 left-5 md:left-20 lg:left-30 font-relink-headline text-5xl lg:text-7xl md:max-w-4xl max-w-2xl">
           <h1>Start your digital transformation.</h1>
         </div>
-        <div className="absolute text-white bottom-5 md:bottom-20 left-5 md:left-0 lg:left-auto lg:right-20 font-relink-headline lg:text-4xl max-w-4xl uppercase">
+        <div className="absolute text-white bottom-5 md:bottom-16 left-5 md:left-20 lg:left-auto lg:right-20 font-relink-headline lg:text-4xl max-w-4xl uppercase">
           <div className="flex gap-2 font-relink-neue group">
 
             <a

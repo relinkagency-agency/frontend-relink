@@ -49,12 +49,12 @@ const steps = [
     { num: "05", title: "Build & Launch", body: "We design, build, and deploy your solution." },
 ];
 
-const importantNotes = [
-    "Discounts are applied based on project scope and alignment",
-    "Not all applications are accepted",
-    "Ongoing support is billed separately",
-    "We reserve the right to define project timelines and scope",
-];
+// const importantNotes = [
+//     "Discounts are applied based on project scope and alignment",
+//     "Not all applications are accepted",
+//     "Ongoing support is billed separately",
+//     "We reserve the right to define project timelines and scope",
+// ];
 
 export default function Main() {
     const [open, setOpen] = useState<number | null>(null);
@@ -62,7 +62,7 @@ export default function Main() {
     return (
         <>
             {/* Intro */}
-            <section className="bg-amber-50 py-16 md:pt-24">
+            <section className="bg-amber-50 py-16 md:pt-24 pt-8">
                 <div className="mx-auto flex flex-col gap-10 px-6 py-4 md:max-w-7xl md:flex-row md:items-center md:gap-18">
                     <div className="w-full md:w-1/2">
                         <h2 className="font-relink-headline text-3xl leading-tight md:text-6xl md:leading-17">
@@ -96,7 +96,7 @@ export default function Main() {
 
             {/* Our Commitment */}
             <section className="bg-amber-50">
-                <div className="mx-auto flex flex-col gap-12 px-6 py-8 md:flex-row md:items-start md:justify-center md:gap-32 md:px-0 md:py-8">
+                <div className="mx-auto flex flex-col gap-12 px-6 py-0 md:flex-row md:items-start md:justify-center md:gap-32 md:px-0 md:py-8">
                     <div className="w-full md:w-[40%]">
                         <h2 className="font-relink-headline mb-6 text-4xl leading-tight tracking-tight md:text-6xl md:leading-17">
                             Our Commitment
@@ -190,7 +190,7 @@ export default function Main() {
                         </div>
 
                         <div className="space-y-0 md:w-1/2">
-                            <h2 className="font-relink-headline text-4xl leading-tight md:text-5xl mb-6">
+                            <h2 className="font-relink-headline text-4xl leading-tight md:text-5xl md:mb-6 mb-0">
                                 Who This Is For
                             </h2>
                             {whoThisIsFor.map((item, i) => (
@@ -270,11 +270,11 @@ export default function Main() {
 
             {/* How It Works */}
             <section className="bg-amber-50">
-                <div className="mx-auto px-6 md:px-0 md:max-w-6xl py-16 md:py-8">
+                <div className="mx-auto px-6 md:px-0 md:max-w-6xl py-4 md:py-8">
                     <h2 className="font-relink-headline text-4xl leading-tight md:text-5xl mb-14">
                         How It Works
                     </h2>
-                    <div className="grid grid-cols-1 gap-10 md:grid-cols-5">
+                    <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
                         {steps.map((step) => (
                             <div key={step.num} className="flex flex-col gap-3">
                                 <span className="font-relink-headline text-5xl text-black/15">{step.num}</span>
@@ -288,7 +288,7 @@ export default function Main() {
 
             {/* Apply CTA */}
             <section id="apply" className="bg-amber-50">
-                <div className="mx-auto px-6 md:px-0 md:max-w-6xl py-8 flex items-center justify-center">
+                <div className="mx-auto px-6 md:px-0 md:max-w-6xl py-12 md:py-8 flex items-center justify-center">
                     {/* <div className="max-w-2xl">
             <h2 className="font-relink-headline text-4xl leading-tight md:text-6xl md:leading-17 mb-6">
               Apply to Work With Us
@@ -297,7 +297,7 @@ export default function Main() {
               If your organization is building something meaningful and needs a strong technical partner, we&apos;d like to hear from you. Submit your request and we&apos;ll take it from there.
             </p>
           </div> */}
-                    <div className="">
+                    <div className="mb-4 md:mb-0">
                         <a
                             href="/contact"
                             className="inline-block font-relink-neue font-medium text-[15px] bg-black text-amber-50 px-8 py-4 hover:bg-black/80 transition-colors duration-300"

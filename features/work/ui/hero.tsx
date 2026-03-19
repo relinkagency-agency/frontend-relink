@@ -15,13 +15,13 @@ export default function Hero() {
 
       <div className="absolute inset-0 bg-gradient-to-t from-[#0B0D13]/20 via-transparent to-transparent" />
 
-      <div className="absolute text-white bottom-32 md:bottom-20 lg:bottom-40 left-5 md:left-20 lg:left-20 md:max-w-4xl max-w-2xl z-10">
+      <div className="absolute text-white bottom-32 md:bottom-30 lg:bottom-40 left-5 md:left-20 lg:left-20 md:max-w-4xl max-w-2xl z-10">
         <h1 className="font-light font-relink-headline text-5xl lg:text-8xl">
           High-impact digital solutions.
         </h1>
       </div>
 
-      <div className="absolute text-white bottom-5 md:bottom-20 left-5 md:left-0 lg:left-auto lg:right-20 font-relink-headline lg:text-4xl max-w-4xl uppercase z-10">
+      <div className="absolute text-white bottom-5 md:bottom-16 left-5 md:left-20 lg:left-auto lg:right-20 font-relink-headline lg:text-4xl max-w-4xl uppercase z-10">
         <div className="flex flex-col gap-2 font-relink-neue group">
           <a
             href="#projects"

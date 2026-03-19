@@ -61,12 +61,12 @@ export default function Hero({
           className="object-cover object-center"
         />
 
-        <div className="absolute text-white bottom-30 md:bottom-20 lg:bottom-40 left-5 md:left-20 lg:left-20 md:max-w-4xl max-w-[800px]">
+        <div className="absolute text-white bottom-30 md:bottom-30 lg:bottom-40 left-5 md:left-20 lg:left-20 md:max-w-4xl max-w-[800px]">
           <h1 className="font-light font-relink-headline text-6xl  lg:text-8xl md:leading-none leading-[63px]">
             {title}
           </h1>
         </div>
-        <div className="absolute text-white bottom-5 md:bottom-5 lg:bottom-20 left-5 md:left-20 lg:left-auto lg:right-20 font-relink-headline lg:text-4xl max-w-4xl uppercase">
+        <div className="absolute text-white bottom-5 md:bottom-16 lg:bottom-20 left-5 md:left-20 lg:left-auto lg:right-20 font-relink-headline lg:text-4xl max-w-4xl uppercase">
           {subtitle}
         </div>
       </section>
