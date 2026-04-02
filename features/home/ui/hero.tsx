@@ -20,7 +20,7 @@ export default function Hero({
   subtitle = (
     <div className="flex flex-col gap-2 font-relink-neue ">
       <p className="text-xs tracking-wide leading-4 font-medium">
-        Cue Actors Web app
+        Smart AI Web apps
       </p>
       <a
         href="projects/kwmortgagegal.com"
